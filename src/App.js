@@ -1,7 +1,9 @@
+import Navbar from "./components/Navbar";
+
 const App = () => {
   return (
     <div className="App">
-      <h1>Hello from react.</h1>
+     <Navbar/>
     </div>
   )
 }
