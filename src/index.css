@@ -41,6 +41,7 @@ body {
 	line-height: 1;
 	font-size: 16px;
 	scroll-behavior: smooth;
+	overflow: hidden;
 }
 ol, ul {
 	list-style: none;
