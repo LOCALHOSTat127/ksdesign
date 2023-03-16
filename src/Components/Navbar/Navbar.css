@@ -1,0 +1,215 @@
+.flex {
+  display: flex;
+}
+
+.fd-col {
+  flex-direction: column;
+}
+
+.fd-row {
+  flex-direction: row;
+}
+
+.flex-aic {
+  align-items: center;
+}
+
+.flex-jcc {
+  justify-content: center;
+}
+
+.df-aic-jcc {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.flex-jcsb {
+  justify-content: space-between;
+}
+
+.flex-jcsa {
+  justify-content: space-around;
+}
+
+.cp {
+  cursor: pointer;
+}
+
+/* ---colours */
+/* ---font-weight */
+/* ---gradients */
+.navbar__outer {
+  width: 100%;
+  min-height: 54px;
+  position: relative;
+}
+.navbar__outer menu {
+  width: 100%;
+  height: 100%;
+  padding: 25px 32px 20px 32px;
+}
+.navbar__outer menu #logo {
+  height: auto;
+  width: 100%;
+  max-width: 7.25rem;
+  align-self: center;
+}
+.navbar__outer menu nav {
+  align-items: center;
+  height: 100%;
+}
+.navbar__outer menu nav ul li {
+  margin-left: 58px;
+  font-weight: 400;
+  color: #000000;
+  transition: all 150ms ease-in-out;
+  font-size: 0.9rem;
+}
+.navbar__outer menu nav ul li:hover {
+  color: rgba(0, 0, 0, 0.6156862745);
+}
+.navbar__outer menu nav ul .active {
+  position: relative;
+  font-weight: 600;
+}
+.navbar__outer menu nav ul .active::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -4px;
+  width: 100%;
+  height: 1px;
+  background-color: #000000;
+}
+.navbar__outer menu nav button {
+  margin: 0;
+  padding: 0;
+  margin-left: 45px;
+  border: none;
+  background-color: #1F188D;
+  color: white;
+  font-weight: 500;
+  font-size: 1rem;
+  padding: 10px 24px;
+  border-radius: 4px;
+  box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
+  transition: all 200ms ease-in-out;
+}
+.navbar__outer menu nav button .call__svg {
+  margin-right: 10px;
+  height: auto;
+  width: 100%;
+  max-width: 15px;
+}
+.navbar__outer menu nav button:hover {
+  box-shadow: none;
+  background-color: rgba(32, 24, 141, 0.8352941176);
+}
+.navbar__outer menu nav .clone__menu {
+  width: 1.25rem;
+  height: auto;
+  display: none;
+}
+.navbar__outer .mobile__menu {
+  padding: 20px;
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  right: 0;
+  display: none;
+  max-width: 240px;
+  top: 0;
+  background-color: #F5F5F5;
+  color: white;
+  box-shadow: rgba(17, 17, 26, 0.05) 0px 4px 16px, rgba(17, 17, 26, 0.05) 0px 8px 32px;
+}
+.navbar__outer .mobile__menu.open {
+  animation: myAnim 200ms ease-in-out 0s 1 normal forwards;
+  display: flex;
+}
+@keyframes myAnim {
+  from {
+    right: -500px;
+  }
+  to {
+    right: 0px;
+  }
+}
+.navbar__outer .mobile__menu .closemenu__svg {
+  align-self: flex-end;
+  margin-bottom: 50px;
+  position: relative;
+  padding: 6px;
+  background-color: white;
+  border-radius: 2px;
+  transition: all 150ms ease-in-out;
+}
+.navbar__outer .mobile__menu .closemenu__svg:hover {
+  background-color: rgba(255, 255, 255, 0.507);
+}
+.navbar__outer .mobile__menu ul {
+  padding-left: 40px;
+}
+.navbar__outer .mobile__menu ul a {
+  pointer-events: none;
+}
+.navbar__outer .mobile__menu ul li {
+  margin-bottom: 54px;
+  font-weight: 400;
+  color: #000000;
+  transition: all 150ms ease-in-out;
+  font-size: 1rem;
+}
+.navbar__outer .mobile__menu ul li.active {
+  position: relative;
+  font-weight: 600;
+}
+.navbar__outer .mobile__menu ul li.active::before {
+  content: "";
+  position: absolute;
+  right: -16px;
+  bottom: -6px;
+  width: 110%;
+  height: 1px;
+  background-color: rgba(0, 0, 0, 0.253);
+}
+.navbar__outer .mobile__menu a .btn__primery {
+  margin: 0;
+  padding: 0;
+  border: none;
+  background-color: #1F188D;
+  color: white;
+  width: 100%;
+  font-weight: 500;
+  font-size: 1rem;
+  padding: 10px 24px;
+  border-radius: 4px;
+  box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
+  transition: all 200ms ease-in-out;
+}
+.navbar__outer .mobile__menu a .btn__primery .call__svg {
+  margin-right: 10px;
+  height: auto;
+  width: 100%;
+  max-width: 15px;
+}
+.navbar__outer .mobile__menu a .btn__primery:hover {
+  box-shadow: none;
+  background-color: rgba(32, 24, 141, 0.8352941176);
+}
+
+@media only screen and (max-width: 780px) {
+  .navbar__outer menu #logo {
+    max-width: 6rem;
+  }
+  .navbar__outer menu nav ul {
+    display: none;
+  }
+  .navbar__outer menu nav button {
+    display: none;
+  }
+  .navbar__outer menu nav .clone__menu {
+    display: flex;
+  }
+}/*# sourceMappingURL=Navbar.css.map */
