@@ -1,18 +1,21 @@
 import React from 'react'
 
 import "./home.css";
+
 import Navbar from "../../Components/Navbar/Navbar";
 import SectionTwo from '../../Components/Hero-section-two/SectionTwo';
+import SectionThree from '../../Components/Hero-section-three/SectionThree';
+
 import { TypeAnimation } from 'react-type-animation';
 
-import { ReactComponent as NpSvg } from "../../assets/svg/newspaper-svg.svg";
+
 import { ReactComponent as RightArrow } from "../../assets/svg/right-arrow.svg";
-import { ReactComponent as HeroImg } from "../../assets/img/hero-section-main-img.svg";
+
 
 const Home = () => {
   return (
     <>
-      <div className='Home__page__outer flex'>
+      <div className='Home__page__outer flex' >
         <Navbar />
         <div className='content__section'>
           <h1 className='heading'>
@@ -28,7 +31,7 @@ const Home = () => {
 
           </h1>
           <p className='sub__heading'>
-            Get your business advertised with, Modern <br />& attractive  Digital and Print ADs.
+            Get your business advertised with, <span>Modern & attractive  </span><br/>Digital and Print ADs.
           </p>
 
 
@@ -41,8 +44,11 @@ const Home = () => {
       </div>
 
       {/* second section */}
-      <SectionTwo/>
+      <SectionTwo />
 
+
+      {/* SectionThree */}
+      <SectionThree/>
     </>
   )
 }

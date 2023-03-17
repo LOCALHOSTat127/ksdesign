@@ -1,47 +1,51 @@
 import React from 'react'
 import "./sections.css";
 
-import PngOne from "../../assets/png/rajasthan-patrika-logo.png";
-import PngTwo from "../../assets/png/disnik-bhaskar-logo.png";
-import PngThree from "../../assets/png/navbharat-times-logo.png";
-import PngFour from "../../assets/png/amar-ujala-logo.png";
-import PngFive from "../../assets/png/hindustan-times-logo.png";
-import PngSix from "../../assets/png/lok-satta-logo.png";
-import PngSeven from "../../assets/png/the-hindu-logo.png";
-import PngEight from "../../assets/png/punjab-kesri-logo.png";
+import {ReactComponent as Newspaper} from "../../assets/svg/newspaper-blue-svg.svg";
+import {ReactComponent as Radio} from "../../assets/svg/radio-blue-svg.svg";
+import {ReactComponent as Outdoor} from "../../assets/svg/outdoor-blue-svg.svg";
+import {ReactComponent as Tv} from "../../assets/svg/tv-blue-svg.svg";
 
 
 const section = () => {
   return (
     <section className='home__page__second__section'>
       <span>
-        <h2>Top Newspapers covered.</h2>
-        <p>Post your Ads in most popular Newspapers.</p>
+        <h2>Top Ads Category.</h2>
+        <p>These are the mose popular categories.</p>
       </span>
-      <div className='grid__items'>
-        <div className="grid__item">
-          <img src={PngOne}  />
+      <div className='grid__items '>
+        <div className="grid__item active flex fd-col flex-aic flex-jcc">
+          <Newspaper className='svg'/>
+          <p>Newspaper</p>
         </div>
-        <div className="grid__item">
-          <img src={PngTwo} />
+        <div className="grid__item flex fd-col flex-aic flex-jcc">
+          <Radio className='svg'/>
+          <p>Radio</p>
         </div>
-        <div className="grid__item">
-          <img src={PngThree} />
+        <div className="grid__item flex fd-col flex-aic flex-jcc">
+          <Outdoor className='svg'/>
+          <p>Outdoor</p>
         </div>
-        <div className="grid__item">
-          <img src={PngFour} />
+        <div className="grid__item flex fd-col flex-aic flex-jcc">
+          <Tv className='svg'/>
+          <p>Telivision</p>
         </div>
-        <div className="grid__item">
-          <img src={PngFive} />
+        <div className="grid__item flex fd-col flex-aic flex-jcc">
+          <Radio className='svg'/>
+          <p>Radio</p>
         </div>
-        <div className="grid__item">
-          <img src={PngSix} />
+        <div className="grid__item flex fd-col flex-aic flex-jcc">
+          <Outdoor className='svg'/>
+          <p>Outdoor</p>
         </div>
-        <div className="grid__item">
-          <img src={PngSeven} />
+        <div className="grid__item flex fd-col flex-aic flex-jcc">
+          <Newspaper className='svg'/>
+          <p>Newspaper</p>
         </div>
-        <div className="grid__item">
-          <img src={PngEight} />
+        <div className="grid__item flex fd-col flex-aic flex-jcc">
+          <Tv className='svg'/>
+          <p>Telivision</p>
         </div>
       </div>
     </section>

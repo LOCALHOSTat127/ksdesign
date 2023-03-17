@@ -1,0 +1,112 @@
+@import '../../stylesheets/_vars';
+
+.Hero__section__third {
+    background: linear-gradient(to bottom,#0d1117,#0d1117,#0d111779);
+    padding: 60px 30px 50px 30px;
+    color: white;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    grid-template-rows: auto;
+    gap: 44px;
+    row-gap: 44px;
+
+    height: 100%;
+    width: 100%;
+
+
+    .contect__section {
+        width: 100%;
+        height: 100%;
+        // background-color: red;
+        padding-top: 75px;
+        position: relative !important;
+
+        .snake__line {
+            width: 100%;
+            height: auto;
+            transform: translateX(-40px);
+        }
+
+        button {
+            margin-top: 50px;
+
+            background-color: rgb(121, 85, 199);
+            border: 1px solid rgb(121, 85, 199);
+            
+            color: white;
+            font-weight: $font-600;
+            font-size: 1.025rem;
+            padding: 16px 32px;
+            align-self: flex-start;
+
+            border-radius: 4px;
+            cursor: pointer;
+            transition: all 220ms ease-in-out;
+
+
+            &:hover {
+                border: 1px solid rgb(121,85,199);
+                background-color: transparent;
+            }
+
+        }
+
+        h2 {
+            font-weight: $font-700;
+            font-size: clamp(34px, 4vw, 58px);
+            position: relative;
+            padding-left: 20px;
+
+
+            &::before {
+                content: " ";
+                position: absolute;
+                left: 0;
+                bottom: 5px;
+                background-color: #7955c7;
+                width: 4px;
+                height: 90%;
+            }
+        }
+
+        p {
+            font-weight: $font-300;
+            color: rgba(255, 255, 255, 0.808);
+            line-height: 1.95rem;
+
+            span {
+                font-weight: $font-600;
+                color: white;
+            }
+
+            margin-top: 36px;
+        }
+
+    }
+
+
+    // image section
+    .img__section {
+        width: 100%;
+        height: 100%;
+        position: relative !important;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 8px;
+        background-color: rgb(15, 21, 31);
+        --webkit-backdrop-filter: blur(20px);
+        border: 1px solid rgb(30, 39, 54);
+        color: white;
+        box-shadow: rgba(17, 17, 26, 0.05) 0px 4px 16px, rgba(17, 17, 26, 0.05) 0px 8px 32px;
+
+
+
+        img {
+            width: 100%;
+            height: auto;
+            max-width: 550px;
+            object-fit: cover;
+        }
+    }
+}

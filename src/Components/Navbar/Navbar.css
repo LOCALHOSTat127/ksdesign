@@ -50,7 +50,7 @@
 .navbar__outer menu {
   width: 100%;
   height: 100%;
-  padding: 30px 50px 30px 50px;
+  padding: 30px 50px;
 }
 .navbar__outer menu #logo {
   height: auto;
@@ -89,15 +89,14 @@
   margin: 0;
   padding: 0;
   margin-left: 45px;
-  border: none;
-  background-color: #62F4FD;
-  color: black;
-  font-weight: 500;
+  background-color: rgb(121, 85, 199);
+  border: 1px solid rgb(121, 85, 199);
+  color: white;
+  font-weight: 600;
   font-size: 1rem;
   padding: 10px 24px;
   border-radius: 4px;
-  box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
-  transition: all 200ms ease-in-out;
+  transition: all 220ms ease-in-out;
 }
 .navbar__outer menu nav button .call__svg {
   margin-right: 10px;
@@ -106,8 +105,8 @@
   max-width: 15px;
 }
 .navbar__outer menu nav button:hover {
-  box-shadow: none;
-  background-color: rgba(98, 245, 253, 0.8);
+  border: 1px solid rgb(121, 85, 199);
+  background-color: transparent;
 }
 .navbar__outer menu nav .clone__menu {
   width: 1.15rem;
@@ -123,7 +122,8 @@
   display: none;
   max-width: 240px;
   top: 0;
-  background-color: rgb(224, 224, 224);
+  background-color: rgb(15, 21, 31);
+  --webkit-backdrop-filter: blur(20px);
   color: white;
   box-shadow: rgba(17, 17, 26, 0.05) 0px 4px 16px, rgba(17, 17, 26, 0.05) 0px 8px 32px;
 }
@@ -144,8 +144,8 @@
   margin-bottom: 50px;
   position: relative;
   padding: 6px;
-  background-color: white;
-  border-radius: 2px;
+  background-color: rgb(255, 255, 255);
+  border-radius: 4px;
   transition: all 150ms ease-in-out;
 }
 .navbar__outer .mobile__menu .closemenu__svg:hover {
@@ -160,7 +160,7 @@
 .navbar__outer .mobile__menu ul li {
   margin-bottom: 54px;
   font-weight: 400;
-  color: #000000;
+  color: white;
   transition: all 150ms ease-in-out;
   font-size: 1rem;
 }
@@ -172,22 +172,24 @@
   content: "";
   position: absolute;
   right: -16px;
-  bottom: -6px;
+  bottom: -12px;
   width: 110%;
   height: 1px;
-  background-color: rgba(0, 0, 0, 0.253);
+  background-color: rgba(255, 255, 255, 0.116);
 }
 .navbar__outer .mobile__menu a .btn__primery {
   margin: 0;
   padding: 0;
   border: none;
-  background-color: #62F4FD;
-  color: black;
+  background-color: rgb(121, 85, 199);
+  border: 1px solid rgb(121, 85, 199);
+  color: white;
+  font-weight: 600;
   width: 100%;
   font-weight: 500;
   font-size: 1rem;
   padding: 10px 24px;
-  border-radius: 4px;
+  border-radius: 2px;
   box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
   transition: all 200ms ease-in-out;
 }
@@ -198,8 +200,9 @@
   max-width: 15px;
 }
 .navbar__outer .mobile__menu a .btn__primery:hover {
-  box-shadow: none;
-  background-color: rgba(32, 24, 141, 0.8352941176);
+  box-shadow: #ffffff 0 0 0 1px inset;
+  border: 1px solid rgb(255, 255, 255);
+  background-color: transparent;
 }
 
 @media only screen and (max-width: 780px) {

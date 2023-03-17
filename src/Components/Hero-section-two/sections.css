@@ -44,7 +44,6 @@
   height: 100%;
   padding: 60px 30px 30px 30px;
   position: relative;
-  background: linear-gradient(to top, rgba(0, 0, 0, 0.979), rgba(41, 37, 37, 0));
   color: white;
 }
 .home__page__second__section h2 {
@@ -70,30 +69,36 @@
   grid-template-rows: auto;
 }
 .home__page__second__section .grid__items .grid__item {
+  border-radius: 4px;
   cursor: pointer;
   width: 100%;
-  background-color: rgb(189, 223, 228);
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 10px;
   height: clamp(120px, 4vh, 150px);
   width: 100%;
   margin: auto;
   position: relative;
-  transition: all 200ms ease-in-out;
-  box-shadow: none;
+  background-color: rgb(15, 21, 31);
+  --webkit-backdrop-filter: blur(20px);
+  color: white;
+  box-shadow: rgba(17, 17, 26, 0.05) 0px 4px 16px, rgba(17, 17, 26, 0.05) 0px 8px 32px;
 }
-.home__page__second__section .grid__items .grid__item img {
-  -o-object-fit: contain;
-     object-fit: contain;
+.home__page__second__section .grid__items .grid__item .svg {
   width: 100%;
-  max-width: 150px;
   height: auto;
+  max-width: 44px;
+}
+.home__page__second__section .grid__items .grid__item p {
+  font-weight: 400;
+  font-size: 14px;
+  color: rgb(139, 148, 158);
+  margin-top: 8px;
 }
 
 @media only screen and (max-width: 780px) {
   .home__page__second__section .grid__items {
     grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    transition: all 800s ease-in-out;
   }
 }/*# sourceMappingURL=sections.css.map */
