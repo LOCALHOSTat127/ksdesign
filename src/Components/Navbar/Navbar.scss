@@ -3,14 +3,19 @@
 .navbar__outer {
     width: 100%;
     min-height: 54px;
-    position: relative;
+    position: absolute;
+    top: 0;
+    left: 0;
+    
+
+    z-index: 50000;
 
     // desktop-menu
     menu {
 
         width: 100%;
         height: 100%;
-        padding: 20px 32px 20px 32px;
+        padding: 30px 50px 30px 50px;
 
 
         #logo {
@@ -28,13 +33,13 @@
                 li {
                     margin-left: 58px;
                     font-weight: $font-400;
-                    color: $clr-black-dark;
+                    color: white;
                     transition: all 150ms ease-in-out;
                     font-size: 0.9rem;
                 }
 
                 li:hover {
-                    color: $clr-black-dark-hover;
+                    color: rgba(255, 255, 255, 0.87);
                 }
 
                 .active {
@@ -49,7 +54,7 @@
                     bottom: -4px;
                     width: 100%;
                     height: 1px;
-                    background-color: $clr-black-dark;
+                    background-color: white;
                 }
 
             }
@@ -60,8 +65,8 @@
                 padding: 0;
                 margin-left: 45px;
                 border: none;
-                background-color: $clr-blue-dark;
-                color: white;
+                background-color: #62F4FD;
+                color: black;
 
                 font-weight: $font-500;
                 font-size: 1rem;
@@ -82,11 +87,11 @@
 
             button:hover {
                 box-shadow: none;
-                background-color: $clr-blue-dark-hover;
+                background-color: #62f5fdcc;
             }
 
             .clone__menu {
-                width: 1.25rem;
+                width: 1.15rem;
                 height: auto;
                 display: none;
             }
@@ -106,7 +111,7 @@
         display: none;
         max-width: 240px;
         top: 0;
-        background-color: $clr-wheat;
+        background-color: rgb(224, 224, 224);
         color: white;
         box-shadow: rgba(17, 17, 26, 0.05) 0px 4px 16px, rgba(17, 17, 26, 0.05) 0px 8px 32px;
 
@@ -186,8 +191,8 @@
                 margin: 0;
                 padding: 0;
                 border: none;
-                background-color: $clr-blue-dark;
-                color: white;
+                background-color: #62F4FD;
+                color: black;
                 width: 100%;
 
                 font-weight: $font-500;
@@ -229,8 +234,11 @@
 
 // media-query-only-for-navbar
 @media only screen and (max-width:780px) {
+    .navbar__outer menu{
+        padding: 30px 24px 30px 24px;
+    }
     .navbar__outer menu #logo {
-        max-width: 6.0rem;
+        max-width: 6.25rem;
     }
 
     .navbar__outer menu nav ul {
