@@ -5,6 +5,16 @@ import "./home.css";
 import Navbar from "../../Components/Navbar/Navbar";
 import SectionTwo from '../../Components/Hero-section-two/SectionTwo';
 import SectionThree from '../../Components/Hero-section-three/SectionThree';
+import SectionFour from '../../Components/Hero-section-fourth/SectionFour';
+
+
+// import RajasthanPatrika from "../../assets/png/rajasthan-patrika-logo.png";
+// import DainikBhasker from "../../assets/png/disnik-bhaskar-logo.png";
+// import HindustanTimes from "../../assets/png/hindustan-times-logo.png";
+// import NavbharatTimes from "../../assets/png/navbharat-times-logo.png";
+// import LokSatta from "../../assets/png/lok-satta-logo.png";
+// import PunjabKesri from "../../assets/png/punjab-kesri-logo.png";
+
 
 import { TypeAnimation } from 'react-type-animation';
 
@@ -16,10 +26,11 @@ const Home = () => {
   return (
     <>
       <div className='Home__page__outer flex' >
+        <div className='gradiend'></div>
         <Navbar />
         <div className='content__section'>
           <h1 className='heading'>
-            <span>Graphic</span> Designing,<br />
+            <span>Graphic</span><br />Designing,
             <TypeAnimation
               className="wrap"
               sequence={['Newspaper Ads', 1000, 'Holdings Adversiting', 1000, 'Business Cards',
@@ -30,8 +41,9 @@ const Home = () => {
             />
 
           </h1>
+
           <p className='sub__heading'>
-            Get your business advertised with, <span>Modern & attractive  </span><br/>Digital and Print ADs.
+            Get your business advertised with, <span>Modern & attractive  </span><br />Digital and Print ADs.
           </p>
 
 
@@ -48,7 +60,11 @@ const Home = () => {
 
 
       {/* SectionThree */}
-      <SectionThree/>
+      <SectionThree />
+
+
+      {/* fourth section */}
+      <SectionFour />
     </>
   )
 }

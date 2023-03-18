@@ -1,5 +1,8 @@
 .app__main {
   background-color: #0d1117;
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
   width: 100%;
   max-width: 1420px;
   margin: auto;

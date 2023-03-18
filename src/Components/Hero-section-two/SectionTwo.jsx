@@ -15,7 +15,7 @@ const section = () => {
         <p>These are the mose popular categories.</p>
       </span>
       <div className='grid__items '>
-        <div className="grid__item active flex fd-col flex-aic flex-jcc">
+        <div className="grid__item  flex fd-col flex-aic flex-jcc">
           <Newspaper className='svg'/>
           <p>Newspaper</p>
         </div>
