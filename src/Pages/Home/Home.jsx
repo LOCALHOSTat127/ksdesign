@@ -6,6 +6,8 @@ import Navbar from "../../Components/Navbar/Navbar";
 import SectionTwo from '../../Components/Hero-section-two/SectionTwo';
 import SectionThree from '../../Components/Hero-section-three/SectionThree';
 import SectionFour from '../../Components/Hero-section-fourth/SectionFour';
+import LogoSlider from '../../Components/Hero-section-slider/LogoSlider';
+
 
 
 // import RajasthanPatrika from "../../assets/png/rajasthan-patrika-logo.png";
@@ -63,8 +65,8 @@ const Home = () => {
       <SectionThree />
 
 
-      {/* fourth section */}
-      <SectionFour />
+      {/* Brand logo slide */}
+      <LogoSlider/>
     </>
   )
 }
