@@ -1,0 +1,82 @@
+.flex {
+  display: flex;
+}
+
+.fd-col {
+  flex-direction: column;
+}
+
+.fd-row {
+  flex-direction: row;
+}
+
+.flex-aic {
+  align-items: center;
+}
+
+.flex-jcc {
+  justify-content: center;
+}
+
+.df-aic-jcc {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.flex-jcsb {
+  justify-content: space-between;
+}
+
+.flex-jcsa {
+  justify-content: space-around;
+}
+
+.cp {
+  cursor: pointer;
+}
+
+/* ---colours */
+/* ---font-weight */
+/* ---gradients */
+.Hero__section__outer {
+  width: 100%;
+  height: 100%;
+  padding: 88px 0px 0px 0px;
+}
+.Hero__section__outer .section__inner {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: row;
+}
+.Hero__section__outer .content__area {
+  width: 100%;
+  height: 100%;
+}
+.Hero__section__outer .img__area {
+  width: 100%;
+  height: 100%;
+}
+
+@media only screen and (max-width: 320px) {
+  .Hero__section__outer {
+    padding: 0px;
+  }
+}
+@media only screen and (max-width: 425px) {
+  .Hero__section__outer {
+    padding: 0px;
+  }
+}
+@media only screen and (max-width: 768px) {
+  .Hero__section__outer {
+    padding: 90px 10px 0px 10px;
+  }
+  .Hero__section__outer .section__inner {
+    flex-direction: column;
+  }
+  .Hero__section__outer .section__inner .img__area {
+    display: none;
+  }
+}/*# sourceMappingURL=style.css.map */

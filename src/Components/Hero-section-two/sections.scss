@@ -5,16 +5,17 @@
     width: 100%;
     height: 100%;
 
-    padding:  100px 110px 100px 80px;
+    padding: 100px 110px 60px 80px;
     position: relative;
-    background: linear-gradient(to top,#0d1117,#0d1117c4);
+    background: linear-gradient(to top, #0d1117, #0d1117c4);
 
 
     color: white;
 
-    span{
+    .section__heading {
         position: relative;
-        &::before{
+
+        &::before {
             position: absolute;
             content: "";
             left: -12px;
@@ -22,9 +23,9 @@
             width: 4px;
             border-radius: 4px;
             height: 100%;
-            background-color: #7955c7;
-           
-        
+            background-color: #4EC1CE;
+
+
         }
     }
 
@@ -42,6 +43,7 @@
         font-size: clamp(14px, 3vw, 16px);
         margin-top: 8px;
         margin-left: 8px;
+
     }
 
 
@@ -52,66 +54,99 @@
         display: grid;
         row-gap: 30px;
         column-gap: 30px;
-        grid-template-columns: 1fr 1fr 1fr 1fr ;
+        grid-template-columns: 1fr 1fr 1fr 1fr;
         grid-template-rows: auto;
-        
-     
+
+
 
         .grid__item {
             
-            border-radius: 4px;
+            padding: 16px;
+
+            border-radius: 2px;
             cursor: pointer;
             width: 100%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
+
             background-color: rgb(15, 21, 31);
             --webkit-backdrop-filter: blur(20px);
-            border: 1px solid rgb(30, 39, 54);
+            border: 1px solid #1e2736;
+
             color: white;
             box-shadow: rgba(17, 17, 26, 0.05) 0px 4px 16px, rgba(17, 17, 26, 0.05) 0px 8px 32px;
-            
-    
-        
 
-            &:hover{
+
+
+
+            &:hover {
                 transition: all 150ms ease;
-                border: none;
-                p{
-                    color :white;
-                }
-            }
+                border: 1px solid   #4EC1CE;
+              
            
-   
-            
+
+                p {
+                    color: white;
+                }
+
+                .svg {
+                    path {
+                        fill: white;
+                    }
+                }
+
+            }
+
+
+
             height: clamp(120px, 4vh, 150px);
             width: 100%;
             margin: auto;
             position: relative;
-           
+
 
             background-color: rgb(15, 21, 31);
             --webkit-backdrop-filter: blur(20px);
             color: white;
-            box-shadow: rgba(17, 17, 26, 0.05) 0px 4px 16px, rgba(17, 17, 26, 0.05) 0px 8px 32px;
+            box-shadow: rgba(17, 17, 26, 0.05) 0px 4px 16px,
+            rgba(17, 17, 26, 0.05) 0px 8px 32px;
 
 
 
-            .svg{
+            .svg {
                 width: 100%;
                 height: auto;
-                max-width: 34px;
+                max-width: 64px;
+                margin-right: 10px;
+
+
+                path {
+                   
+                    fill: #4EC1CE;
+                }
             }
 
-            p{
+            span {
+                display: flex;
+                flex-direction: column;
+                align-items: flex-start;
+
+
 
                 transition: all 150ms ease-in-out;
                 font-weight: $font-400;
                 font-size: 14px;
-                color: rgb(139,148,158);
-                margin-top: 8px;
+                color: rgb(139, 148, 158);
 
+                .cat__name {
+                    color: white;
+                    font-weight: $font-500;
+                }
+
+                .cat__desc {
+                    font-size: 13px;
+                    line-height: 18px;
+                }
             }
+
         }
     }
 }
@@ -121,11 +156,12 @@
 // media-query-only-for-navbar
 @media only screen and (max-width:780px) {
     .home__page__second__section {
-            padding: 60px 30px 30px 30px;
+        padding: 60px 30px 30px 30px;
+
         .grid__items {
-            grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
+            grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
             transition: all 800s ease-in-out;
-        
+
         }
     }
 }

@@ -40,91 +40,114 @@
 /* ---font-weight */
 /* ---gradients */
 .navbar__outer {
-  width: 100%;
-  min-height: 54px;
-  position: absolute;
+  font-family: "Poppins", sans-serif;
   top: 0;
   left: 0;
-  z-index: 50000;
-}
-.navbar__outer menu {
   width: 100%;
-  height: 100%;
-  padding: 40px 110px 40px 80px;
+  z-index: 50000;
+  padding: 5px;
+  border-radius: 4px;
+  position: fixed;
+  transition: all 150ms ease-in-out;
 }
-.navbar__outer menu #logo {
+.navbar__outer.padding {
+  padding: 0px;
+}
+.navbar__outer.padding .deaktop__menu {
+  border-radius: 0px;
+}
+.navbar__outer .deaktop__menu {
+  width: 100%;
+  height: auto;
+  color: white;
+  padding: 20px 20px;
+  border-radius: 5px 5px;
+  border: 1px solid #1e2736;
+  background-color: rgb(15, 21, 31);
+  --webkit-backdrop-filter: blur(20px);
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+.navbar__outer .deaktop__menu #logo {
   height: auto;
   width: 100%;
-  max-width: 7.25rem;
+  width: 7.25rem;
   align-self: center;
+  justify-self: center;
 }
-.navbar__outer menu nav {
+.navbar__outer .deaktop__menu .menu__list {
   align-items: center;
   height: 100%;
 }
-.navbar__outer menu nav ul li {
-  margin-left: 58px;
-  font-weight: 400;
+.navbar__outer .deaktop__menu .menu__list ul li {
   color: white;
-  transition: all 150ms ease-in-out;
+  margin-left: 58px;
   font-size: 0.9rem;
+  font-weight: 400;
+  transition: all 120ms ease-in-out;
 }
-.navbar__outer menu nav ul li:hover {
-  color: rgba(255, 255, 255, 0.87);
+.navbar__outer .deaktop__menu .menu__list ul li:hover {
+  color: #d3d3d3;
 }
-.navbar__outer menu nav ul .active {
+.navbar__outer .deaktop__menu .menu__list ul .active {
   position: relative;
-  font-weight: 600;
+  font-weight: 500;
 }
-.navbar__outer menu nav ul .active::before {
+.navbar__outer .deaktop__menu .menu__list ul .active::before {
   content: "";
   position: absolute;
   left: 0;
   bottom: -4px;
   width: 100%;
   height: 1px;
-  background-color: white;
+  background-color: #4EC1CE;
 }
-.navbar__outer menu nav button {
-  margin: 0;
-  padding: 0;
+.navbar__outer .deaktop__menu .menu__list #nav__contact__us__btn {
   margin-left: 45px;
-  background-color: rgb(121, 85, 199);
-  border: 1px solid rgb(121, 85, 199);
-  color: white;
+  cursor: pointer;
+  border: none;
+  color: #0d1117;
   font-weight: 600;
   font-size: 1rem;
-  padding: 10px 24px;
-  border-radius: 4px;
-  transition: all 220ms ease-in-out;
+  padding: 12px 18px;
+  border-radius: 2px;
+  transition: all 170ms ease-in-out;
+  background-color: #ffffff;
+  border: 1px solid white;
 }
-.navbar__outer menu nav button .call__svg {
-  margin-right: 10px;
+.navbar__outer .deaktop__menu .menu__list #nav__contact__us__btn .mail__svg {
+  margin-left: 10px;
   height: auto;
   width: 100%;
-  max-width: 15px;
+  max-width: 20px;
 }
-.navbar__outer menu nav button:hover {
-  border: 1px solid rgb(121, 85, 199);
+.navbar__outer .deaktop__menu .menu__list #nav__contact__us__btn:hover {
+  color: white;
+  border: 1px solid white;
   background-color: transparent;
 }
-.navbar__outer menu nav .clone__menu {
+.navbar__outer .deaktop__menu .menu__list #nav__contact__us__btn:hover .mail__svg path {
+  fill: white;
+}
+.navbar__outer .deaktop__menu .menu__list .open__menu__btn {
   width: 1.15rem;
   height: auto;
   display: none;
 }
+.navbar__outer .deaktop__menu .menu__list .open__menu__btn path {
+  fill: white;
+}
 .navbar__outer .mobile__menu {
-  padding: 20px;
-  position: fixed;
-  width: 100%;
   height: 100%;
-  right: 0;
-  display: none;
-  max-width: 240px;
+  width: 100%;
   top: 0;
+  right: 0;
+  color: white;
+  padding: 20px;
+  max-width: 240px;
+  display: none;
+  position: fixed;
   background-color: rgb(15, 21, 31);
   --webkit-backdrop-filter: blur(20px);
-  color: white;
   box-shadow: rgba(17, 17, 26, 0.05) 0px 4px 16px, rgba(17, 17, 26, 0.05) 0px 8px 32px;
 }
 .navbar__outer .mobile__menu.open {
@@ -144,81 +167,125 @@
   margin-bottom: 50px;
   position: relative;
   padding: 6px;
-  background-color: rgb(255, 255, 255);
+  background-color: rgba(30, 39, 54, 0.5568627451);
   border-radius: 4px;
   transition: all 150ms ease-in-out;
+}
+.navbar__outer .mobile__menu .closemenu__svg path {
+  fill: rgb(190, 188, 188);
 }
 .navbar__outer .mobile__menu .closemenu__svg:hover {
   background-color: rgba(255, 255, 255, 0.507);
 }
 .navbar__outer .mobile__menu ul {
-  padding-left: 40px;
+  padding-left: 6px;
+  padding-right: 6px;
 }
 .navbar__outer .mobile__menu ul a {
   pointer-events: none;
 }
 .navbar__outer .mobile__menu ul li {
-  margin-bottom: 54px;
+  margin-bottom: 34px;
   font-weight: 400;
   color: white;
   transition: all 150ms ease-in-out;
-  font-size: 1rem;
+  font-size: 0.8rem;
+  display: flex;
+  align-items: center;
+  background-color: rgba(30, 39, 54, 0.5568627451);
+  --webkit-backdrop-filter: blur(20px);
+  border-radius: 2px;
+  color: white;
+  box-shadow: rgba(17, 17, 26, 0.05) 0px 4px 16px, rgba(17, 17, 26, 0.05) 0px 8px 32px;
+  padding: 10px 15px;
 }
 .navbar__outer .mobile__menu ul li.active {
   position: relative;
   font-weight: 600;
 }
-.navbar__outer .mobile__menu ul li.active::before {
-  content: "";
-  position: absolute;
-  right: -16px;
-  bottom: -12px;
-  width: 110%;
-  height: 1px;
-  background-color: rgba(255, 255, 255, 0.116);
+.navbar__outer .mobile__menu ul li.active .mini__svg path {
+  stroke: rgb(255, 255, 255);
 }
-.navbar__outer .mobile__menu a .btn__primery {
-  margin: 0;
-  padding: 0;
+.navbar__outer .mobile__menu ul li .mini__svg {
+  width: 18px;
+  margin-right: 15px;
+}
+.navbar__outer .mobile__menu ul li .mini__svg path {
+  stroke: rgb(190, 188, 188);
+}
+.navbar__outer .mobile__menu ul li.active {
+  color: black;
+  background-color: hsl(0, 0%, 100%);
+}
+.navbar__outer .mobile__menu ul li.active .mini__svg path {
+  stroke: black;
+}
+.navbar__outer .mobile__menu a .mobile__call__btn {
+  cursor: pointer;
   border: none;
-  background-color: rgb(121, 85, 199);
-  border: 1px solid rgb(121, 85, 199);
-  color: white;
-  font-weight: 600;
+  color: #0d1117;
+  font-weight: 800;
+  font-size: 0.8rem;
+  text-transform: uppercase;
   width: 100%;
-  font-weight: 500;
-  font-size: 1rem;
-  padding: 10px 24px;
+  padding: 12px 18px;
   border-radius: 2px;
-  box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
-  transition: all 200ms ease-in-out;
+  transition: all 170ms ease-in-out;
+  background-color: #ffffff;
+  border: 1px solid white;
 }
-.navbar__outer .mobile__menu a .btn__primery .call__svg {
+.navbar__outer .mobile__menu a .mobile__call__btn .call__svg {
   margin-right: 10px;
   height: auto;
   width: 100%;
-  max-width: 15px;
+  max-width: 20px;
 }
-.navbar__outer .mobile__menu a .btn__primery:hover {
-  box-shadow: #ffffff 0 0 0 1px inset;
-  border: 1px solid rgb(255, 255, 255);
+.navbar__outer .mobile__menu a .mobile__call__btn:hover {
+  color: white;
+  border: 1px solid white;
   background-color: transparent;
 }
+.navbar__outer .mobile__menu a .mobile__call__btn:hover .call__svg path {
+  fill: white;
+}
 
-@media only screen and (max-width: 780px) {
-  .navbar__outer menu {
-    padding: 30px 24px 30px 24px;
+@media only screen and (max-width: 320px) {
+  .navbar__outer .deaktop__menu {
+    box-shadow: none;
+    padding: 16px 16px;
   }
-  .navbar__outer menu #logo {
-    max-width: 6.25rem;
+}
+@media only screen and (max-width: 425px) {
+  .navbar__outer .deaktop__menu {
+    padding: 16px 16px;
+    box-shadow: none;
   }
-  .navbar__outer menu nav ul {
+  .navbar__outer .deaktop__menu .menu__list #logo {
+    width: 5.25rem;
+  }
+}
+@media only screen and (max-width: 768px) {
+  .navbar__outer .deaktop__menu {
+    padding: 16px 16px;
+  }
+  .navbar__outer .deaktop__menu .menu__list #logo {
+    width: 6.25rem;
+  }
+  .navbar__outer .deaktop__menu .menu__list ul {
     display: none;
   }
-  .navbar__outer menu nav button {
+  .navbar__outer .deaktop__menu .menu__list #nav__contact__us__btn {
     display: none;
   }
-  .navbar__outer menu nav .clone__menu {
+  .navbar__outer .deaktop__menu .menu__list .open__menu__btn {
     display: flex;
+  }
+}
+@media only screen and (max-width: 1024px) {
+  .navbar__outer .deaktop__menu {
+    padding: 16px 16px;
+  }
+  .navbar__outer .deaktop__menu #logo {
+    width: 7.25rem;
   }
 }/*# sourceMappingURL=Navbar.css.map */

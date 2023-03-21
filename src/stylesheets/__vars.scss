@@ -25,6 +25,6 @@ $font-800 : 800;
 
 /* ---gradients */
 $bg-gradient : linear-gradient(0deg, rgba(0, 0, 0, 0.51), rgba(0, 0, 0, 0.51)), radial-gradient(100.27% 214.85% at 3.04% 100%, #33885A 1.37%, rgba(1, 20, 193, 0.78) 100%);
-
+$font-family__secondry : 'Poppins', sans-serif;
 
 @use './_globals'

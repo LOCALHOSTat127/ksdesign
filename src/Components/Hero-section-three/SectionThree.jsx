@@ -1,7 +1,7 @@
 import React from 'react'
 import "./sectionthree.css";
 
-import SectionSvg from "../../assets/img/edit-customise-svg.svg";
+import SectionSvg from "../../assets/img/edit-customise-svg.png";
 import SnakeLine from "../../assets/img/snakeline.svg";
 const SectionThree = () => {
     return (
