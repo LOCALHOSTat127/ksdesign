@@ -1,0 +1,26 @@
+[
+    {
+        "id": 1,
+        "heading": "Classified Text Ads",
+        "desc": "Text based Classified Ads are best to Advertise information in  with minimal charges yet impactful.",
+        "bg_img": "/Assets/png/cat_1_ad.jpg",
+        "btn_txt": "Bokk yours Now",
+        "TO_DIRECT": "#"
+    },
+    {
+        "id": 2,
+        "heading": "Classified Display Ad",
+        "desc": "Text based Classified Ads are best to Advertise information in  with minimal charges yet impactful.",
+        "bg_img": "/Assets/png/cat_2_ad.jpg",
+        "btn_txt": "Bokk yours Now",
+        "TO_DIRECT": "#"
+    },
+    {
+        "id": 3,
+        "heading": "Display Ads",
+        "desc": "Text based Classified Ads are best to Advertise information in  with minimal charges yet impactful.",
+        "bg_img": "/Assets/png/cat_3_ad.jpg",
+        "btn_txt": "Bokk yours Now",
+        "TO_DIRECT": "#"
+    }
+]

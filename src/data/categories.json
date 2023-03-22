@@ -1,0 +1,79 @@
+[
+	{
+		"id": 1,
+		"src": "/Assets/svgs/job-seeker.png",
+		"alt": "Recruitment / job",
+		"name": "Recruitment / job",
+		"decs": "Hire employees by advertising in newspapers under the subcategory like situation vacant, multiple vacancies, situation abroad etc."
+	},
+	{
+		"id": 2,
+		"src": "/Assets/svgs/wedding-rings.png",
+		"alt": "Metrimonial",
+		"name": "Metrimonial",
+		"decs": "Book Wanted Bride/Groom ads by picking specific sub-categories like caste, religion, community, language."
+	},
+	{
+		"id": 3,
+		"src": "/Assets/svgs/death.png",
+		"alt": "Obituary",
+		"name": "Obituary (Death)",
+		"decs": "Book Obituary ads of your loved ones to convey the news of death among your friends and relatives."
+	},
+	{
+		"id": 4,
+		"src": "/Assets/svgs/house.png",
+		"alt": "Property Sale",
+		"name": "Property Sale",
+		"decs": "Book Obituary ads of your loved ones to convey the news of death among your friends and relatives."
+	},
+	{
+		"id": 5,
+		"src": "/Assets/svgs/business.png",
+		"alt": "Business",
+		"name": "Business",
+		"decs": "For offering business proposals, place your ads under the sub-categories like agents & agencies, business offers, franchisee, etc."
+	},
+	{
+		"id": 6,
+		"src": "/Assets/svgs/education.png",
+		"alt": "Education",
+		"name": "Education",
+		"decs": "Advertise professional courses, distance education,abroad courses in different formats in leading newspapers."
+	},
+	{
+		"id": 7,
+		"src": "/Assets/svgs/astrology.png",
+		"alt": "Astrology",
+		"name": "Astrology",
+		"decs": "Book astrology ads under various sub-categories which includes numerologist, palmistry, poojas, personal problems etc."
+	},
+	{
+		"id": 8,
+		"src": "/Assets/svgs/lostnfind.png",
+		"alt": "Lost & Found",
+		"name": "Lost & Found",
+		"decs": "Have you lost any important document? For e.g marksheets, certificates, admit cards etc. then place an ad in this category."
+	},
+	{
+		"id": 9,
+		"src": "/Assets/svgs/tender.png",
+		"alt": "Tender / Notice",
+		"name": "Tender / Notice",
+		"decs": "Book tender ads and auction ads under this category."
+	},
+	{
+		"id": 10,
+		"src": "/Assets/svgs/namechange.png",
+		"alt": "Name Change",
+		"name": "Name Change",
+		"decs": "Book change of name ads under this category to inform corcerned authorities about the change in your new name."
+	},
+	{
+		"id": 11,
+		"src": "/Assets/svgs/vehical.png",
+		"alt": "Vehical Sale",
+		"name": "Vehical Sale",
+		"decs": "Buy or Sell your vehicles by placing ads under a particular subcategory to get more responses."
+	}
+]

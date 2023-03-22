@@ -1,5 +1,47 @@
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Quicksand:wght@700&display=swap");
+.flex {
+  display: flex;
+}
+
+.fd-col {
+  flex-direction: column;
+}
+
+.fd-row {
+  flex-direction: row;
+}
+
+.flex-aic {
+  align-items: center;
+}
+
+.flex-jcc {
+  justify-content: center;
+}
+
+.df-aic-jcc {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.flex-jcsb {
+  justify-content: space-between;
+}
+
+.flex-jcsa {
+  justify-content: space-around;
+}
+
+.cp {
+  cursor: pointer;
+}
+
+/* ---colours */
+/* ---font-weight */
+/* ---gradients */
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
 a, abbr, acronym, address, big, cite, code,
@@ -28,7 +70,7 @@ footer, header, hgroup, menu, nav, section {
 }
 
 html {
-  font-family: "Montserrat", sans-serif;
+  font-family: "Poppins", sans-serif;
 }
 
 body {

@@ -35,7 +35,7 @@ const Navbar = () => {
 
 
     return (
-        <header  className={`navbar__outer ${show && "padding"}`}>
+        <header  className={`navbar__outer ${show && "show"}`}>
             <menu className="flex flex-jcsb flex-aic deaktop__menu">
                 {/* Logo */}
                 <img src={Logo} id="logo" className="cp" />
