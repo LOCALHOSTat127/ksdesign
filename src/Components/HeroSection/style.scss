@@ -3,7 +3,7 @@
 .Hero__section__outer {
     width: 100%;
     height: 100vh;
-    background-image: linear-gradient(to top, rgba(0, 0, 0, 0.37), rgba(0, 0, 0, 0.911)), radial-gradient(100.27% 214.85% at 3.04% 100%,  #010633fa 1.37%, #1f3683cb 100%),url('../../assets/png/hero-background.jpg');
+    // background-image: radial-gradient(100.27% 214.85% at 3.04% 100%,  #010633 1.37%, #1f3683 100%), linear-gradient(to top, rgba(0, 0, 0, 0.959), rgba(0, 0, 0, 0.911)),url('../../assets/png/hero-background.jpg');
     background-position: center center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -71,27 +71,12 @@
 
         }
 
-        .onopage__newsapper__select__box {
-            display: none;
-            width: 90%;
-            padding: 15px;
-
-            min-height: 100px;
-            border: 1px solid #1e273685;
-            color: white;
-
-            border-radius: 2px;
-            background-color: rgba(136, 144, 156, 0);
-            --webkit-backdrop-filter: blur(20px);
-            margin-bottom: 36px;
-            max-width: 500px;
-        }
+   
 
         .subhedding {
-
             font-weight: $font-300;
-            line-break: anywhere;
-            max-width: 465px;
+            line-break: normal;
+            max-width: 470px;
             color: #919497;
         }
 

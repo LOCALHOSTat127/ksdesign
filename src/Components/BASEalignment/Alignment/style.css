@@ -1,0 +1,96 @@
+.flex {
+  display: flex;
+}
+
+.fd-col {
+  flex-direction: column;
+}
+
+.fd-row {
+  flex-direction: row;
+}
+
+.flex-aic {
+  align-items: center;
+}
+
+.flex-jcc {
+  justify-content: center;
+}
+
+.df-aic-jcc {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.flex-jcsb {
+  justify-content: space-between;
+}
+
+.flex-jcsa {
+  justify-content: space-around;
+}
+
+.cp {
+  cursor: pointer;
+}
+
+/* ---colours */
+/* ---font-weight */
+/* ---gradients */
+.alignment__outer {
+  width: 100%;
+  height: 100%;
+  background-color: white;
+  padding: 100px 40px 40px 40px;
+}
+.alignment__outer .alignment__inner {
+  min-height: 800px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+.alignment__outer .alignment__inner .area {
+  width: 100%;
+  height: 100%;
+  padding: 10px 8px;
+  border-radius: 4px;
+  color: #D9D9D9;
+}
+.alignment__outer .alignment__inner .stepsbar__outer {
+  background-color: #e6e2e2;
+  min-height: 80px;
+  max-height: 80px;
+  padding: 10px 20px;
+  justify-content: center;
+}
+.alignment__outer .alignment__inner .stepsbar__outer #muistepbtn .MuiStepLabel-root {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.alignment__outer .alignment__inner .stepsbar__outer #muistepbtn .MuiStepLabel-root .MuiStepLabel-iconContainer {
+  padding: 0px;
+}
+.alignment__outer .alignment__inner .editor__window__outer {
+  width: 100%;
+  height: 100%;
+  padding: 0px;
+  background-color: #e6e2e2;
+  min-height: 400px;
+}
+.alignment__outer .alignment__inner .required__info__outer {
+  background-color: #e6e2e2;
+  min-height: 200px;
+}
+
+@media only screen and (max-width: 768px) {
+  .alignment__outer {
+    padding: 90px 16px 40px 16px;
+  }
+  .alignment__outer .alignment__inner .stepsbar__outer {
+    padding: 10px 10px;
+  }
+}/*# sourceMappingURL=style.css.map */

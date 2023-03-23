@@ -18,7 +18,7 @@ export const Section = () => {
         slidesToScroll: 3,
         arrows: false,
         autoplay: true,
-        speed: 5000,
+        speed: 7000,
         autoplaySpeed: 0,
         cssEase: 'linear',
         rtl: false,
@@ -29,7 +29,7 @@ export const Section = () => {
                 slidesToScroll: 3,
                 arrows: false,
                 autoplay: true,
-                speed: 5000,
+                speed: 7000,
                 autoplaySpeed: 0,
                 cssEase: 'linear',
                 rtl: false,
@@ -38,34 +38,7 @@ export const Section = () => {
             }
         }]
     };
-    const settingstwo = {
-        dots: false,
-        infinite: true,
-        // slidesToShow: 2.5,
-        slidesToShow: 5,
-        slidesToScroll: 3,
-        arrows: false,
-        autoplay: true,
-        speed: 5000,
-        autoplaySpeed: 0,
-        cssEase: 'linear',
-        rtl: true,
-        responsive: [{
-            breakpoint: 550,
-            settings: {
-                slidesToShow: 2,
-                slidesToScroll: 3,
-                arrows: false,
-                autoplay: true,
-                speed: 5000,
-                autoplaySpeed: 0,
-                cssEase: 'linear',
-                rtl: true,
-                dots: false,
-                infinite: true,
-            }
-        }]
-    };
+
     return (
 
         <div className="mainContainer">
@@ -111,41 +84,6 @@ export const Section = () => {
                     </div>
                 </Slider>
 
-                <Slider className="slider" {...settingstwo}>
-                    <div className="container">
-                        <img src={patrika} />
-                    </div>
-                    <div className="container">
-                        <img src={patrika} />
-                    </div>
-                    <div className="container">
-                        <img src={patrika} />
-                    </div>
-                    <div className="container">
-                        <img src={patrika} />
-                    </div>
-                    <div className="container">
-                        <img src={patrika} />
-                    </div>
-                    <div className="container">
-                        <img src={patrika} />
-
-                    </div>
-                    <div className="container">
-                        <img src={patrika} />
-
-                    </div>
-                    <div className="container">
-                        <img src={patrika} />
-
-                    </div>
-                    <div className="container">
-                        <img src={patrika} />
-                    </div>
-                    <div className="container">
-                        <img src={patrika} />
-                    </div>
-                </Slider>
             </div>
 
         </div>

@@ -41,7 +41,6 @@
 /* ---gradients */
 .mainContainer {
   position: relative;
-  background-color: #0d1117;
   padding: 30px 0px;
   background: linear-gradient(to right, #0000fc, #2B2B71, rgba(43, 43, 113, 0.6588235294), rgba(43, 43, 113, 0.6588235294), rgba(43, 43, 113, 0.6588235294), rgba(43, 43, 113, 0.6588235294), rgba(43, 43, 113, 0.6588235294));
 }

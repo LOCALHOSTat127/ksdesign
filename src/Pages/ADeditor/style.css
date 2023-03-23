@@ -1,0 +1,45 @@
+.flex {
+  display: flex;
+}
+
+.fd-col {
+  flex-direction: column;
+}
+
+.fd-row {
+  flex-direction: row;
+}
+
+.flex-aic {
+  align-items: center;
+}
+
+.flex-jcc {
+  justify-content: center;
+}
+
+.df-aic-jcc {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.flex-jcsb {
+  justify-content: space-between;
+}
+
+.flex-jcsa {
+  justify-content: space-around;
+}
+
+.cp {
+  cursor: pointer;
+}
+
+/* ---colours */
+/* ---font-weight */
+/* ---gradients */
+.base_page__outer {
+  width: 100%;
+  height: 100%;
+}/*# sourceMappingURL=style.css.map */

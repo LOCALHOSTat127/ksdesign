@@ -1,0 +1,15 @@
+@import "../../../stylesheets/_vars";
+
+
+.editor__ground {
+    width: 100%;
+    height: 100%;
+    color: #e6e2e2;
+
+}
+
+@media only screen and (max-width:768px) {
+    .editor__ground {
+
+    }
+}

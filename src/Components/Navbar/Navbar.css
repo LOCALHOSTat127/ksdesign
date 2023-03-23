@@ -47,6 +47,10 @@
   position: fixed;
   transition: all 350ms ease-in-out;
 }
+.navbar__outer.active__navbar {
+  background-color: rgb(15, 21, 31);
+  --webkit-backdrop-filter: blur(20px);
+}
 .navbar__outer.show .deaktop__menu {
   padding: 20px 20px;
   background-color: rgb(15, 21, 31);

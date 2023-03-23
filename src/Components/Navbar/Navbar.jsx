@@ -14,7 +14,7 @@ import { ReactComponent as Aboutus } from "../../assets/svg/about-us-svg.svg";
 
 
 
-const Navbar = () => {
+const Navbar = ({isBGA}) => {
 
     const [isOpen, setOpen] = useState(0);
     const [show,handleShow] = useState(false);
@@ -35,7 +35,7 @@ const Navbar = () => {
 
 
     return (
-        <header  className={`navbar__outer ${show && "show"}`}>
+        <header  className={`navbar__outer ${show && "show"} ${isBGA === true ? "active__navbar" : null}`}>
             <menu className="flex flex-jcsb flex-aic deaktop__menu">
                 {/* Logo */}
                 <img src={Logo} id="logo" className="cp" />
