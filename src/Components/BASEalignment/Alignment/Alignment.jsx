@@ -8,12 +8,6 @@ import EditorText from '../TextAdEDITOR/EditorText';
 
 
 const Alignment = () => {
-
-
- 
-
-
-
     return (
         <section className="alignment__outer">
             <div className="alignment__inner">
@@ -25,7 +19,25 @@ const Alignment = () => {
                 </div>
                 {/* requird-info */}
                 <div className="required__info__outer area">
-                    requird info
+                    <p>requird info</p>
+                    <p>requird info</p>
+                    <p>requird info</p>
+
+                    <p>requird info</p>
+                    <p>requird info</p>
+                    <p>requird info</p>
+                    <p>requird info</p>
+                    <p>requird info</p>
+                    <p>requird info</p>
+                    <p>requird info</p>
+                    <p>requird info</p>
+                    <p>requird info</p>
+
+                    <p>requird info</p>
+                    <p>requird info</p>
+                    <p>requird info</p>
+                    <p>requird info</p>
+                    
                 </div>
             </div>
         </section>
