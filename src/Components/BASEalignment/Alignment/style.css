@@ -43,7 +43,7 @@
   width: 100%;
   height: 100%;
   background-color: white;
-  padding: 100px 40px 40px 40px;
+  padding: 100px 80px 40px 80px;
 }
 .alignment__outer .alignment__inner {
   height: 100%;
@@ -75,12 +75,8 @@
 .alignment__outer .alignment__inner .editor__window__outer {
   width: 100%;
   padding: 0px;
-  min-height: 600px;
+  min-height: 800px;
   height: auto;
-}
-.alignment__outer .alignment__inner .required__info__outer {
-  background-color: #e6e2e2;
-  min-height: 200px;
 }
 
 @media only screen and (max-width: 768px) {

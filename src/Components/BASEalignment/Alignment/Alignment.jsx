@@ -17,28 +17,6 @@ const Alignment = () => {
                 <div className="editor__window__outer area">
                     <EditorText/>
                 </div>
-                {/* requird-info */}
-                <div className="required__info__outer area">
-                    <p>requird info</p>
-                    <p>requird info</p>
-                    <p>requird info</p>
-
-                    <p>requird info</p>
-                    <p>requird info</p>
-                    <p>requird info</p>
-                    <p>requird info</p>
-                    <p>requird info</p>
-                    <p>requird info</p>
-                    <p>requird info</p>
-                    <p>requird info</p>
-                    <p>requird info</p>
-
-                    <p>requird info</p>
-                    <p>requird info</p>
-                    <p>requird info</p>
-                    <p>requird info</p>
-                    
-                </div>
             </div>
         </section>
     )
