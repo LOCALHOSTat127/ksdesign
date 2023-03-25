@@ -3,7 +3,6 @@ import Box from '@mui/material/Box';
 import Stepper from '@mui/material/Stepper';
 import Step from '@mui/material/Step';
 import StepButton from '@mui/material/StepButton';
-import SettingsIcon from '@mui/icons-material/Settings';
 const steps = ['Selete', 'Compose AD', 'Publish'];
 const longSteps = ['Selete Newspaper','Compose AD','Payment & Publish'];
 
@@ -26,7 +25,7 @@ const StepsBar = () => {
                         alignItems:"center",
                         justifyContent:"cemter"
                     }}>
-                        <StepButton id="muistepbtn"  color="inherit" >
+                        <StepButton id="muistepbtn"  color="$txtclr" >
                             <p>{label}</p>
                         </StepButton>
                     </Step>
