@@ -142,6 +142,9 @@
   color: black;
 }
 .TextEditor__ground .main__upper__containor .sidepanel {
+  max-height: 300px;
+  height: -moz-fit-content;
+  height: fit-content;
   grid-area: SIDEPANEL;
   border-radius: 4px;
   background-color: #ffffff;
@@ -343,12 +346,118 @@
   margin-top: 30px;
 }
 .TextEditor__ground .second__lower__containor {
+  overflow: hidden;
   box-shadow: rgba(9, 30, 66, 0.25) 0px 1px 1px, rgba(9, 30, 66, 0.13) 0px 0px 1px 1px;
   width: 100%;
   height: 100%;
   min-height: 200px;
   background: #ffffff;
   border-radius: 4px;
+  padding: 20px 10px;
+  color: black;
+}
+.TextEditor__ground .second__lower__containor .ad__heading__containor {
+  background: #F8F8F8;
+  margin-bottom: 30px;
+  padding: 20px;
+}
+.TextEditor__ground .second__lower__containor .ad__heading__containor .panel__heading h2 {
+  text-transform: uppercase;
+  font-weight: 700;
+  font-size: clamp(16px, 4vw, 18px);
+}
+.TextEditor__ground .second__lower__containor .ad__heading__containor .panel__heading p {
+  color: #747474;
+  font-size: clamp(10px, 3vw, 14px);
+}
+.TextEditor__ground .second__lower__containor .ad__heading__containor .heading__window {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: 1fr;
+  gap: 40px;
+  margin-top: 20px;
+  padding: 20px 40px;
+  padding-left: 0px;
+}
+.TextEditor__ground .second__lower__containor .price__list {
+  margin-bottom: 30px;
+  position: relative;
+}
+.TextEditor__ground .second__lower__containor .price__list h2 {
+  padding: 20px;
+  text-transform: uppercase;
+  font-weight: 700;
+  font-size: clamp(16px, 4vw, 18px);
+  position: relative;
+}
+.TextEditor__ground .second__lower__containor .price__list h2::before {
+  content: " ";
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 14px;
+  height: 10px;
+  background-color: red;
+}
+.TextEditor__ground .second__lower__containor .price__list .price__slider {
+  padding: 10px;
+  margin-top: 0px;
+  width: 100%;
+  height: 100%;
+  background: #f3f3f3;
+  min-height: 120px;
+  transform: translateX(1%);
+  display: flex;
+  gap: 15px;
+  overflow-x: scroll;
+}
+.TextEditor__ground .second__lower__containor .price__list .price__slider .rate__card {
+  box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
+  border-radius: 4px;
+  max-width: 220px;
+  min-width: 220px;
+  background-color: white;
+  padding: 15px 16px;
+}
+.TextEditor__ground .second__lower__containor .price__list .price__slider .rate__card .newspaper__name {
+  font-weight: 600;
+  font-size: clamp(12px, 4vw, 16px);
+  margin-bottom: 6px;
+}
+.TextEditor__ground .second__lower__containor .price__list .price__slider .rate__card .package__desc {
+  font-weight: 300;
+  max-width: 80%;
+  font-size: clamp(10px, 4vw, 12px);
+  margin-bottom: 16px;
+}
+.TextEditor__ground .second__lower__containor .price__list .price__slider .rate__card .prices p {
+  color: rgb(42, 68, 2);
+  font-weight: 600;
+  font-size: clamp(10px, 4vw, 12px);
+  margin-bottom: 4px;
+}
+.TextEditor__ground .second__lower__containor .from__newspaper {
+  padding: 20px;
+}
+.TextEditor__ground .second__lower__containor .from__newspaper h2 {
+  font-size: clamp(16px, 4vw, 18px);
+  font-weight: 600;
+  margin-bottom: 6px;
+}
+.TextEditor__ground .second__lower__containor .from__newspaper .innertext .newspapername {
+  text-transform: uppercase;
+  color: #605f5f;
+  margin-bottom: 8px;
+  font-size: clamp(13px, 4vw, 14px);
+}
+.TextEditor__ground .second__lower__containor .from__newspaper .innertext .innertext__inline {
+  width: 100%;
+  font-size: 13px;
+  max-width: 100%;
+  -moz-column-count: 1;
+       column-count: 1;
+  text-justify: newspaper;
 }
 
 @media only screen and (max-width: 768px) {
@@ -411,5 +520,14 @@
   }
   .TextEditor__ground .main__upper__containor .special__enhancement__box .ehnesment__inpt__boxs {
     flex-direction: column;
+  }
+  .TextEditor__ground .second__lower__containor .ad__heading__containor .heading__window {
+    margin-top: 5px;
+    grid-template-columns: 1fr;
+    grid-template-rows: repeat(3, 1fr);
+    gap: 20px;
+  }
+  .TextEditor__ground .second__lower__containor .ad__heading__containor .heading__window #last__select {
+    grid-column: 1/-1;
   }
 }/*# sourceMappingURL=style.css.map */
