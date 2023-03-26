@@ -4,7 +4,6 @@
 .home__page__second__section {
     width: 100%;
     height: 100%;
-
     padding: 100px 110px 60px 80px;
     position: relative;
   
@@ -13,6 +12,7 @@
     color: white;
 
     .section__heading {
+        
         position: relative;
 
         &::before {
@@ -128,21 +128,19 @@
                 display: flex;
                 flex-direction: column;
                 align-items: flex-start;
-
-
-
                 transition: all 150ms ease-in-out;
                 font-weight: $font-400;
-                font-size: 14px;
                 color: rgb(139, 148, 158);
 
                 .cat__name {
+                    font-size: clamp(13px,3vw,16px);
+                    text-align: center;
                     color: white;
                     font-weight: $font-500;
                 }
 
                 .cat__desc {
-                    font-size: 13px;
+                    font-size: clamp(10px,4vw,13px);
                     line-height: 18px;
                     overflow: hidden;
                 }
@@ -160,21 +158,24 @@
         padding: 60px 30px 30px 30px;
 
         .grid__items {
-            grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
             transition: all 800s ease-in-out;
           
 
             .grid__item {
                 flex-direction: column;
                 align-items: center;
+                text-align: center;
                 justify-content: center;
-                padding: 18px;
+                padding: 18px 12px;
                 border-radius: 2px;
                 .svg {
                     margin: 0px;
                 }
                 span{
-                 
+                    .cat__name{
+                        text-align: center;
+                    }
                     .cat__desc{
                         display: none;
                     }

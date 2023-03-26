@@ -19,7 +19,7 @@ const EditorText = () => {
                 clr: "#ffffff",
                 value: "#ffffff",
                 id: "white",
-                name: "bgcolor",
+                name: "White",
             },
             {
                 clr: "#F8CBCC",
@@ -626,7 +626,7 @@ const EditorText = () => {
                             boxShadow: "rgba(0, 0, 0, 0.16) 0px 1px 4px",
 
                         }} id="display__sample" disableElevation variant="outlined">
-                            Sample AD
+                            Sample
                         </Button>
                     </div>
                     <div className="show__preview__btn__jacket cont_jack">

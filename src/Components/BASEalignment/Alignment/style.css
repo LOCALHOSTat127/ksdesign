@@ -73,10 +73,9 @@
 .alignment__outer .alignment__inner .stepsbar__outer #muistepbtn .MuiStepLabel-root .MuiStepLabel-iconContainer {
   padding: 0px;
 }
-.alignment__outer .alignment__inner .editor__window__outer {
+.alignment__outer .alignment__inner .layout__section__outer {
   width: 100%;
   padding: 0px;
-  min-height: 800px;
   height: auto;
 }
 

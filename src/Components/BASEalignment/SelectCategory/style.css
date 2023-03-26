@@ -1,0 +1,67 @@
+.flex {
+  display: flex;
+}
+
+.fd-col {
+  flex-direction: column;
+}
+
+.fd-row {
+  flex-direction: row;
+}
+
+.flex-aic {
+  align-items: center;
+}
+
+.flex-jcc {
+  justify-content: center;
+}
+
+.df-aic-jcc {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.flex-jcsb {
+  justify-content: space-between;
+}
+
+.flex-jcsa {
+  justify-content: space-around;
+}
+
+.cp {
+  cursor: pointer;
+}
+
+/* ---colours */
+/* ---font-weight */
+/* ---gradients */
+.select__ad__category {
+  width: 100%;
+  height: 100%;
+  min-height: 500px;
+  background-color: rgb(255, 255, 255);
+  box-shadow: rgba(9, 30, 66, 0.25) 0px 1px 1px, rgba(9, 30, 66, 0.13) 0px 0px 1px 1px;
+  padding: 20px;
+  color: black;
+}
+.select__ad__category .heading {
+  font-weight: 600;
+  text-transform: capitalize;
+  font-size: clamp(18px, 4vw, 18px);
+}
+.select__ad__category .pera {
+  font-weight: 300;
+  color: rgb(143, 143, 143);
+  text-transform: capitalize;
+  font-size: clamp(14px, 3vw, 16px);
+  margin-top: 4px;
+  margin-bottom: 40px;
+}
+.select__ad__category .category__list {
+  width: 100%;
+  height: 100%;
+}/*# sourceMappingURL=style.css.map */

@@ -1,4 +1,4 @@
-import React from 'react'
+import {useState} from 'react'
 import Box from '@mui/material/Box';
 import Stepper from '@mui/material/Stepper';
 import Step from '@mui/material/Step';
@@ -7,8 +7,8 @@ const steps = ['Selete', 'Compose AD', 'Publish'];
 const longSteps = ['Selete Newspaper','Compose AD','Payment & Publish'];
 
 const StepsBar = () => {
-    const [activeStep, setActiveStep] = React.useState(1);
-    const [completed, setCompleted] = React.useState([1,2]);
+    const [activeStep, setActiveStep] = useState(0);
+    const [completed, setCompleted] = useState([1]);
 
     const totalSteps = () => {
         return steps.length;
