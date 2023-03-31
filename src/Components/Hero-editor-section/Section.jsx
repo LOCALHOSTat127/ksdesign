@@ -3,7 +3,7 @@ import "./style.css";
 
 
 import SnakeLine from "../../assets/svg/snakeline.svg";
-import BgImg from "../../assets/svg/hero-editor.svg";
+import BgImg from "../../assets/png/hero_editor.png";
 
 export const Section = () => {
     return (

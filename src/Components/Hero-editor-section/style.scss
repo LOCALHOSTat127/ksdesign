@@ -2,8 +2,8 @@
 
 .Hero__section__third {
   
-
-    padding: 100px 110px 100px 80px;
+   
+    padding: 100px 80px 100px 80px;
     color: white;
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
@@ -13,7 +13,7 @@
 
     height: 100%;
     width: 100%;
-
+    background: linear-gradient(to bottom, rgb(6, 4, 34), rgb(7, 7, 14)) !important;
 
     .contect__section {
         width: 100%;
@@ -25,6 +25,7 @@
             width: 100%;
             height: auto;
             transform: translateX(-120px);
+            display: none;
         }
 
         button {
@@ -77,7 +78,7 @@
             color: rgba(255, 255, 255, 0.808);
             line-height: 1.95rem;
             font-size: clamp(12px, 4vw, 16px);
-
+            max-width: 448px;
             span {
                 font-weight: $font-600;
                 color: white;
@@ -100,7 +101,7 @@
         align-items: center;
         justify-content: center;
         border-radius: 8px;
-        background-color: rgb(15, 21, 31);
+        background: #ffffff0d;
         --webkit-backdrop-filter: blur(20px);
         border: 1px solid rgb(30, 39, 54);
         color: white;

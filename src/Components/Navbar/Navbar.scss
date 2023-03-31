@@ -10,19 +10,22 @@
     transition: all 350ms ease-in-out;
 
 
-    &.active__navbar {
-        background-color: rgb(15, 21, 31);
-        --webkit-backdrop-filter: blur(20px);
-    }
+
 
 
     &.show {
 
 
         .deaktop__menu {
-            padding: 20px 20px;
-            background-color: rgb(15, 21, 31);
+            background-color: hsl(210.38deg 50.66% 38.67% / 38%);
+            backdrop-filter: blur(20px) saturate(160%) contrast(45%) brightness(140%);
+
             --webkit-backdrop-filter: blur(20px);
+            padding: 14px 70px 14px 70px;
+
+            #nav__contact__us__btn {
+                display: none;
+            }
         }
     }
 
@@ -34,8 +37,8 @@
         width: 100%;
         height: auto;
         color: white;
-        padding: 18px 46px;
-        border-bottom: 1px solid #1e273685;
+        padding: 24px 70px 18px 70px;
+
 
 
 
@@ -82,7 +85,7 @@
                     bottom: -4px;
                     width: 100%;
                     height: 1px;
-                    background-color: #193DBD;
+                    background: linear-gradient(45deg, #600ad6, #f31c1cb3);
                 }
 
             }

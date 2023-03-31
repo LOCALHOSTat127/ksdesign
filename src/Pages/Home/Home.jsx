@@ -27,7 +27,6 @@ const Home = () => {
       <AdCategory/>
       <ClassifiedCategory/>
       <EditorAd/>
-      <LogoSlider/>
     </>
   )
 }

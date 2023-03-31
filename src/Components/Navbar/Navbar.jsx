@@ -15,13 +15,13 @@ import { ReactComponent as Aboutus } from "../../assets/svg/about-us-svg.svg";
 
 
 
-const Navbar = ({isBGA}) => {
+const Navbar = () => {
     const navigate = useNavigate();
     const [isOpen, setOpen] = useState(0);
     const [show,handleShow] = useState(false);
 
     const handleNavTransisation = () =>{
-        if(window.scrollY > 100){
+        if(window.scrollY > 10){
             handleShow(true);
         }else{
             handleShow(false);
@@ -36,7 +36,7 @@ const Navbar = ({isBGA}) => {
 
 
     return (
-        <header  className={`navbar__outer ${show && "show"} ${isBGA === true ? "active__navbar" : null}`}>
+        <header  className={`navbar__outer ${show && "show"}`}>
             <menu className="flex flex-jcsb flex-aic deaktop__menu">
                 {/* Logo */}
                 <img onClick={((e) =>{
@@ -48,11 +48,11 @@ const Navbar = ({isBGA}) => {
                     <ul className="flex">
                         <a href="#">
                             <li className="li active">
-                                Home
+                                Our work
                             </li>
                         </a>
 
-                        <a href="#">
+                        <a href="/services">
                             <li className="li">
                                 Services
                             </li>

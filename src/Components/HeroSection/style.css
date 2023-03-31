@@ -42,9 +42,10 @@
 .Hero__section__outer {
   color: black;
   width: 100%;
-  min-height: 100vh;
-  padding: 88px 20px 10px 20px;
+  padding: 88px 20px 0px 20px;
   background: linear-gradient(to bottom, rgb(6, 4, 34), rgb(7, 7, 14));
+  display: flex;
+  align-items: center;
 }
 .Hero__section__outer .content__containor {
   padding: 0px 5px 5px 50px;
@@ -99,21 +100,23 @@
   font-family: "Quicksand";
 }
 .Hero__section__outer .content__containor .subhedding {
-  font-family: "Quicksand";
   max-width: 550px;
   color: #fbfbfb;
   font-weight: 300;
   margin-bottom: 36px;
   line-height: 24px;
-  font-size: 19px;
+  font-size: 16px;
   letter-spacing: 1px;
 }
-.Hero__section__outer .content__containor .bookad__box {
-  font-family: "Quicksand";
+.Hero__section__outer .content__containor .hero__controlls {
+  display: flex;
+  gap: 14px;
+}
+.Hero__section__outer .content__containor .hero__controlls .bookad__box {
   border: none;
   outline: none;
   text-transform: capitalize;
-  font-weight: 550;
+  font-weight: 400;
   font-size: 20px;
   border-radius: 3px;
   position: relative;
@@ -121,7 +124,6 @@
   background-color: rgba(75, 75, 75, 0.2117647059);
   padding: 15px 24px 15px 10px;
   border: 1px solid white;
-  font-variant: ordinal;
   letter-spacing: 1px;
   cursor: pointer;
   display: flex;
@@ -129,19 +131,36 @@
   max-width: 225px;
   width: 100%;
 }
-.Hero__section__outer .content__containor .bookad__box:hover {
+.Hero__section__outer .content__containor .hero__controlls .bookad__box.browes__collection {
+  border: none;
+  background-color: #bd0975;
+  padding: 15px 14px 15px 14px;
+  max-width: -moz-fit-content;
+  max-width: fit-content;
+}
+.Hero__section__outer .content__containor .hero__controlls .bookad__box.browes__collection:hover {
+  background-color: rgba(189, 9, 117, 0.768627451);
+  border: none;
+}
+.Hero__section__outer .content__containor .hero__controlls .bookad__box.browes__collection .btn__svg {
+  display: none;
+}
+.Hero__section__outer .content__containor .hero__controlls .bookad__box.browes__collection .hid__line {
+  display: none;
+}
+.Hero__section__outer .content__containor .hero__controlls .bookad__box:hover {
   border: 1px solid #4070d3;
   background: none;
 }
-.Hero__section__outer .content__containor .bookad__box:hover .btn__svg {
+.Hero__section__outer .content__containor .hero__controlls .bookad__box:hover .btn__svg {
   transition: all 300ms ease-in-out;
   right: 20px;
 }
-.Hero__section__outer .content__containor .bookad__box:hover .hid__line {
+.Hero__section__outer .content__containor .hero__controlls .bookad__box:hover .hid__line {
   transition: width 200ms ease-in-out;
   width: 0px;
 }
-.Hero__section__outer .content__containor .bookad__box .btn__svg {
+.Hero__section__outer .content__containor .hero__controlls .bookad__box .btn__svg {
   position: absolute;
   top: 50%;
   width: 100%;
@@ -150,7 +169,7 @@
   transform: translateY(-50%);
   right: 5px;
 }
-.Hero__section__outer .content__containor .bookad__box .hid__line {
+.Hero__section__outer .content__containor .hero__controlls .bookad__box .hid__line {
   position: absolute;
   right: 17px;
   top: 50%;
@@ -162,7 +181,7 @@
 .Hero__section__outer .content__containor .services__grid {
   width: 100%;
   max-width: 530px;
-  min-height: 80px;
+  min-height: 20px;
   margin-bottom: 24px;
   color: transparent;
   background: transparent;

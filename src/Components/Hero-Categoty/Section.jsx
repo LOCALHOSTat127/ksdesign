@@ -10,11 +10,11 @@ export const Section = ({ padZero, headingNone, mt, borderRadious,ONCLICKHANDLER
       style={{
         padding: `${padZero === 1 ? "0px" : null}`,
       }}
-      className='home__page__second__section'>
+      className='home__page__second__section' id='category'>
       <span style={{
         display: `${headingNone && "none"}`
       }} className='section__heading'>
-        <h2>Top Ads Category.</h2>
+        <h2>Top Ads Category in Newspaper.</h2>
         <p>These are the mose popular categories.</p>
       </span>
       <div style={{

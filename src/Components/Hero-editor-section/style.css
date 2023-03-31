@@ -40,7 +40,7 @@
 /* ---font-weight */
 /* ---gradients */
 .Hero__section__third {
-  padding: 100px 110px 100px 80px;
+  padding: 100px 80px 100px 80px;
   color: white;
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
@@ -49,6 +49,7 @@
   row-gap: 44px;
   height: 100%;
   width: 100%;
+  background: linear-gradient(to bottom, rgb(6, 4, 34), rgb(7, 7, 14)) !important;
 }
 .Hero__section__third .contect__section {
   width: 100%;
@@ -60,6 +61,7 @@
   width: 100%;
   height: auto;
   transform: translateX(-120px);
+  display: none;
 }
 .Hero__section__third .contect__section button {
   margin-top: 50px;
@@ -100,6 +102,7 @@
   color: rgba(255, 255, 255, 0.808);
   line-height: 1.95rem;
   font-size: clamp(12px, 4vw, 16px);
+  max-width: 448px;
   margin-top: 36px;
 }
 .Hero__section__third .contect__section p span {
@@ -115,7 +118,7 @@
   align-items: center;
   justify-content: center;
   border-radius: 8px;
-  background-color: rgb(15, 21, 31);
+  background: rgba(255, 255, 255, 0.0509803922);
   --webkit-backdrop-filter: blur(20px);
   border: 1px solid rgb(30, 39, 54);
   color: white;

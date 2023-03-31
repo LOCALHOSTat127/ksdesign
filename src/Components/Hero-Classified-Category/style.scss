@@ -4,28 +4,18 @@
     width: 100%;
     padding: 60px 110px 60px 80px;
     margin: auto;
+    background: linear-gradient(to bottom, rgb(6, 4, 34), rgb(7, 7, 14)) !important;
+   
 
     .heading {
         font-style: normal;
         text-transform: capitalize;
-        font-size: clamp(18px, 4vw, 24px);
-        font-weight: $font-700;
-        color: white;
+        font-size: clamp(18px, 4vw, 32px); 
+        font-weight: 600;
+        font-family: inherit;
+        font-variant: all-petite-caps;
         margin-bottom: 44px;
-
         position: relative;
-
-        &::before {
-            position: absolute;
-            content: "";
-            left: -12px;
-            top: 0;
-            width: 4px;
-            border-radius: 4px;
-            height: 100%;
-            background-color: #4EC1CE;
-        }
-
     }
 
 
@@ -42,9 +32,13 @@
             gap: 60px;
 
             .card {
-                background-color: rgb(15, 21, 31);
+                
+                cursor: pointer;
+              
+                background: #ffffff0d;
                 --webkit-backdrop-filter: blur(20px);
                 border: 1px solid #1e2736;
+                transition: all 100ms ease-in;
 
                 color: white;
                 box-shadow: rgba(17, 17, 26, 0.05) 0px 4px 16px, rgba(17, 17, 26, 0.05) 0px 8px 32px;
@@ -54,16 +48,21 @@
                 align-items: flex-start;
                 border-radius: 2px;
 
+                &:hover{
+                 
+                    background: rgb(65 59 145 / 38%);
+                }
+
 
 
                 .img {
                     width: 100%;
                     flex: 1 1 50%;
-                    background-color: #000000;
+                    background-color: #f0f0f0;
                     margin-bottom: 16px;
                     min-height: 200px;
                     background-position: center center;
-                    background-size: cover;
+                    background-size: contain;
                     background-repeat: no-repeat;
                 }
 
@@ -79,7 +78,6 @@
                     font-size: clamp(15px, 4vw, 15px);
                     line-height: 1.4rem;
                     font-weight: $font-300;
-                    margin-bottom: 20px;
                     color: rgba(255, 255, 255, 0.808);
                 }
 

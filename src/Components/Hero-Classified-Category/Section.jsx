@@ -4,7 +4,7 @@ import classified_cards from "../../data/classified_cards.json";
 
 
 export const Section = () => {
-
+    
 
 
     return (
@@ -15,16 +15,13 @@ export const Section = () => {
                     classified_cards.map(({ id, heading, btn_txt, bg_img, desc, TO_DIRECT }) => {
                         return (
                             <>
-                                <div key={id} id={id}  className="card">
+                                <div  key={id} id={id}  className="card">
                                     <div style={{
                                         backgroundImage:`url(${process.env.PUBLIC_URL+bg_img})`
                                     }} className="img">
                                     </div>
                                     <h2>{heading}</h2>
                                     <p>{desc}</p>
-                                    <button data-to-direct={TO_DIRECT} className="bookyourad">
-                                        {btn_txt}
-                                    </button>
                                 </div>
                             </>
                         )
