@@ -7,16 +7,8 @@ import Footer from "../../Components/Footer/Footer";
 const ADbaseComponent = () => {
   return (
     <section className="base_page__outer">
-        {/* Navbar */}
-        <Navbar isBGA={true} />
-
         {/* AdComponent-Alignment Component */}
-        <Alignment/>
-
-        {/* Footer */}
-        <Footer/>
-
-    
+        <Alignment/>    
     </section>
   )
 }

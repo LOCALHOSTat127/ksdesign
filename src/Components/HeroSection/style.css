@@ -40,82 +40,137 @@
 /* ---font-weight */
 /* ---gradients */
 .Hero__section__outer {
+  color: black;
   width: 100%;
-  height: 100vh;
-  background-position: center center;
-  background-repeat: no-repeat;
-  background-size: cover;
-  padding: 88px 20px 40px 20px;
+  min-height: 100vh;
+  padding: 88px 20px 10px 20px;
+  background: linear-gradient(to bottom, rgb(6, 4, 34), rgb(7, 7, 14));
 }
-.Hero__section__outer .section__inner {
+.Hero__section__outer .content__containor {
+  padding: 0px 5px 5px 50px;
   width: 100%;
   height: 100%;
-  padding: 20px 10px;
-  display: flex;
-  flex-direction: row;
+  position: relative;
 }
-.Hero__section__outer .content__area {
-  padding: 0px 20px;
-  padding-top: 20px;
-  width: 100%;
-  height: 100%;
-  color: white;
+.Hero__section__outer .content__containor .heading {
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
+  text-align: left;
+  position: relative;
+  margin-bottom: 34px;
 }
-.Hero__section__outer .content__area .heading {
+.Hero__section__outer .content__containor .heading .headbg {
   color: white;
-  margin-bottom: 14px;
-  font-weight: 800;
-  font-size: clamp(46px, 6vw, 97px);
-  font-family: "Quicksand", sans-serif;
-  text-transform: uppercase;
-}
-.Hero__section__outer .content__area .heading span {
-  font-size: clamp(26px, 6vw, 54px);
-  color: #6B737C;
   text-transform: capitalize;
+  letter-spacing: 1px;
+  width: fif;
+  width: -moz-fit-content;
+  width: fit-content;
+  background: linear-gradient(45deg, #600ad6, rgba(243, 28, 28, 0.7019607843));
+  background-clip: inherit;
+  padding: 6px 10px;
+  font-weight: 500;
+  text-shadow: none;
+  margin-bottom: 8px;
+  margin-left: 4px;
+  border-radius: 4px;
+}
+.Hero__section__outer .content__containor .heading .main {
+  font-size: 106px;
+  font-weight: 600;
+  text-transform: capitalize;
+  text-shadow: 0 0 5px black;
+  letter-spacing: 5px;
+  color: white;
+  width: -moz-fit-content;
+  width: fit-content;
+  line-height: 80px;
+  padding-bottom: 6px;
+  margin-bottom: 16px;
+  font-variant: petite-caps;
+}
+.Hero__section__outer .content__containor .heading .subhead {
+  color: white;
+  font-size: 39px;
+  letter-spacing: 2px;
   font-weight: 400;
-  font-family: "Montserrat", sans-serif;
-  display: flex;
 }
-.Hero__section__outer .content__area .type__txt {
-  font-family: "Montserrat", sans-serif;
-  position: relative;
-  margin-bottom: 44px;
-  font-weight: 400;
-  font-size: clamp(18px, 4vw, 20px);
+.Hero__section__outer .content__containor .heading .subhead .type__txt {
+  font-family: "Quicksand";
 }
-.Hero__section__outer .content__area .type__txt .type_txt__before {
-  top: 50%;
-  left: -105%;
-  width: 100%;
-  height: 30%;
-  position: absolute;
-  background-color: #193DBD;
-  transform: translateY(-50%);
-  border-top-right-radius: 4px;
-  border-bottom-right-radius: 4px;
-}
-.Hero__section__outer .content__area .subhedding {
+.Hero__section__outer .content__containor .subhedding {
+  font-family: "Quicksand";
+  max-width: 550px;
+  color: #fbfbfb;
   font-weight: 300;
-  line-break: normal;
-  max-width: 470px;
-  color: #919497;
+  margin-bottom: 36px;
+  line-height: 24px;
+  font-size: 19px;
+  letter-spacing: 1px;
 }
-.Hero__section__outer .img__area {
-  display: none;
-  padding: 80px;
-  width: 50%;
-  height: 100%;
+.Hero__section__outer .content__containor .bookad__box {
+  font-family: "Quicksand";
+  border: none;
+  outline: none;
+  text-transform: capitalize;
+  font-weight: 550;
+  font-size: 20px;
+  border-radius: 3px;
   position: relative;
+  color: white;
+  background-color: rgba(75, 75, 75, 0.2117647059);
+  padding: 15px 24px 15px 10px;
+  border: 1px solid white;
+  font-variant: ordinal;
+  letter-spacing: 1px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  max-width: 225px;
+  width: 100%;
 }
-.Hero__section__outer .img__area img {
+.Hero__section__outer .content__containor .bookad__box:hover {
+  border: 1px solid #4070d3;
+  background: none;
+}
+.Hero__section__outer .content__containor .bookad__box:hover .btn__svg {
+  transition: all 300ms ease-in-out;
+  right: 20px;
+}
+.Hero__section__outer .content__containor .bookad__box:hover .hid__line {
+  transition: width 200ms ease-in-out;
+  width: 0px;
+}
+.Hero__section__outer .content__containor .bookad__box .btn__svg {
+  position: absolute;
+  top: 50%;
+  width: 100%;
+  height: auto;
+  max-width: 24px;
+  transform: translateY(-50%);
+  right: 5px;
+}
+.Hero__section__outer .content__containor .bookad__box .hid__line {
+  position: absolute;
+  right: 17px;
+  top: 50%;
+  width: 26px;
+  height: 1px;
+  background-color: white;
+  transform: translateY(-50%);
+}
+.Hero__section__outer .content__containor .services__grid {
+  width: 100%;
+  max-width: 530px;
+  min-height: 80px;
+  margin-bottom: 24px;
+  color: transparent;
+  background: transparent;
+}
+.Hero__section__outer .content__containor .services__grid .service {
   width: 100%;
   height: 100%;
-  -o-object-fit: contain;
-     object-fit: contain;
+  background: rgba(255, 255, 255, 0.0901960784);
 }
 
 @media only screen and (max-width: 320px) {
@@ -130,15 +185,22 @@
 }
 @media only screen and (max-width: 768px) {
   .Hero__section__outer {
-    padding: 90px 10px 0px 10px;
+    padding: 50px 10px 10px 10px;
   }
   .Hero__section__outer .section__inner {
     flex-direction: column;
     padding: 0px;
+    gap: 40px;
+  }
+  .Hero__section__outer .section__inner .img__area {
+    padding: 10px;
   }
   .Hero__section__outer .section__inner .content__area {
     padding: 0px 14px;
     padding-top: 20px;
+  }
+  .Hero__section__outer .section__inner .content__area .heading {
+    text-align: center;
   }
   .Hero__section__outer .section__inner .content__area .onopage__newsapper__select__box {
     width: 100%;

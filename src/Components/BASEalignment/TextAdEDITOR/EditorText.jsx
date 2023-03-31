@@ -1,5 +1,7 @@
 import { useState, useEffect } from 'react'
 import "./style.css";
+import generalColorPallerConfig from "../../../data/config/general_style_pallet_config.json";
+
 import Button from '@mui/material/Button';
 import { ReactComponent as ShowSVG } from "../../../assets/svg/show.svg";
 import { ReactComponent as EditSvg } from "../../../assets/svg/edit.svg";
@@ -12,36 +14,14 @@ import Select from '@mui/material/Select';
 
 
 
-const EditorText = () => {
-    const BGCONFIG = {
-        "BG_COLORS": [
-            {
-                clr: "#ffffff",
-                value: "#ffffff",
-                id: "white",
-                name: "White",
-            },
-            {
-                clr: "#F8CBCC",
-                value: "#F8CBCC",
-                id: "clr_second",
-                name: "Lightred",
-            },
-            {
-                clr: "#99CCFD",
-                value: "#99CCFD",
-                id: "clr_third",
-                name: "Blue",
 
-            },
-            {
-                clr: "#FDCC32",
-                value: "#FDCC32",
-                id: "clr_fourth",
-                name: "Sunglow",
-            }
-        ],
-    };
+const EditorText = () => {
+ 
+
+
+
+    
+
 
     const HEADING__CONFIG = {
         "categorys": [
@@ -428,7 +408,7 @@ const EditorText = () => {
     const [activeSubCategory, setActiveSubCategory] = useState(null);
 
     const [showPreview, setPreview] = useState(0);
-    const [adBGcolor, setBGcolor] = useState(BGCONFIG.BG_COLORS[0] ? BGCONFIG.BG_COLORS[0] : "#FFFFFF");
+    const [adBGcolor, setBGcolor] = useState(generalColorPallerConfig.color__pallet[0] ? generalColorPallerConfig.color__pallet[0].clr : "#FFFFFF");
     const [isMarkerOn, setMarker] = useState(false);
     const [isBorderOn, setBorder] = useState(false);
     const [ADTEXT, handleADTEXT] = useState("");
@@ -489,13 +469,16 @@ const EditorText = () => {
 
 
     return (
-        <section data-editor-type="classified-text-ad" className="TextEditor__ground">
+        <section
+            
+            data-editor-type="classified-text-ad" className="TextEditor__ground">
             {/* Editro-box/Preiew/controlls/HeadingPrice */}
             <div className="main__upper__containor">
 
                 <div className={`edit_n_preview__outer ${showPreview && "toggle__preview"}`}>
                     <div className="textad__area">
                         <textarea
+                         
                             onChange={handleTyping}
                             placeholder='Type your AD here...'
                             name="text__body"
@@ -522,7 +505,7 @@ const EditorText = () => {
                     <div className="bg__colors__outer">
 
                         <div className="colors__palet">
-                            {BGCONFIG.BG_COLORS.map(({ value, name, id }) => {
+                            {generalColorPallerConfig.color__pallet.map(({ value, name, id }) => {
                                 return (
                                     <>
                                         <div style={{
@@ -932,7 +915,7 @@ const EditorText = () => {
                     </div>
                 </div>
             </div>
-        </section >
+        </section>
     )
 }
 

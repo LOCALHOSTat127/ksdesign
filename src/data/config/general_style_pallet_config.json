@@ -1,0 +1,31 @@
+{
+    "color__pallet": [
+        {
+            "clr": "#ffffff",
+            "value": "#ffffff",
+            "id": "white",
+            "name": "White"
+        },
+        {
+            "clr": "#F8CBCC",
+            "value": "#F8CBCC",
+            "id": "clr_second",
+            "name": "Lightred"
+        },
+        {
+            "clr": "#99CCFD",
+            "value": "#99CCFD",
+            "id": "clr_third",
+            "name": "Blue"
+        },
+        {
+            "clr": "#FDCC32",
+            "value": "#FDCC32",
+            "id": "clr_fourth",
+            "name": "Sunglow"
+        }
+    ],
+
+
+    "sajs" : "2389"
+}

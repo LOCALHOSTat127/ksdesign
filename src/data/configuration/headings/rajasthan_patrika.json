@@ -1,0 +1,11 @@
+[
+    {
+        "CATEGORY_HEADING_CONFIG" : "Death",
+        "isHeadingConfigAvailable" : false
+    },
+    {
+        "CATEGORY_HEADING_CONFIG" : "Job",
+        "isHeadingConfigAvailable" : true
+       
+    }
+]

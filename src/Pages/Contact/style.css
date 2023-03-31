@@ -1,0 +1,189 @@
+.contact__page {
+  min-height: 500px;
+  background-color: #F8F8F8;
+  padding: 60px 40px 80px 40px;
+}
+.contact__page .page__inner__box {
+  width: 100%;
+  height: 100%;
+  min-height: 500px;
+  padding: 40px 20px;
+}
+.contact__page .page__inner__box .contact__box {
+  width: 100%;
+  height: 100%;
+  min-height: 500px;
+  background-color: white;
+  border-radius: 12px;
+  box-shadow: rgba(9, 30, 66, 0.25) 0px 1px 1px, rgba(9, 30, 66, 0.13) 0px 0px 1px 1px;
+  display: flex;
+}
+.contact__page .page__inner__box .contact__box .sidepanel__text {
+  display: flex;
+  flex-direction: column;
+  padding: 30px;
+  flex: 1 1 35%;
+  background: linear-gradient(180deg, #423B93 2.64%, #423B93 117%);
+}
+.contact__page .page__inner__box .contact__box .sidepanel__text .text__outer {
+  margin-bottom: 50px;
+}
+.contact__page .page__inner__box .contact__box .sidepanel__text .text__outer .heading {
+  font-weight: 600;
+  font-size: 24px;
+}
+.contact__page .page__inner__box .contact__box .sidepanel__text .text__outer p {
+  font-size: 14px;
+  margin-top: 8px;
+  max-width: 90%;
+  color: rgb(226, 224, 224);
+}
+.contact__page .page__inner__box .contact__box .sidepanel__text .contact__meta__jscket {
+  margin-bottom: 60px;
+}
+.contact__page .page__inner__box .contact__box .sidepanel__text .contact__meta__jscket ul {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+.contact__page .page__inner__box .contact__box .sidepanel__text .contact__meta__jscket ul #mail {
+  order: 1;
+}
+.contact__page .page__inner__box .contact__box .sidepanel__text .contact__meta__jscket ul #call {
+  order: 2;
+}
+.contact__page .page__inner__box .contact__box .sidepanel__text .contact__meta__jscket ul #location {
+  order: 3;
+}
+.contact__page .page__inner__box .contact__box .sidepanel__text .contact__meta__jscket ul .active {
+  background-color: #5d55ce;
+}
+.contact__page .page__inner__box .contact__box .sidepanel__text .contact__meta__jscket ul .active .metasvg {
+  background-color: #433bb1;
+}
+.contact__page .page__inner__box .contact__box .sidepanel__text .contact__meta__jscket ul .contact__meta {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  cursor: pointer;
+  padding: 8px;
+  border-radius: 4px;
+  color: white;
+  transition: all 200ms ease-in-out;
+}
+.contact__page .page__inner__box .contact__box .sidepanel__text .contact__meta__jscket ul .contact__meta:hover {
+  background-color: #5d55ce;
+}
+.contact__page .page__inner__box .contact__box .sidepanel__text .contact__meta__jscket ul .contact__meta:hover .metasvg {
+  background-color: #433bb1;
+}
+.contact__page .page__inner__box .contact__box .sidepanel__text .contact__meta__jscket ul .contact__meta .metasvg {
+  width: 100%;
+  height: auto;
+  max-width: 20px;
+  padding: 10px;
+  border-radius: 50%;
+}
+.contact__page .page__inner__box .contact__box .sidepanel__text .contact__meta__jscket ul .contact__meta .info {
+  font-weight: 400;
+  color: white;
+}
+.contact__page .page__inner__box .contact__box .sidepanel__text .socials ul {
+  display: flex;
+  gap: 35px;
+}
+.contact__page .page__inner__box .contact__box .sidepanel__text .socials ul .social {
+  cursor: pointer;
+  transition: all 200ms ease-in-out;
+}
+.contact__page .page__inner__box .contact__box .sidepanel__text .socials ul .social:hover .socialsvg {
+  background-color: #5d55ce;
+}
+.contact__page .page__inner__box .contact__box .sidepanel__text .socials ul .social .socialsvg {
+  width: 100%;
+  height: auto;
+  max-width: 20px;
+  background-color: #5952B0;
+  padding: 10px;
+  border-radius: 50%;
+}
+.contact__page .page__inner__box .contact__box .contact__box__controlls {
+  flex: 1 1 65%;
+  color: black;
+  background-color: white;
+}
+.contact__page .page__inner__box .contact__box .contact__box__controlls .contact__box__input {
+  padding: 20px 30px;
+  position: relative;
+}
+.contact__page .page__inner__box .contact__box .contact__box__controlls .contact__box__input .sending__progress {
+  width: 100%;
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 100%;
+}
+.contact__page .page__inner__box .contact__box .contact__box__controlls .contact__box__input .sending__progress.hide {
+  display: none;
+}
+.contact__page .page__inner__box .contact__box .contact__box__controlls .contact__box__input .feild {
+  padding: 20px 40px;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  gap: 44px;
+}
+.contact__page .page__inner__box .contact__box .contact__box__controlls .contact__box__input .feild .MuiFormControl-root {
+  width: 100%;
+}
+.contact__page .page__inner__box .contact__box .contact__box__controlls .contact__box__input .feild.send__message__line {
+  align-items: center;
+  justify-content: space-between;
+}
+.contact__page .page__inner__box .contact__box .contact__box__controlls .contact__box__input .feild.send__message__line .err_msg {
+  font-size: 12px;
+  color: red;
+  font-weight: 700;
+}
+.contact__page .page__inner__box .contact__box .contact__box__controlls .contact__box__input .feild.send__message__line .err_msg.hidemsg {
+  display: none;
+}
+
+@media only screen and (max-width: 768px) {
+  .contact__page {
+    padding: 60px 0px 40px 0px;
+  }
+  .contact__page .page__inner__box .contact__box {
+    flex-direction: column-reverse;
+  }
+  .contact__page .page__inner__box .contact__box .sidepanel__text {
+    padding: 20px;
+  }
+  .contact__page .page__inner__box .contact__box .sidepanel__text .text__outer {
+    display: none;
+  }
+  .contact__page .page__inner__box .contact__box .contact__box__controlls {
+    min-height: 500px;
+    overflow: hidden;
+  }
+  .contact__page .page__inner__box .contact__box .contact__box__controlls .innerbox {
+    border-radius: 12px 12px 0px 0px;
+  }
+  .contact__page .page__inner__box .contact__box .contact__box__controlls .contact__box__input {
+    gap: 0px;
+    padding: 20px 10px 10px 10px;
+  }
+  .contact__page .page__inner__box .contact__box .contact__box__controlls .contact__box__input .feild {
+    padding: 20px 0px;
+    gap: 10px;
+  }
+  .contact__page .page__inner__box .contact__box .contact__box__controlls .contact__box__input .feild.send__message__line {
+    flex-direction: column;
+  }
+  .contact__page .page__inner__box .contact__box .contact__box__controlls .contact__box__input .feild.send__message__line .err_msg {
+    text-align: left;
+  }
+  .contact__page .page__inner__box .contact__box .contact__box__controlls .contact__box__input .feild.send__message__line .MuiButtonBase-root {
+    width: 100%;
+  }
+}/*# sourceMappingURL=style.css.map */

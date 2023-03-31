@@ -1,0 +1,283 @@
+.contact__page {
+
+    min-height: 500px;
+    background-color: #F8F8F8;
+    padding: 60px 40px 80px 40px;
+
+    .page__inner__box {
+        width: 100%;
+        height: 100%;
+        min-height: 500px;
+        padding: 40px 20px;
+
+
+
+        .contact__box {
+            width: 100%;
+            height: 100%;
+            min-height: 500px;
+            background-color: white;
+            border-radius: 12px;
+            box-shadow: rgba(9, 30, 66, 0.25) 0px 1px 1px, rgba(9, 30, 66, 0.13) 0px 0px 1px 1px;
+
+            display: flex;
+
+
+
+
+            .sidepanel__text {
+                display: flex;
+                flex-direction: column;
+                padding: 30px;
+                flex: 1 1 35%;
+
+                background: linear-gradient(180deg, #423B93 2.64%, #423B93 117%);
+
+                .text__outer {
+                    margin-bottom: 50px;
+
+                    .heading {
+                        font-weight: 600;
+                        font-size: 24px;
+                    }
+
+                    p {
+                        font-size: 14px;
+                        margin-top: 8px;
+                        max-width: 90%;
+                        color: rgb(226, 224, 224);
+                    }
+                }
+
+
+                .contact__meta__jscket {
+
+                    margin-bottom: 60px;
+
+                    ul {
+                        display: flex;
+                        flex-direction: column;
+                        gap: 20px;
+
+                        #mail {
+                            order: 1;
+                        }
+
+                        #call {
+                            order: 2;
+                        }
+
+                        #location {
+                            order: 3;
+                        }
+
+                        .active {
+                            background-color: #5d55ce;
+
+                            .metasvg {
+                                background-color: #433bb1;
+                            }
+                        }
+
+
+
+                        .contact__meta {
+                            display: flex;
+                            align-items: center;
+                            gap: 14px;
+                            cursor: pointer;
+                            padding: 8px;
+                            border-radius: 4px;
+                            color: white;
+
+
+
+                            transition: all 200ms ease-in-out;
+
+                            &:hover {
+
+                                background-color: #5d55ce;
+
+                                .metasvg {
+                                    background-color: #433bb1;
+                                }
+
+                            }
+
+                            .metasvg {
+                                width: 100%;
+                                height: auto;
+                                max-width: 20px;
+
+                                padding: 10px;
+                                border-radius: 50%;
+                            }
+
+                            .info {
+                                font-weight: 400;
+                                color: white;
+                            }
+                        }
+                    }
+                }
+
+
+                .socials {
+                    ul {
+                        display: flex;
+                        gap: 35px;
+
+                        .social {
+                            cursor: pointer;
+                            transition: all 200ms ease-in-out;
+
+                            &:hover {
+                                .socialsvg {
+                                    background-color: #5d55ce;
+                                }
+                            }
+
+                            .socialsvg {
+                                width: 100%;
+                                height: auto;
+                                max-width: 20px;
+                                background-color: #5952B0;
+                                padding: 10px;
+                                border-radius: 50%;
+
+
+                            }
+                        }
+                    }
+                }
+
+
+            }
+
+            .contact__box__controlls {
+                flex: 1 1 65%;
+                color: black;
+                background-color: white;
+
+
+                .contact__box__input {
+                    padding: 20px 30px;
+                    position: relative;
+
+                    .sending__progress {
+                        width: 100%;
+                        position: absolute;
+
+                        top: 0;
+                        right: 0;
+                        width: 100%;
+
+                        &.hide {
+                            display: none;
+                        }
+                    }
+
+                    .feild {
+                        padding: 20px 40px;
+                        width: 100%;
+                        height: 100%;
+                        display: flex;
+                        gap: 44px;
+
+
+                        .MuiFormControl-root {
+                            width: 100%;
+                        }
+
+                        &.send__message__line {
+                            align-items: center;
+                            justify-content: space-between;
+
+
+                            .err_msg {
+                                font-size: 12px;
+                                color: red;
+                                font-weight: 700;
+
+
+                                &.hidemsg{
+                                    display: none;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+
+
+
+
+
+
+        }
+
+
+
+    }
+}
+
+
+
+@media only screen and (max-width:768px) {
+    .contact__page {
+
+        padding: 60px 0px 40px 0px;
+
+        .page__inner__box {
+
+
+            .contact__box {
+
+                flex-direction: column-reverse;
+
+                .sidepanel__text {
+                    padding: 20px;
+
+                    .text__outer {
+                        display: none;
+                    }
+
+
+
+
+
+                }
+
+                .contact__box__controlls {
+                    min-height: 500px;
+                    overflow: hidden;
+
+                    .innerbox {
+                        border-radius: 12px 12px 0px 0px;
+                    }
+
+                    .contact__box__input {
+                        gap: 0px;
+                        padding: 20px 10px 10px 10px;
+
+                        .feild {
+                            padding: 20px 0px;
+                            gap: 10px;
+
+                            &.send__message__line {
+                                flex-direction: column;
+                                .err_msg{
+                                    text-align: left;
+                                }
+                                .MuiButtonBase-root {
+                                    width: 100%;
+                                }
+                            }
+                        }
+                    }
+
+                }
+            }
+        }
+    }
+}

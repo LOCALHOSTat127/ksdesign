@@ -1,6 +1,7 @@
 import { useState ,useEffect} from 'react'
 import "./Navbar.css";
 
+import {useNavigate} from "react-router-dom";
 
 // Importing Assets/img
 import Logo from "../../assets/svg/logo.png";
@@ -15,7 +16,7 @@ import { ReactComponent as Aboutus } from "../../assets/svg/about-us-svg.svg";
 
 
 const Navbar = ({isBGA}) => {
-
+    const navigate = useNavigate();
     const [isOpen, setOpen] = useState(0);
     const [show,handleShow] = useState(false);
 
@@ -38,7 +39,9 @@ const Navbar = ({isBGA}) => {
         <header  className={`navbar__outer ${show && "show"} ${isBGA === true ? "active__navbar" : null}`}>
             <menu className="flex flex-jcsb flex-aic deaktop__menu">
                 {/* Logo */}
-                <img src={Logo} id="logo" className="cp" />
+                <img onClick={((e) =>{
+                        navigate("/");
+                    })} src={Logo} id="logo" className="cp" />
 
                 {/* ul>li */}
                 <nav className="flex menu__list">
@@ -63,7 +66,11 @@ const Navbar = ({isBGA}) => {
                     </ul>
 
                     {/* cta button */}
-                    <button id='nav__contact__us__btn' className='flex flex-aic flex-jcsa'>
+                    <button
+                    onClick={((e) =>{
+                        navigate("/contact");
+                    })}
+                     id='nav__contact__us__btn' className='flex flex-aic flex-jcsa'>
                         Contact us
                         <MailSvg className='mail__svg' />
                     </button>

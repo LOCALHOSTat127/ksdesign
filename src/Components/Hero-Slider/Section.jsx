@@ -43,10 +43,7 @@ export const Section = () => {
 
         <div className="mainContainer">
             <div className="gradiend__left"></div>
-            <span>
-                <h2>Top Newspapers Covered.</h2>
-                <p>Publish your Ad in most popular Newspapers.</p>
-            </span>
+           
             <div className="slider__outer flex fd-col">
                 <Slider className="slider" {...settings}>
                     <div className="container">

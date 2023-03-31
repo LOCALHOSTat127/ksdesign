@@ -5,11 +5,12 @@ import './style.css';
 import StepsBar from '../smComponents/StepsBar/StepsBar';
 import EditorText from '../TextAdEDITOR/EditorText';
 import {Section as SelectADcategory} from "../SelectCategory/Section";
+import { Outlet } from 'react-router-dom';
 
 
 
 const Alignment = () => {
-    const [isActive,setActive] = React.useState(0);
+
 
     return (
         <section className="alignment__outer">
@@ -18,8 +19,7 @@ const Alignment = () => {
                     <StepsBar currentStep  isLongLable={true} />
                 </div>
                 <div className="layout__section__outer area">
-                    {isActive === 1 ? <EditorText/> : <SelectADcategory/>} 
-                    
+                    <Outlet/>
                 </div>
             </div>
         </section>
