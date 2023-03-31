@@ -1,5 +1,6 @@
 import React from 'react'
 import './style.css';
+import { useNavigate } from 'react-router-dom';
 
 
 import { TypeAnimation } from 'react-type-animation';
@@ -8,6 +9,7 @@ import { ReactComponent as RightArrow } from "../../assets/svg/right-arrow.svg";
 
 
 const HeroSection = () => {
+  const NAVIGATE = useNavigate();
   return (
     <section className='Hero__section__outer'>
       <div className="content__containor">
@@ -52,12 +54,18 @@ const HeroSection = () => {
 
 
         <div className="hero__controlls">
-          <button className="bookad__box browes__collection">
-            Brwose Services
-            <RightArrow className='btn__svg' />
-            <div className="hid__line"></div>
-          </button>
-          <button className="bookad__box">
+          <a href="#services">
+            <button className="bookad__box browes__collection">
+              Brwose Services
+              <RightArrow className='btn__svg' />
+              <div className="hid__line"></div>
+            </button>
+          </a>
+          <button
+          onClick={((e) =>{
+            NAVIGATE('/ad/select/category')
+          })} 
+          className="bookad__box">
             Book AD online
             <RightArrow className='btn__svg' />
             <div className="hid__line"></div>

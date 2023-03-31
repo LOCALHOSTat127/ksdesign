@@ -5,9 +5,9 @@ import Footer from '../Components/Footer/Footer';
 const Layout = () => {
   return (
     <>
-        <Navbar isBGA={true}/>
+        <Navbar />
         <Outlet/>
-        {/* <Footer/> */}
+        <Footer/>
     </>
   )
 }

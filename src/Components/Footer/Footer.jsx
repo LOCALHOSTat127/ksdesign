@@ -1,6 +1,7 @@
 import * as EmailValidator from 'email-validator';
 import { useState } from 'react'
 import "./style.css";
+import CircularProgress from '@mui/material/CircularProgress';
 import { ReactComponent as MailSvg } from "../../assets/svg/mail-sm.svg";
 import { ReactComponent as SendMail } from "../../assets/svg/send.svg";
 import { ReactComponent as MailSent } from "../../assets/svg/sent.svg";
@@ -46,7 +47,7 @@ const Footer = () => {
                 isSending: true,
                 isSent: true,
             }));
-        }, 3000);
+        }, 2000);
 
         setTimeout(() => {
             setState(prev => ({
@@ -61,14 +62,14 @@ const Footer = () => {
 
     return (
         <section className="footer__outer">
-            <div className="inner flex fd-col">
+            <div className="inner flex">
                 <div className="section__top section">
                     <p>Get  in touch.</p>
                     <div className={`contectus__outer flex ${(emailState.isSending === true || emailState.isSent === true) ? "on_sending" : null}`}>
                         {
                             emailState.isValid === true ?
                                 <SendMail className="svg" onClick={sendMail} /> :
-                                (emailState.isSending === true && emailState.isSent === false) ? <Loading className="svg loading"/>
+                                (emailState.isSending === true && emailState.isSent === false) ? <CircularProgress size={20} />
                             :  (emailState.isSending === true && emailState.isSent === true) ? 
                             <MailSent className="svg" /> : <MailSvg className="svg" />
                         }

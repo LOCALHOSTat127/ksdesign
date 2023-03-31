@@ -1,0 +1,90 @@
+.flex {
+  display: flex;
+}
+
+.fd-col {
+  flex-direction: column;
+}
+
+.fd-row {
+  flex-direction: row;
+}
+
+.flex-aic {
+  align-items: center;
+}
+
+.flex-jcc {
+  justify-content: center;
+}
+
+.df-aic-jcc {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.flex-jcsb {
+  justify-content: space-between;
+}
+
+.flex-jcsa {
+  justify-content: space-around;
+}
+
+.cp {
+  cursor: pointer;
+}
+
+/* ---colours */
+/* ---font-weight */
+/* ---gradients */
+.services__section {
+  width: 100%;
+  padding: 60px 110px 60px 80px;
+  margin: auto;
+  background: linear-gradient(to bottom, rgb(6, 4, 34), rgb(7, 7, 14)) !important;
+}
+.services__section .services {
+  min-height: 400px;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  grid-template-rows: auto;
+  gap: 20px;
+}
+.services__section .services .service {
+  transition: all 150ms ease;
+  border-radius: 4px;
+  background: rgba(255, 255, 255, 0.0509803922);
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+.services__section .services .service:hover {
+  background: rgba(64, 80, 226, 0.4666666667);
+}
+.services__section .services .service:hover p {
+  color: white;
+}
+.services__section .services .service img {
+  width: 100%;
+  height: auto;
+  max-width: 72px;
+}
+.services__section .services .service p {
+  color: #979797;
+}
+
+@media only screen and (max-width: 780px) {
+  .services__section {
+    padding: 60px 30px 30px 30px;
+  }
+  .services__section .services {
+    grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+    transition: all 800s ease-in-out;
+  }
+}/*# sourceMappingURL=style.css.map */

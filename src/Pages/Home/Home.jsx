@@ -6,8 +6,7 @@ import HeroSection from "../../Components/HeroSection/HeroSection";
 import {Section as AdCategory} from "../../Components/Hero-Categoty/Section";
 import {Section as ClassifiedCategory} from "../../Components/Hero-Classified-Category/Section";
 import {Section as EditorAd} from "../../Components/Hero-editor-section/Section";
-import {Section as LogoSlider} from "../../Components/Hero-Slider/Section";
-
+import ServicesSection from "../../Components/Hero-Services/ServicesSection";
 
 
 const Home = () => {
@@ -27,6 +26,7 @@ const Home = () => {
       <AdCategory/>
       <ClassifiedCategory/>
       <EditorAd/>
+      <ServicesSection/>
     </>
   )
 }

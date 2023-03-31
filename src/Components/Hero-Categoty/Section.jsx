@@ -58,10 +58,3 @@ export const Section = ({ padZero, headingNone, mt, borderRadious,ONCLICKHANDLER
 
 
 
-// <div className="grid__item  flex  flex-aic">
-// {/* <img src={Travel} alt="Tourism" className='svg' /> */}
-// <span>
-//   <p className='cat__name'>More Category</p>
-// </span>
-// </div>
-
