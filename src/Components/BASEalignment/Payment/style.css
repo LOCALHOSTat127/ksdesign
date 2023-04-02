@@ -1,0 +1,203 @@
+.payment__component {
+  width: 100%;
+  height: 100%;
+  min-height: 900px;
+  background-color: #FFFFFF;
+  box-shadow: rgba(9, 30, 66, 0.25) 0px 1px 1px, rgba(9, 30, 66, 0.13) 0px 0px 1px 1px;
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  gap: 70px;
+}
+.payment__component .component__div {
+  width: 100%;
+  height: 100%;
+  min-height: 300px;
+}
+.payment__component .component__div .heading__outer {
+  display: flex;
+  flex-flow: column;
+  gap: 3px;
+  margin-bottom: 15px;
+}
+.payment__component .component__div .heading__outer h2 {
+  color: black;
+  font-weight: 500;
+  font-size: 18px;
+}
+.payment__component .component__div .heading__outer p {
+  font-weight: 200;
+  color: #201f1f;
+  font-size: 14px;
+}
+.payment__component .component__div .inner__section {
+  height: 100%;
+  min-height: 300px;
+}
+.payment__component .component__div .inner__section.date__inner {
+  width: 100%;
+  background-color: transparent;
+  display: grid;
+  grid-template-columns: 0.25fr 0.75fr;
+  grid-template-rows: 0.8fr 0.2fr;
+  gap: 15px;
+}
+.payment__component .component__div .inner__section.date__inner .calender {
+  border-radius: 4px;
+  grid-column: 1/2;
+  grid-row: 1/2;
+  grid-area: "CALENDER";
+  background-color: #EBEBEB;
+}
+.payment__component .component__div .inner__section.date__inner .offers {
+  grid-column: 2/3;
+  border-radius: 4px;
+  grid-row: 1/2;
+  grid-area: "OFFERS";
+  background-color: #EBEBEB;
+  padding: 10px;
+}
+.payment__component .component__div .inner__section.date__inner .offers .flatter__row {
+  background-color: #cccccc;
+  width: -moz-fit-content;
+  width: fit-content;
+  padding: 8px;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: black;
+  font-weight: 500;
+}
+.payment__component .component__div .inner__section.date__inner .offers .flatter__row .sm__svg {
+  background-color: white;
+  width: 100%;
+  height: auto;
+  max-width: 24px;
+  padding: 4px;
+  border-radius: 50%;
+}
+.payment__component .component__div .inner__section.date__inner .selected__dates__row {
+  grid-column: 1/-1;
+  border-radius: 4px;
+  grid-row: 2/3;
+  grid-area: "DATES";
+  background-color: #EBEBEB;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding: 0px 10px;
+  overflow-x: scroll;
+}
+.payment__component .component__div .inner__section.date__inner .selected__dates__row .date {
+  background-color: black;
+  position: relative;
+  max-width: 130px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px 12px;
+  gap: 10px;
+  border-radius: 4px;
+  min-width: 130px;
+}
+.payment__component .component__div .inner__section.date__inner .selected__dates__row .date .sm__svg {
+  right: 0;
+  top: 0;
+  width: 100%;
+  height: auto;
+  max-width: 10px;
+  cursor: pointer;
+  padding: 4px;
+  transition: all 120ms ease;
+  border: 2px;
+}
+.payment__component .component__div .inner__section.date__inner .selected__dates__row .date .sm__svg path {
+  fill: white;
+}
+.payment__component .component__div .inner__section.date__inner .selected__dates__row .date .sm__svg:hover {
+  background-color: rgba(255, 255, 255, 0.267);
+}
+.payment__component .component__div .inner__section.date__inner .selected__dates__row .date .date__meta {
+  color: white;
+  font-weight: 600;
+  font-size: 14px;
+}
+.payment__component .component__div .inner__section.docs__inner {
+  display: grid;
+  grid-template-rows: 1fr;
+  grid-template-columns: 0.6fr 0.4fr;
+  gap: 15px;
+  max-height: 300px;
+  background-color: transparent;
+}
+.payment__component .component__div .inner__section.docs__inner .docs__upload {
+  background-color: #EBEBEB;
+  border-radius: 4px;
+  padding: 10px;
+  display: flex;
+  gap: 35px;
+  flex-direction: column;
+  overflow-y: scroll;
+}
+.payment__component .component__div .inner__section.docs__inner .docs__upload .upload__blob {
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #CCCCCC;
+  padding: 8px 15px;
+}
+.payment__component .component__div .inner__section.docs__inner .docs__upload .upload__blob .meta__info .file__title {
+  color: black;
+  font-size: 16px;
+  font-weight: 600;
+}
+.payment__component .component__div .inner__section.docs__inner .docs__upload .upload__blob .meta__info .minor__data__notes {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.payment__component .component__div .inner__section.docs__inner .docs__upload .upload__blob .meta__info .minor__data__notes .file__size {
+  color: red;
+  font-weight: 500;
+  text-transform: capitalize;
+  font-size: 13px;
+}
+.payment__component .component__div .inner__section.docs__inner .docs__upload .upload__blob .meta__info .minor__data__notes .available__file__fontmats {
+  font-weight: 500;
+  text-transform: capitalize;
+  font-size: 13px;
+  color: black;
+  background-color: white;
+  padding: 2px 8px;
+  border-radius: 2px;
+}
+.payment__component .component__div .inner__section.docs__inner .docs__info {
+  background-color: #EBEBEB;
+  border-radius: 4px;
+  padding: 25px;
+  display: flex;
+  align-items: center;
+}
+.payment__component .component__div .inner__section.docs__inner .docs__info p {
+  color: black;
+}
+.payment__component .component__div .inner__section.docs__inner .docs__info p span {
+  font-weight: 600;
+}
+.payment__component .component__div .inner__section.payment__inner {
+  min-height: 450px;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 0.2fr 0.8fr;
+  gap: 14px;
+}
+.payment__component .component__div .inner__section.payment__inner .ad__symmary {
+  background-color: #EBEBEB;
+  border-radius: 4px;
+}
+.payment__component .component__div .inner__section.payment__inner .payment__summary {
+  background-color: #EBEBEB;
+  border-radius: 4px;
+}/*# sourceMappingURL=style.css.map */

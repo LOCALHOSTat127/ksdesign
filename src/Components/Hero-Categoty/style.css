@@ -47,6 +47,9 @@
   background: linear-gradient(45deg, #041260, #090020, rgba(74, 34, 34, 0.9882352941));
   color: white;
 }
+.home__page__second__section.transBG {
+  background: transparent;
+}
 .home__page__second__section .section__heading {
   position: relative;
 }

@@ -11,7 +11,7 @@ import EditorText from "./Components/BASEalignment/TextAdEDITOR/EditorText";
 import ADselectionConfigLayout from "./Pages/ADselectionConfigLayout";
 import { Section as SelectADcategory } from "./Components/BASEalignment/SelectCategory/Section";
 import SelectAdType from "./Components/BASEalignment/SelectAdType/SelectAdType";
-
+import PaymentComponent from "./Components/BASEalignment/Payment/Payment";
 
 import { AnimatePresence } from "framer-motion";
 
@@ -37,7 +37,7 @@ const App = () => {
                     <Route path="textdisplayad" element={<h1>Display AD</h1>}/>
                 </Route>
                 <Route path="publish">
-                  <Route path="Payment" element={<h1>Payment</h1>} />
+                  <Route path="Payment" element={<PaymentComponent/>} />
                   <Route path="redirect_payment" element={<h1>Payment Status</h1>} />
                 </Route>
               </Route>

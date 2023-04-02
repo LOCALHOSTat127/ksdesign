@@ -16,11 +16,11 @@ import Select from '@mui/material/Select';
 
 
 const EditorText = () => {
- 
 
 
 
-    
+
+
 
 
     const HEADING__CONFIG = {
@@ -413,9 +413,8 @@ const EditorText = () => {
     const [isBorderOn, setBorder] = useState(false);
     const [ADTEXT, handleADTEXT] = useState("");
     const [words, setWords] = useState(0);
-    const [lines, setLines] = useState(0);
-    const [chars, setChars] = useState(0);
     const [price, setPrice] = useState(0);
+    const [chars, setChars] = useState(0);
     const [iseEmailAdded, setEmailAddition] = useState(0);
 
     const handlePreview = () => {
@@ -456,13 +455,11 @@ const EditorText = () => {
             })
 
 
-            ADTEXT.split("\n").forEach(line => {
-                linescount += 1;
-            })
+
         }
         setWords((count) => count = wordscount);
         setChars((count) => count = charscount);
-        setLines((count) => count = linescount);
+
 
     }
 
@@ -470,7 +467,7 @@ const EditorText = () => {
 
     return (
         <section
-            
+
             data-editor-type="classified-text-ad" className="TextEditor__ground">
             {/* Editro-box/Preiew/controlls/HeadingPrice */}
             <div className="main__upper__containor">
@@ -478,7 +475,7 @@ const EditorText = () => {
                 <div className={`edit_n_preview__outer ${showPreview && "toggle__preview"}`}>
                     <div className="textad__area">
                         <textarea
-                         
+
                             onChange={handleTyping}
                             placeholder='Type your AD here...'
                             name="text__body"
@@ -685,11 +682,14 @@ const EditorText = () => {
                     </p>
 
                     <p className="words__outer stat__outer__mobile__stat lines">
-                        <p className="int lines">{lines}</p>
+                        <p style={{
+
+                            color: "rgb(9 112 0)",
+                        }} className="int lines">₹{"   "}{price}</p>
                         <p className="sep_cover">
                             <div className="sep"></div>
                             <p className="stat__outer__mobile__stat__name">
-                                Lines
+                                AD Cost
                             </p>
                         </p>
                     </p>
@@ -915,7 +915,7 @@ const EditorText = () => {
                     </div>
                 </div>
             </div>
-        </section>
+        </section >
     )
 }
 

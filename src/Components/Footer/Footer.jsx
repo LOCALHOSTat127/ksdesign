@@ -5,9 +5,9 @@ import CircularProgress from '@mui/material/CircularProgress';
 import { ReactComponent as MailSvg } from "../../assets/svg/mail-sm.svg";
 import { ReactComponent as SendMail } from "../../assets/svg/send.svg";
 import { ReactComponent as MailSent } from "../../assets/svg/sent.svg";
-
-// NOTE : Change Loading Icon
-import { ReactComponent as Loading } from "../../assets/svg/mail-sm.svg";
+import { ReactComponent as FooterLogo } from "../../assets/svg/white_footer_logo.svg";
+import { ReactComponent as LocationSvg } from "../../assets/svg/location-sm.svg";
+import { ReactComponent as CallSvg } from "../../assets/svg/call-grey-sm.svg";
 
 const Footer = () => {
     const [emailState, setState] = useState({
@@ -36,7 +36,7 @@ const Footer = () => {
         document.getElementById('email__feild__footer').value = "";
         setState(prev => ({
             ...prev,
-            isValid : false,
+            isValid: false,
             isSending: true,
             isSent: false,
         }));
@@ -70,8 +70,8 @@ const Footer = () => {
                             emailState.isValid === true ?
                                 <SendMail className="svg" onClick={sendMail} /> :
                                 (emailState.isSending === true && emailState.isSent === false) ? <CircularProgress size={20} />
-                            :  (emailState.isSending === true && emailState.isSent === true) ? 
-                            <MailSent className="svg" /> : <MailSvg className="svg" />
+                                    : (emailState.isSending === true && emailState.isSent === true) ?
+                                        <MailSent className="svg" /> : <MailSvg className="svg" />
                         }
                         <input id='email__feild__footer' disabled={emailState.isSending === true ? true : false} onChange={(e) => {
                             setState(prev => ({
@@ -81,9 +81,26 @@ const Footer = () => {
                             handleSubmit();
                         }} type="text" placeholder='youemail@email.com' />
                     </div>
+
+                    <p className="copyright">&copy; All rights reserved 2023</p>
                 </div>
                 <div className="section__bottom section">
-                    {/* bottom */}
+                    <FooterLogo className='footer__logo' />
+                    <p className="footer_head">Digital Marketing & Graphic designing Company.</p>
+
+                    <div className="footer__contact__info">
+                        <div>
+                            <LocationSvg className='sm__svg' />
+                            <p>
+                                95, Jaisinghpura khor, jaipur, Rajasthan
+                                (302002).
+                            </p>
+                        </div>
+                        <div>
+                            <CallSvg className='sm__svg'/>
+                            <p>+91 9950696910</p>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>

@@ -3,8 +3,11 @@ import Box from '@mui/material/Box';
 import Stepper from '@mui/material/Stepper';
 import Step from '@mui/material/Step';
 import StepButton from '@mui/material/StepButton';
+import "./style.css";
 const steps = ['Selete', 'Compose AD', 'Publish'];
 const longSteps = ['Selete Newspaper','Compose AD','Payment & Publish'];
+
+
 
 const StepsBar = () => {
     const [activeStep, setActiveStep] = useState(0);
@@ -15,18 +18,24 @@ const StepsBar = () => {
     };
 
     return (
-        < Box  sx={{ width: '100%' }
-        }>
+        < Box  sx={{ width: '100%'}}>
             <Stepper nonLinear activeStep={activeStep}>
                 {steps.map((label, index) => (
-                    <Step key={label} completed={completed[index]} style={{
+                    <Step sx={{
+                        '&.MuiStepLabel-iconContainer' :{
+                            fill : "white",
+                        }
+                    }}
+                     key={label} completed={completed[index]} style={{
                         display:'flex',
                         flexDirection : "column",
                         alignItems:"center",
                         justifyContent:"cemter"
                     }}>
-                        <StepButton id="muistepbtn"  color="$txtclr" >
-                            <p>{label}</p>
+                        <StepButton id="muistepbtn" >
+                            <p style={{
+                                color  : "white"
+                            }}>{label}</p>
                         </StepButton>
                     </Step>
                 ))}

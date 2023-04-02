@@ -19,7 +19,7 @@ export const Section = () => {
             </div>
 
             <div className="category__list">
-                <CategoryList padZero={1} ONCLICKHANDLER={alerrt} headingNone={1} mt={10} borderRadious={4} />
+                <CategoryList padZero={1} ONCLICKHANDLER={alerrt} headingNone={1} mt={10} borderRadious={4} bgnone={true} />
             </div>
         </section>
     )

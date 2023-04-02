@@ -3,14 +3,14 @@ import "./style.css";
 import categories from "../../data/categories.json";
 
 
-export const Section = ({ padZero, headingNone, mt, borderRadious,ONCLICKHANDLER }) => {
+export const Section = ({ padZero, headingNone, mt, borderRadious,ONCLICKHANDLER ,bgnone}) => {
 
   return (
     <section
       style={{
         padding: `${padZero === 1 ? "0px" : null}`,
       }}
-      className='home__page__second__section' id='category'>
+      className={`home__page__second__section ${bgnone && 'transBG'}`} id='category'>
       <span style={{
         display: `${headingNone && "none"}`
       }} className='section__heading'>

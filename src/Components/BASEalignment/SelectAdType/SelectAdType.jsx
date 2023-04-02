@@ -36,7 +36,7 @@ const SelectAdType = () => {
                 width: "100%",
                 borderRadious: "none",
                 color: "white",
-                backgroundColor: "black",
+                backgroundColor: "#bd0975",
                 textTransform: "uppercase",
                 fontWeight: "600"
 
@@ -72,7 +72,7 @@ const SelectAdType = () => {
                 width: "100%",
                 borderRadious: "none",
                 color: "white",
-                backgroundColor: "black",
+                backgroundColor: "#bd0975",
                 textTransform: "uppercase",
                 fontWeight: "600"
 
@@ -107,7 +107,7 @@ const SelectAdType = () => {
                 width: "100%",
                 borderRadious: "none",
                 color: "white",
-                backgroundColor: "black",
+                backgroundColor: "#bd0975",
                 textTransform: "uppercase",
                 fontWeight: "600"
 
@@ -123,6 +123,7 @@ const SelectAdType = () => {
               </Button>
             </div>
           </div>
+        
         </div>
       </div>
     </section>
