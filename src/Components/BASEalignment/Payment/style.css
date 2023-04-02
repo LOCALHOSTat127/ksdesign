@@ -90,6 +90,7 @@
   overflow-x: scroll;
 }
 .payment__component .component__div .inner__section.date__inner .selected__dates__row .date {
+  cursor: pointer;
   background-color: black;
   position: relative;
   max-width: 130px;
@@ -100,8 +101,25 @@
   gap: 10px;
   border-radius: 4px;
   min-width: 130px;
+  transition: all 180ms ease-in-out;
+}
+.payment__component .component__div .inner__section.date__inner .selected__dates__row .date:hover::before {
+  content: "Delete";
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  font-weight: 600;
+  font-size: 14px;
+  left: 0;
+  top: 0;
+  background-color: rgba(255, 0, 0, 0.89);
+  position: absolute;
+  border-radius: 4px;
 }
 .payment__component .component__div .inner__section.date__inner .selected__dates__row .date .sm__svg {
+  display: none;
   right: 0;
   top: 0;
   width: 100%;
@@ -136,7 +154,7 @@
   border-radius: 4px;
   padding: 10px;
   display: flex;
-  gap: 35px;
+  gap: 15px;
   flex-direction: column;
   overflow-y: scroll;
 }
@@ -196,8 +214,166 @@
 .payment__component .component__div .inner__section.payment__inner .ad__symmary {
   background-color: #EBEBEB;
   border-radius: 4px;
+  display: grid;
+  -moz-column-gap: 8px;
+       column-gap: 8px;
+  grid-template-columns: 0.2fr 0.8fr;
+  grid-template-rows: 0.5fr 0.5fr;
 }
-.payment__component .component__div .inner__section.payment__inner .payment__summary {
+.payment__component .component__div .inner__section.payment__inner p {
+  color: black;
+  font-variant: all-petite-caps;
+  font-weight: 600;
+  font-size: 20px;
+}
+.payment__component .component__div .inner__section.payment__inner .upper {
+  grid-column: 1/2;
+  grid-row: 1/2;
+  background-color: #D4D4D4;
+  padding: 15px 30px;
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid rgb(167, 167, 167);
+}
+.payment__component .component__div .inner__section.payment__inner .lower {
+  padding: 15px 30px;
+  background-color: #D4D4D4;
+  grid-column: 1/2;
+  display: flex;
+  align-items: center;
+  grid-row: 2/3;
+}
+.payment__component .component__div .inner__section.payment__inner .contant {
+  color: black;
+  font-size: 18px;
+  font-weight: 400;
+}
+.payment__component .component__div .inner__section.payment__inner .ad_Cat {
+  padding: 0px 10px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  grid-column: 2/3;
+  grid-row: 1/2;
+  border-bottom: 1px solid rgb(202, 202, 202);
+}
+.payment__component .component__div .inner__section.payment__inner .ad_txt {
+  padding: 6px 4px;
+  grid-column: 2/3;
+  grid-row: 2/3;
+}
+.payment__component .component__div .inner__section .payment__summary {
   background-color: #EBEBEB;
   border-radius: 4px;
+  display: grid;
+  grid-template-columns: 0.7fr 0.3fr;
+  grid-template-rows: 1fr;
+}
+.payment__component .component__div .inner__section .payment__summary .location_ {
+  grid-column: 1/2;
+  grid-row: 1/2;
+  border-right: 1px solid rgb(202, 202, 202);
+  display: flex;
+  flex-direction: column;
+}
+.payment__component .component__div .inner__section .payment__summary .location_ .locations {
+  padding: 10px 50px;
+  display: flex;
+  flex-direction: column;
+}
+.payment__component .component__div .inner__section .payment__summary .location_ .locations .paper__editions {
+  margin-bottom: 8px;
+  list-style-type: disc;
+  color: black;
+}
+.payment__component .component__div .inner__section .payment__summary .location_ .header {
+  padding: 10px 30px;
+  flex: 1 1 20%;
+  background-color: #D4D4D4;
+  width: 100%;
+}
+.payment__component .component__div .inner__section .payment__summary .location_ .header p {
+  font-weight: 500;
+  color: black;
+}
+.payment__component .component__div .inner__section .payment__summary .location_ .locations {
+  flex: 1 1 80%;
+}
+.payment__component .component__div .inner__section .payment__summary .payment__summary_info {
+  grid-column: 2/3;
+  grid-row: 1/2;
+  padding: 0px;
+  display: flex;
+  flex-direction: column;
+}
+.payment__component .component__div .inner__section .payment__summary .payment__summary_info .header {
+  padding: 10px 30px;
+  background-color: #D4D4D4;
+  width: 100%;
+}
+.payment__component .component__div .inner__section .payment__summary .payment__summary_info .header p {
+  font-weight: 500;
+  color: black;
+}
+.payment__component .component__div .inner__section .payment__summary .payment__summary_info .cost__summary {
+  height: 100%;
+  padding: 15px 30px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.payment__component .component__div .inner__section .payment__summary .payment__summary_info .cost__summary .summary__item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.payment__component .component__div .inner__section .payment__summary .payment__summary_info .cost__summary .summary__item p {
+  font-weight: unset;
+  font-variant: none;
+  text-transform: capitalize;
+  font-size: 15px;
+}
+.payment__component .component__div .inner__section .payment__summary .payment__summary_info .cost__summary .summary__item .int__value {
+  font-size: 16px;
+  font-weight: 600;
+}
+.payment__component .component__div .inner__section .payment__summary .payment__summary_info .cost__summary .payment__btn {
+  border: none;
+  border-radius: 3px;
+  background: black;
+  color: white;
+  display: flex;
+  align-items: center;
+  font-weight: 800;
+  font-variant: all-petite-caps;
+  font-size: 22px;
+  justify-content: space-between;
+  padding: 6px 18px;
+  cursor: pointer;
+}
+.payment__component .component__div .inner__section .payment__summary .payment__summary_info .cost__summary .payment__btn:hover .heilight {
+  background: #272727;
+}
+.payment__component .component__div .inner__section .payment__summary .payment__summary_info .cost__summary .payment__btn:hover .heilight .sm__svg {
+  right: 0;
+}
+.payment__component .component__div .inner__section .payment__summary .payment__summary_info .cost__summary .payment__btn .heilight {
+  display: flex;
+  background: #242424;
+  border-radius: 2px;
+  padding: 4px 31px 4px 6px;
+  position: relative;
+}
+.payment__component .component__div .inner__section .payment__summary .payment__summary_info .cost__summary .payment__btn .heilight .total__final__price {
+  color: #50D200;
+  font-weight: 600;
+}
+.payment__component .component__div .inner__section .payment__summary .payment__summary_info .cost__summary .payment__btn .heilight .sm__svg {
+  position: absolute;
+  right: 5px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 100%;
+  height: auto;
+  max-width: 24px;
 }/*# sourceMappingURL=style.css.map */
