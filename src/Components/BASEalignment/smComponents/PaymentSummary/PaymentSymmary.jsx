@@ -22,6 +22,7 @@ const PaymentSymmary = () => {
             return 0;
         }
 
+        
 
         let new_order = await Payment_Provider.generateNewOrder({
             amount: 50000,
@@ -30,6 +31,8 @@ const PaymentSymmary = () => {
             customer_email: "sahiljoshi6378@gmail.com",
             customer_phone: "7852099185",
         });
+
+       
 
         let options = Payment_Provider.init_payment_options(new_order);
         // opening-payment-box

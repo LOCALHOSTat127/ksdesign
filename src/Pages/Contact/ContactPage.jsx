@@ -1,4 +1,4 @@
-import { useState, useRef } from 'react'
+import { useState, useRef, useEffect } from 'react'
 import "./style.css";
 import 'leaflet/dist/leaflet.css';
 import validator from 'validator';
@@ -32,6 +32,9 @@ const position = [26.952338, 75.869942];
 
 
 const ContactPage = () => {
+   
+
+
     // Set config defaults when creating the instance
     const instance = axios.create({
         baseURL: 'http://172.20.10.2:5050'

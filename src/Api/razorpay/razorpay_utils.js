@@ -1,7 +1,8 @@
 import axios from 'axios';
 import { InvoiceNumber } from 'invoice-number'
-export default class Payment_Provider {
 
+export default class Payment_Provider {
+    
     // class-variables
     static payment_script_class_ids = [];
     static payment_script_urls = [
@@ -129,9 +130,11 @@ export default class Payment_Provider {
             currency: new_order?.currency,
             name: "KSdesign",
             description: new_order?.description,
-            callback_url: null,
             handler: function (response) {
-                console.log(response);
+                //  store paymet_response into db insted of alert and then redirect to verify page.
+                // retrive these details on that page and verify on server.
+                alert(response.razorpay_payment_id);
+                window.location.href = "http://172.20.10.2:3001";
             },
             image: "https://assets.stickpng.com/images/62cc1d95150d5de9a3dad5fa.png",
             // order_id: new_order.order_id,
