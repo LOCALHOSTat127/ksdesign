@@ -2,6 +2,8 @@ import { useState } from 'react'
 import "./style.css";
 
 
+
+
 import SelectDateSection from "../smComponents/SelectDatesSection/SelectDateSection";
 import FileSection from '../smComponents/FileSection/FileSection';
 import PaymentSymmary from "../smComponents/PaymentSummary/PaymentSymmary";
@@ -37,6 +39,10 @@ const PaymentComponent = () => {
         err_code: 200,
         isErr: true
     });
+
+
+
+
 
     return (
 

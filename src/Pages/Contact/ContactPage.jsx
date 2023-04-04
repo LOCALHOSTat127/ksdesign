@@ -1,4 +1,4 @@
-import { useState , useRef} from 'react'
+import { useState, useRef } from 'react'
 import "./style.css";
 import 'leaflet/dist/leaflet.css';
 import validator from 'validator';
@@ -23,6 +23,7 @@ import Button from '@mui/material/Button';
 import LinearProgress from '@mui/material/LinearProgress';
 
 import SendIcon from '@mui/icons-material/Send';
+import axios from 'axios';
 
 
 
@@ -31,6 +32,16 @@ const position = [26.952338, 75.869942];
 
 
 const ContactPage = () => {
+    // Set config defaults when creating the instance
+    const instance = axios.create({
+        baseURL: 'http://172.20.10.2:5050'
+    });
+
+    // Alter defaults after instance has been created
+    instance.defaults.headers.common['Authorization'] = "ASHJSFDNJKDBFKJD1651651";
+
+
+
     const [isMapActive, setMap] = useState(0);
     const [isSending, setSending] = useState(0);
     const [isError, setError] = useState({
@@ -79,12 +90,12 @@ const ContactPage = () => {
 
 
     const isValidPhone = (phoneNumber) => {
-        if(phoneNumber.length > 10 || phoneNumber.length < 10){
+        if (phoneNumber.length > 10 || phoneNumber.length < 10) {
             return false;
         }
-        
-        for(let i=0; i<phoneNumber.length; i++){
-            if(validator.isNumeric(phoneNumber[i]) == false){
+
+        for (let i = 0; i < phoneNumber.length; i++) {
+            if (validator.isNumeric(phoneNumber[i]) == false) {
                 return false;
             }
         }
@@ -92,8 +103,8 @@ const ContactPage = () => {
     }
 
     const checkErr = () => {
-        
-        if(msgConfig.first_name.length < 5){
+
+        if (msgConfig.first_name.length < 5) {
             setError(prev => ({
                 ERR_CODE: 3,
                 ERR_MSG: "Invalid First Name",
@@ -102,7 +113,7 @@ const ContactPage = () => {
             return false;
         }
 
-        if(msgConfig.last_name.length < 5){
+        if (msgConfig.last_name.length < 5) {
             setError(prev => ({
                 ERR_CODE: 4,
                 ERR_MSG: "Invalid Last Name",
@@ -111,7 +122,7 @@ const ContactPage = () => {
             return false;
         }
 
-        if(msgConfig.reason_to_contact.length < 5){
+        if (msgConfig.reason_to_contact.length < 5) {
             setError(prev => ({
                 ERR_CODE: 5,
                 ERR_MSG: "Please Select Reason to Contact.",
@@ -149,9 +160,40 @@ const ContactPage = () => {
         return true;
     }
 
-    const handleSubmitForm = () =>{
-        if(checkErr() === true){
-            setSending((prev) => prev = 1);
+    const handleSubmitForm = async () => {
+        if (checkErr() === true) {
+            setSending(1);
+            let response = await instance({
+                method: 'post',
+                url: "communication/send_sm_email",
+                data: {
+                    first_name: msgConfig.first_name,
+                    last_name: msgConfig.last_name,
+                    phone: msgConfig.phone,
+                    user_email: msgConfig.emailid,
+                    reason_to_contact: msgConfig.reason_to_contact
+                }
+            })
+
+            if (response.data.status != 200) {
+                setSending(0);
+                setError(prev => ({
+                    ERR_CODE: response.data.status,
+                    ERR_MSG: response.data.msg,
+                    isERR: true
+                }))
+            } else {
+                setSending(0);
+                setMsgConfig((prev) => ({
+                    first_name: "",
+                    last_name: "",
+                    emailid: "",
+                    phone: "",
+                    reason_to_contact: ""
+                }))
+
+            }
+
         }
     }
 
@@ -234,7 +276,7 @@ const ContactPage = () => {
                                     <div className={`sending__progress ${!isSending && "hide"}`}>
                                         <LinearProgress color="secondary" />
                                     </div>
-                                
+
                                     <div className="name__line feild">
                                         <TextField
                                             required
@@ -299,13 +341,13 @@ const ContactPage = () => {
                                         <FormControl>
                                             <FormLabel id="row-radio-buttons-group-label">Reasone to Contact us</FormLabel>
                                             <RadioGroup
-                                            
+
                                                 row
                                                 aria-labelledby="row-radio-buttons-group-label"
                                                 name="row-radio-buttons-group"
                                             >
                                                 <FormControlLabel
-                                                 disabled={isSending && true}
+                                                    disabled={isSending && true}
                                                     onChange={((e) => {
                                                         setMsgConfig(prev => ({
                                                             ...prev,
@@ -314,7 +356,7 @@ const ContactPage = () => {
                                                     })}
                                                     value="Newspaper AD" control={<Radio />} label="Newspaper AD" />
                                                 <FormControlLabel
-                                                 disabled={isSending && true}
+                                                    disabled={isSending && true}
                                                     onChange={((e) => {
                                                         setMsgConfig(prev => ({
                                                             ...prev,
@@ -323,7 +365,7 @@ const ContactPage = () => {
                                                     })}
                                                     value="Graphic Designing" control={<Radio />} label="Graphic Designing" />
                                                 <FormControlLabel
-                                                 disabled={isSending && true}
+                                                    disabled={isSending && true}
                                                     onChange={((e) => {
                                                         setMsgConfig(prev => ({
                                                             ...prev,
