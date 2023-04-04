@@ -34,7 +34,7 @@ export default class Payment_Provider {
 
             document.body.appendChild(script);
         })
-
+        console.clear();
         return true;
     }
 
@@ -44,9 +44,10 @@ export default class Payment_Provider {
         this.payment_script_class_ids.forEach((ids, index) => {
             ;
             document.getElementsByClassName(ids)[0].remove();
-            console.clear();
             console.log(`payment_script_${index} unloaded`);
         })
+
+        console.clear();
     }
 
 
@@ -84,7 +85,6 @@ export default class Payment_Provider {
                 isOrderCreated: false,
             }
         } else {
-            console.log(`id : ${new_order.data.id}`);
             return {
                 isOrderCreated: true,
                 order_id: new_order.data.id,
@@ -92,14 +92,33 @@ export default class Payment_Provider {
                 amount: new_order.data.amount,
                 currency: new_order?.data?.currency,
                 payment_status: new_order?.data?.status,
-                customer_name : order_config?.customer_name,
-                customer_email : order_config?.customer_email,
-                customer_phone : order_config?.customer_phone,
-                description : "Test Transisation",
-                cb_url : "http://172.20.10.2:3000",
+                customer_name: order_config?.customer_name,
+                customer_email: order_config?.customer_email,
+                customer_phone: order_config?.customer_phone,
+                description: "Test Transisation",
+                cb_url: "http://172.20.10.2:3000",
+                on_popup_close: this.handle_popup_closed,
             }
         }
     }
+
+
+    // on_popup_closed
+    static handle_popup_closed = () => {
+        // display error on screen 
+        // and ask for payment retry.
+        // if yes. reinitiate_payment.
+        // else, redirect
+        alert("Popup closed by you...");
+        
+        // store paymet config in globle store
+        // re-initiate payment with same order_id if user says yes otherwise redirect.
+ 
+    }
+
+
+    
+
 
 
     // init_payment_box
@@ -110,7 +129,10 @@ export default class Payment_Provider {
             currency: new_order?.currency,
             name: "KSdesign",
             description: new_order?.description,
-            callback_url: new_order?.cb_url,
+            callback_url: null,
+            handler: function (response) {
+                console.log(response);
+            },
             image: "https://assets.stickpng.com/images/62cc1d95150d5de9a3dad5fa.png",
             // order_id: new_order.order_id,
             prefill: {
@@ -123,6 +145,11 @@ export default class Payment_Provider {
             },
             theme: {
                 color: "#3399cc"
+            },
+            "modal": {
+                "ondismiss": function () {
+                    new_order.on_popup_close();
+                }
             }
         }
 
@@ -130,11 +157,10 @@ export default class Payment_Provider {
     }
 
 
+
     // open_payment_box
-    static open_payment_window = (payment_options) =>{
+    static open_payment_window = (payment_options) => {
         let rzp_window = window.Razorpay(payment_options);
         rzp_window.open();
-      
-     
     }
 }

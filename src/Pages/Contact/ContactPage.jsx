@@ -165,7 +165,7 @@ const ContactPage = () => {
             setSending(1);
             let response = await instance({
                 method: 'post',
-                url: "communication/send_sm_email",
+                url: "/communication/full_contact_query",
                 data: {
                     first_name: msgConfig.first_name,
                     last_name: msgConfig.last_name,
