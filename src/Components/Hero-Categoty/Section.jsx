@@ -1,4 +1,3 @@
-import { useState, useEffect } from 'react'
 import "./style.css";
 import categories from "../../data/categories.json";
 
@@ -24,14 +23,14 @@ export const Section = ({ padZero, headingNone, mt, borderRadious,ONCLICKHANDLER
           categories.map(({ id, src, alt, name, decs ,category__id}) => {
             return (
               <>
-                <div style={{
+                <div key={id} style={{
                   
                   borderRadius: `${borderRadious && borderRadious}px`,
                 }} 
                 onClick={ONCLICKHANDLER}
                 data-cid={category__id}
                 data-cname={name}
-                key={id} id={id} className="grid__item  flex  flex-aic">
+                 className="grid__item  flex  flex-aic">
                   <img src={process.env.PUBLIC_URL + src} alt={alt} className='svg' />
                   <span>
                     <p className='cat__name'>{name}</p>
@@ -45,7 +44,7 @@ export const Section = ({ padZero, headingNone, mt, borderRadious,ONCLICKHANDLER
             )
           })}
         <div className="grid__item  flex  flex-aic flex-jcc">
-          <span style={{
+          <span key={123} style={{
             alignItems: "center"
           }}>
             <p className='cat__name'>More Category</p>

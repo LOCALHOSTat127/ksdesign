@@ -12,7 +12,7 @@ export const Section = () => {
             <h2 className="heading">Book Classified Text/Display Ads</h2>
             <div className="cards">
                 {classified_cards &&
-                    classified_cards.map(({ id, heading, btn_txt, bg_img, desc, TO_DIRECT }) => {
+                    classified_cards.map(({ id, heading, bg_img, desc, TO_DIRECT }) => {
                         return (
                             <>
                                 <div  key={id} id={id}  className="card">

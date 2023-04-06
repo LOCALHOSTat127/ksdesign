@@ -6,7 +6,10 @@ import CircularProgress from '@mui/material/CircularProgress';
 import { ReactComponent as RightArrow } from "../../../../assets/svg/right-arrow.svg";
 
 
+
 const PaymentSymmary = () => {
+  
+
     const [paymentInitilising, setPaymentInitilized] = useState(false);
 
     // Handling-payment-initilization
@@ -38,9 +41,9 @@ const PaymentSymmary = () => {
         // opening-payment-box
         Payment_Provider.open_payment_window(options);
         Payment_Provider.unloadPaymentScript();
-    
-
+      
         setPaymentInitilized(false);
+        
 
 
     }

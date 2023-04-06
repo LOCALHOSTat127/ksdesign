@@ -16,7 +16,7 @@ const Alignment = () => {
         <section className="alignment__outer">
             <div className="alignment__inner">
                 <div className="stepsbar__outer area flex flex-aic">
-                    <StepsBar currentStep  isLongLable={true} />
+                    <StepsBar currentStep={1}  isLongLable={true} />
                 </div>
                 <div className="layout__section__outer area">
                     <Outlet/>

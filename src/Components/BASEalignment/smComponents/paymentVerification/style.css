@@ -1,0 +1,114 @@
+.payment_verification {
+  width: 100%;
+  height: 100%;
+  color: black;
+  background-color: #FFFFFF;
+  box-shadow: rgba(9, 30, 66, 0.25) 0px 1px 1px, rgba(9, 30, 66, 0.13) 0px 0px 1px 1px;
+  padding: 20px;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 0.1fr 0.9fr;
+}
+.payment_verification .heading__outer {
+  display: flex;
+  flex-flow: column;
+  gap: 3px;
+  margin-bottom: 15px;
+}
+.payment_verification .heading__outer h2 {
+  color: black;
+  font-weight: 600;
+  font-size: 18px;
+}
+.payment_verification .heading__outer p {
+  font-weight: 200;
+  color: #201f1f;
+  font-size: 14px;
+}
+.payment_verification .payment_status_component {
+  min-height: 300px;
+  width: 100%;
+  height: 100%;
+  display: grid;
+  grid-template-columns: 0.6fr 0.4fr;
+  grid-template-rows: 1fr;
+}
+.payment_verification .payment_status_component .status_indigator {
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+}
+.payment_verification .payment_status_component .status_indigator .redirect_timer {
+  display: none;
+  background: rgba(154, 141, 215, 0.2901960784);
+  margin-top: 24px;
+  width: -moz-fit-content;
+  width: fit-content;
+  padding: 3px 13px;
+  border-radius: 4px;
+  color: #0b004f;
+  font-size: 18px;
+  letter-spacing: 1px;
+  /* text-transform: capitalize; */
+  font-variant: all-small-caps;
+  font-weight: 700;
+}
+.payment_verification .payment_status_component .status_indigator .step {
+  display: flex;
+  align-items: center;
+}
+.payment_verification .payment_status_component .status_indigator .step .status_spinner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-right: 20px;
+}
+.payment_verification .payment_status_component .status_indigator .step .status_spinner .step_heilight {
+  width: 2px;
+  height: 60px;
+  background: #dad3d3;
+}
+.payment_verification .payment_status_component .status_indigator .step .status_spinner .step_heilight.done {
+  background: #00a200;
+}
+.payment_verification .payment_status_component .status_indigator .step .status_spinner .step_status_containor {
+  min-width: 30px;
+  min-height: 30px;
+  border-radius: 50%;
+  background-color: rgb(0, 0, 0);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.payment_verification .payment_status_component .status_indigator .step .status_spinner .step_status_containor.loading {
+  background-color: #f9ecec;
+}
+.payment_verification .payment_status_component .status_indigator .step .status_spinner .step_status_containor .svg {
+  width: 100%;
+  height: auto;
+  max-width: 18px;
+}
+.payment_verification .payment_status_component .status_indigator .step .status_spinner .step_status_containor .svg path {
+  stroke: white;
+  fill: white;
+}
+.payment_verification .payment_status_component .status_indigator .step .status_line {
+  align-self: baseline;
+  font-weight: 400;
+  font-size: 15px;
+  text-transform: capitalize;
+}
+.payment_verification .payment_status_component .img {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.payment_verification .payment_status_component .img img {
+  width: auto;
+  height: 100%;
+  transform: translateX(13px);
+  transform: translateY(-35px);
+  max-height: 342px;
+}/*# sourceMappingURL=style.css.map */

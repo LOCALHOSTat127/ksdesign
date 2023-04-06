@@ -1,0 +1,143 @@
+.payment_verification {
+    width: 100%;
+    height: 100%;
+
+    color: black;
+    background-color: #FFFFFF;
+    box-shadow: rgba(9, 30, 66, 0.25) 0px 1px 1px, rgba(9, 30, 66, 0.13) 0px 0px 1px 1px;
+    padding: 20px;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: .10fr .90fr;
+
+    .heading__outer {
+
+        display: flex;
+        flex-flow: column;
+        gap: 3px;
+        margin-bottom: 15px;
+
+        h2 {
+            color: black;
+            font-weight: 600;
+            font-size: 18px;
+        }
+
+        p {
+            font-weight: 200;
+            color: #201f1f;
+            font-size: 14px;
+
+        }
+    }
+
+    .payment_status_component {
+        min-height: 300px;
+        width: 100%;
+        height: 100%;
+
+        display: grid;
+        grid-template-columns: .60fr .40fr;
+        grid-template-rows: 1fr;
+
+        .status_indigator {
+            display: flex;
+            flex-direction: column;
+            padding: 20px;
+
+            .redirect_timer{
+                display: none;
+                background: #9a8dd74a;
+                margin-top: 24px;
+                width: fit-content;
+                padding: 3px 13px;
+                border-radius: 4px;
+                color: #0b004f;
+                font-size: 18px;
+                letter-spacing: 1px;
+                /* text-transform: capitalize; */
+                font-variant: all-small-caps;
+                font-weight: 700;
+            }
+
+
+            .step {
+                display: flex;
+                align-items: center;
+
+
+                .status_spinner {
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                    margin-right: 20px;
+
+
+                    .step_heilight {
+
+                        width: 2px;
+                        height: 60px;
+                        background: #dad3d3;
+
+                        &.done {
+                            background: #00a200;
+                        }
+                    }
+
+
+
+                    .step_status_containor {
+                        min-width: 30px;
+                        min-height: 30px;
+                        border-radius: 50%;
+                        background-color: rgb(0, 0, 0);
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+
+                        &.loading {
+                            background-color: #f9ecec;
+                        }
+
+                        .svg {
+                            width: 100%;
+                            height: auto;
+                            max-width: 18px;
+
+                            path {
+                                stroke: white;
+                                fill: white;
+                            }
+                        }
+                    }
+                }
+
+                .status_line {
+                    align-self: baseline;
+                    font-weight: 400;
+                    font-size: 15px;
+                    text-transform: capitalize;
+                }
+            }
+        }
+
+        .img {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            img {
+
+                width: auto;
+                height: 100%;
+                transform: translateX(13px);
+                transform: translateY(-35px);
+                max-height: 342px;
+            }
+        }
+    }
+
+
+}

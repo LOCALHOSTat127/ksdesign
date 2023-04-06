@@ -262,3 +262,17 @@ export const ad_booking_config = createSlice({
 export const { mark_first_step_status, mark_ad_cat_step_status, set_ad_cat_step_config, mark_ad_type_step_status, set_ad_type_step_config, mark_paper_info_step_status, set_paper_basic_info, set_paper_editions, set_paper_package, mark_compose_step_status, set_compose_step_config, set_ad_stats, set_special_enhancement, set_heading_config, mark_payment_step_status, set_paymet_page_config, isPaymentDone, isPaymentVerified, set_payment_response } = ad_booking_config.actions;
 export default ad_booking_config.reducer;
 
+
+
+
+// // let __redirect_url = "http://172.20.10.2:3001/ad/publish/paymentVerification";
+
+
+
+//                 store.dispatch(set_payment_response({
+//                     razorpay_payment_id: payment_data?.payment_id,
+//                     razorpay_order_id: payment_data?.order_id,
+//                     razorpay_signature: payment_data?.signature,
+//                 }))
+//                 let state = store.getState();
+//                 console.log(state);

@@ -38,7 +38,6 @@ const SelectDateSection = () => {
                     </div>
                     <div className="selected__dates__row">
                         {dates.map((({date},index) => {
-                            console.log(index);
                             return (
                                 <div id={index} key={index} className="date" onClick={removeDate}>
                                     <CutSvg  className='sm__svg' />

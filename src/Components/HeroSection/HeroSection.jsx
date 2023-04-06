@@ -82,7 +82,7 @@ const HeroSection = () => {
           height: "100%",
           transform: 'translateX(-45px)',
           maxHeight: "600px",
-        }} src={HeroImage} alt="" srcset="" />
+        }} src={HeroImage} alt="Hero_image"  />
       </div>
     </section>
   )

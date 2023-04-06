@@ -12,6 +12,9 @@ import ADselectionConfigLayout from "./Pages/ADselectionConfigLayout";
 import { Section as SelectADcategory } from "./Components/BASEalignment/SelectCategory/Section";
 import SelectAdType from "./Components/BASEalignment/SelectAdType/SelectAdType";
 import PaymentComponent from "./Components/BASEalignment/Payment/Payment";
+import PaymentVerification from "./Components/BASEalignment/smComponents/paymentVerification/paymentVerification";
+
+
 import { store } from "./app/store";
 import { Provider } from "react-redux";
 import { AnimatePresence } from "framer-motion";
@@ -40,7 +43,7 @@ const App = () => {
                   </Route>
                   <Route path="publish">
                     <Route path="Payment" element={<PaymentComponent />} />
-                    <Route path="redirect_payment" element={<h1>Payment Status</h1>} />
+                    <Route path="paymentVerification" element={<PaymentVerification/>} />
                   </Route>
                 </Route>
                 <Route path="/about" element={<h1>About us</h1>} />

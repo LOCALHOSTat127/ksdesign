@@ -18,7 +18,7 @@ export const Section = () => {
                     <button id='editor__btn'>
                         Get Quotation online
                     </button>
-                    <img src={SnakeLine} className='snake__line'/>
+                    <img src={SnakeLine} className='snake__line' alt="snake_line"/>
             </div>
 
             <div className='img__section'>
