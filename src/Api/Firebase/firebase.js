@@ -1,7 +1,5 @@
-
 import { initializeApp } from "firebase/app";
-import { getAnalytics } from "firebase/analytics";
-
+import { getStorage } from "firebase/storage";
 
 const firebaseConfig = {
     apiKey: process.env.REACT_APP_FIREBASE__API__KEY,
@@ -10,9 +8,10 @@ const firebaseConfig = {
     storageBucket: process.env.REACT_APP_FIREBASE__STORAGE__BUCKET,
     messagingSenderId: process.env.REACT_APP_FIREBASE__MSG__SENDER__ID,
     appId: process.env.REACT_APP_FIREBASE__APP__ID,
-    measurementId: process.env.REACT_APP_FIREBASE__MESURMENT__ID,
+
 };
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
-const analytics = getAnalytics(app);
+const storage = getStorage(app);
+export default storage;

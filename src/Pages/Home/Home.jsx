@@ -15,7 +15,6 @@ import ServicesSection from "../../Components/Hero-Services/ServicesSection";
 const Home = () => {
  
 
-
   return (
     <>
       <div className='Home__page__outer flex' >

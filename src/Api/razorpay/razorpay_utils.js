@@ -2,7 +2,7 @@
 import axios from 'axios';
 import { InvoiceNumber } from 'invoice-number'
 import { store } from "../../app/store";
-
+import URLS from '../urls/urls_config';
 import { set_payment_response } from "../../app/features/ad_config/ad_booking_config_slice";
 
 export default class Payment_Provider {
@@ -11,14 +11,17 @@ export default class Payment_Provider {
     static payment_script_class_ids = [];
     static payment_script_urls = [
         "https://checkout.razorpay.com/v1/checkout.js",
-
     ]
 
-    static PAYMENT_ROUTES = {
-        create_order: "http://172.20.10.2:5050/payment/create_order",
-        payment_verification: "http://172.20.10.2:5050/payment/verify_payment",
-        payment_status_verification: "http://172.20.10.2:5050/payment/validate_payment_status"
+    // razorpay_payment_options_config
+    static PAYMENT_OPTIONS_CONFIG = {
+        org_name : "KSdesign Publications",
+        logo_url  : "https://assets.stickpng.com/images/62cc1d95150d5de9a3dad5fa.png",
+        org_address : "117, Mohan nagar, Fathe ram ka tiba, Jaipur Rajsthan(302002)",
+        theme : "#3399cc",
     }
+
+    
 
 
 
@@ -50,7 +53,7 @@ export default class Payment_Provider {
     // unload-payment-script
     static unloadPaymentScript = () => {
         this.payment_script_class_ids.forEach((ids, index) => {
-            ;
+            
             document.getElementsByClassName(ids)[0].remove();
             console.log(`payment_script_${index} unloaded`);
         })
@@ -62,7 +65,7 @@ export default class Payment_Provider {
     // generate-recept-number
     static genetateReeptNumber = () => {
         // fetch last used recept number here...
-        return InvoiceNumber.next('2023/04/ABC001');
+        return InvoiceNumber.next('KSDESIGN/ODR/00001');
     }
 
 
@@ -71,7 +74,7 @@ export default class Payment_Provider {
         // Fetching new order from the Server.
         let new_order = await axios({
             method: 'post',
-            url: this.PAYMENT_ROUTES.create_order,
+            url: URLS.PAYMENT_ROUTES.create_order,
             headers: {
                 "Content-Type": "Application/json",
                 "Accept": "Application/json",
@@ -86,6 +89,7 @@ export default class Payment_Provider {
             }
         });
 
+   
 
         // Validating status
         if (new_order.status !== 200) {
@@ -131,7 +135,7 @@ export default class Payment_Provider {
 
         const response = await axios({
             method: "post",
-            url: this.PAYMENT_ROUTES.payment_verification,
+            url: URLS.PAYMENT_ROUTES.payment_verification,
             headers: {
                 "Content-Type": "Application/json",
                 "Accept": "Application/json",
@@ -146,7 +150,8 @@ export default class Payment_Provider {
         });
 
         
-        console.log(response);
+        
+        
         return response.data;
 
 
@@ -162,16 +167,18 @@ export default class Payment_Provider {
             key: process.env.REACT_APP_RAZORPAY_KEY_ID,
             amount: new_order?.amount,
             currency: new_order?.currency,
-            name: "KSdesign",
+            name: this.PAYMENT_OPTIONS_CONFIG.org_name,
             description: new_order?.description,
-            image: "https://assets.stickpng.com/images/62cc1d95150d5de9a3dad5fa.png",
+            image: this.PAYMENT_OPTIONS_CONFIG.logo_url,
             // order_id: new_order.order_id,
             "handler": async function (response) {
+
                
+
                 const payment_data = {
-                    payment_id: "pay_29QQoUBi66xm2f",
-                    order_id: "order_9A33XWu170gUtm",
-                    signature: "9ef4dffbfd84f1318f6739a3ce19f9d85851857ae648f114332d8401e0949a3d"
+                    payment_id: response?.razorpay_payment_id ? response?.razorpay_payment_id : "pay_29QQoUBi66xm2f",
+                    order_id: response?.razorpay_order_id ? response?.razorpay_order_id : "order_9A33XWu170gUtm",
+                    signature: response?.razorpay_signature ? response?.razorpay_signature : "9ef4dffbfd84f1318f6739a3ce19f9d85851857ae648f114332d8401e0949a3d"
                 };
 
                 store.dispatch(set_payment_response(payment_data));
@@ -192,9 +199,7 @@ export default class Payment_Provider {
                 }
 
                 let server_response = await new_order.handler_function(ad_config_data);
-
-
-                let url = `http://172.20.10.2:3000/ad/publish/paymentVerification?orderID=${server_response.orderID}`;
+                let url = `${window.origin}/ad/publish/paymentVerification?orderID=${server_response.orderID}`;
                 window.location.replace(url);
 
             },
@@ -204,10 +209,10 @@ export default class Payment_Provider {
                 contact: new_order?.customer_phone || null
             },
             notes: {
-                address: "KSdesign Corporate Office"
+                address: this.PAYMENT_OPTIONS_CONFIG.org_address
             },
             theme: {
-                color: "#3399cc"
+                color: this.PAYMENT_OPTIONS_CONFIG.theme,
             },
             "modal": {
                 "ondismiss": function () {
@@ -216,6 +221,9 @@ export default class Payment_Provider {
             }
         }
 
+
+        
+      
         return PAYMENT_OPTIONS;
     }
 
@@ -234,7 +242,7 @@ export default class Payment_Provider {
   
         let server_response = await axios({
             method: 'post',
-            url: "http://172.20.10.2:5050/payment/validate_payment_status",
+            url: URLS.PAYMENT_ROUTES.payment_status_verification,
             headers: {
                 "Content-Type": "Application/json",
                 "Accept": "Application/json",
@@ -247,11 +255,16 @@ export default class Payment_Provider {
             }
         });
 
+
+        
+  
       
         // handling_error
         if (server_response.data?.error) {
             return false;
         }
+
+
         return server_response.data;
 
     }

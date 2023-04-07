@@ -2,7 +2,7 @@ import "./style.css";
 import { useEffect, useState } from 'react'
 import { useSearchParams } from 'react-router-dom';
 import Payment_Provider from "../../../../Api/razorpay/razorpay_utils";
-import firebase_provider from '../../../../Api/Firebase/firebase_utils';
+import Communication_provider from "../../../../Api/Communication/communication_utils";
 import StatusStep from '../StepsBar/statusStep';
 
 
@@ -17,7 +17,7 @@ const PaymentVerification = () => {
 
     const [orderState, setOrderState] = useState(order_state[0]);
     const [isLoading, setLoading] = useState([true, true, true]);
-    const [orderId, setOrderId] = useState(null);
+    const [orderId, setOrderID] = useState(null);
     const [isStill, setStill] = useState([false, true, true]);
     const [startTimer, setTimer] = useState(false);
     const [timerCount, setTImerCount] = useState(10);
@@ -33,7 +33,7 @@ const PaymentVerification = () => {
         }, 1000);
 
         setTimeout(() => {
-            window.location.replace("http://172.20.10.2:3000");
+            window.location.replace(window.origin);
         }, 10000)
     }
 
@@ -43,13 +43,14 @@ const PaymentVerification = () => {
 
     // verify_payment_flow
     const validate_payment_flow = async () => {
-        const orderID = searchParams.get("orderID");
-        setOrderId(orderID);
+        const orderIDS = searchParams.get("orderID");
+        setOrderID((prev) => prev = orderIDS);
+     
 
-        if (orderID === null) {
+        if (orderIDS === null || orderIDS === "") {
             setOrderState("ORDER_NOT_FOUND");
         } else {
-            let response = await Payment_Provider.verify_payment_status(orderID);
+            let response = await Payment_Provider.verify_payment_status(orderIDS);
 
             if (response === false) {
                 setOrderState("ORDER_NOT_FOUND");
@@ -64,7 +65,7 @@ const PaymentVerification = () => {
                     setLoading([false, true, true]);
                     setStill([true, false, true]);
 
-                    const response_status = await firebase_provider.send_order_confirmation_self(orderID);
+                    const response_status = await Communication_provider.send_order_confirmation_self(orderIDS);
 
                     if (response_status.status === 200) {
                         setLoading([false, false, false]);

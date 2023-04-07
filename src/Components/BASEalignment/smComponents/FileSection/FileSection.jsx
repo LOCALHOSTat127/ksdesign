@@ -3,6 +3,8 @@ import FileItem from '../FileUpload/FileItem'
 
 
 const FileSection = ({FILEBLOGCONFIG=null}) => {
+    
+
     return (
         <>
             <div className="section__required__docs component__div">
@@ -14,9 +16,9 @@ const FileSection = ({FILEBLOGCONFIG=null}) => {
                 <div className="docs__inner inner__section">
                     <div className="docs__upload">
                         {
-                            FILEBLOGCONFIG.required__docs.map((({ doc_name, max_size, file_type, isRequired }) => {
+                            FILEBLOGCONFIG.required__docs.map((({ doc_name, max_size, file_type, isRequired,index,file_name}) => {
                                 return (
-                                    <FileItem doc_name={doc_name} max_size={max_size} file_type={file_type} isRequired={isRequired} error={null} />
+                                    <FileItem index={index} doc_name={doc_name} max_size={max_size} file_type={file_type} isRequired={isRequired} error={null} file_name={file_name} />
                                 )
                             }))
                         }

@@ -32,7 +32,8 @@ const position = [26.952338, 75.869942];
 
 
 const ContactPage = () => {
-   
+
+
 
 
     // Set config defaults when creating the instance
