@@ -1,0 +1,64 @@
+.about_us_page {
+    width: 100%;
+    min-height: 100vh;
+    padding: 88px 70px 0px 70px;
+    color: white;
+    background: #010124;
+
+    display: flex;
+    flex-direction: column;
+    gap: 60px;
+
+    .card {
+        display: flex;
+        flex-direction: row;
+     
+        &.fdrr {
+            flex-direction: row-reverse;
+        }
+
+
+        .btn__contact:hover{
+            .svg{
+                right: 0px;
+            }
+        }
+
+
+        .img {
+            img {
+                height: 100%;
+                width: auto;
+            }
+        }
+
+        .content {
+            display: flex;
+            flex-direction: column;
+            gap: 40px;
+            padding: 58px 58px 58px 0px;
+
+            &.gap_left{
+                padding: 58px 58px 58px 58px;
+            }
+          
+         
+
+            h1 {
+                font-weight: 800;
+                font-variant: small-caps;
+                font-size: 50px;
+            }
+
+            p {
+                text-transform: capitalize;
+                line-height: 27px;
+                color: #fdfdfd;
+                font-weight: 100;
+                word-spacing: 1px;
+                letter-spacing: 1px;
+            }
+        }
+    }
+
+}

@@ -2,6 +2,7 @@ import { useState, useRef, useEffect } from 'react'
 import "./style.css";
 import 'leaflet/dist/leaflet.css';
 import validator from 'validator';
+import Alert from "../../Components/utils_component/Alert";
 
 
 import Communication_provider from '../../Api/Communication/communication_utils';
@@ -34,10 +35,10 @@ const position = [26.952338, 75.869942];
 
 
 const ContactPage = () => {
-  
 
 
-  
+
+
 
 
 
@@ -118,6 +119,7 @@ const ContactPage = () => {
                 ERR_MSG: "Invalid Last Name",
                 isERR: true
             }))
+
             return false;
         }
 
@@ -176,6 +178,7 @@ const ContactPage = () => {
                 }))
             } else {
                 setSending(0);
+             
                 setMsgConfig((prev) => ({
                     first_name: "",
                     last_name: "",
@@ -187,8 +190,12 @@ const ContactPage = () => {
         }
     }
 
+
+
+
     return (
         <section className="contact__page">
+           
             <div className="page__inner__box">
                 <div className="contact__box">
                     <div className="sidepanel__text">
@@ -241,7 +248,7 @@ const ContactPage = () => {
                         </div>
                     </div>
                     <div className="contact__box__controlls">
-
+                    <Alert msg={"Invalid Last Name"} />
 
                         {isMapActive ?
                             <>
@@ -385,6 +392,7 @@ const ContactPage = () => {
                                             Send Message
                                         </Button>
                                         <p className={`err_msg ${isError.isERR === false ? "hidemsg" : null}`}>{`${isError.ERR_MSG}`}</p>
+                                      
                                     </div>
                                 </div>
 

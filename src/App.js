@@ -4,7 +4,7 @@ import "./stylesheets/app.css";
 import Layout from "./Pages/Layout";
 import Home from "./Pages/Home/Home";
 import ContactPage from "./Pages/Contact/ContactPage";
-
+import AboutUs from "./Pages/About/About";
 
 import ADbaseComponent from "./Pages/ADeditor/ADbase";
 import EditorText from "./Components/BASEalignment/TextAdEDITOR/EditorText";
@@ -46,7 +46,7 @@ const App = () => {
                     <Route path="paymentVerification" element={<PaymentVerification />} />
                   </Route>
                 </Route>
-                <Route path="/about" element={<h1>About us</h1>} />
+                <Route path="/about" element={<AboutUs/>} />
                 <Route path="/contact" element={<ContactPage />} />
               </Route>
               <Route path="*" element={<Navigate to="/" replace />} />

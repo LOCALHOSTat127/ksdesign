@@ -1,7 +1,7 @@
 import { useState ,useEffect} from 'react'
 import "./Navbar.css";
 
-import {useNavigate} from "react-router-dom";
+import {Link, useNavigate} from "react-router-dom";
 
 // Importing Assets/img
 import Logo from "../../assets/svg/logo.png";
@@ -48,7 +48,7 @@ const Navbar = () => {
                     <ul className="flex">
                         <a href="#">
                             <li className="li active">
-                                Our work
+                                Track my AD
                             </li>
                         </a>
 
@@ -58,11 +58,11 @@ const Navbar = () => {
                             </li>
                         </a>
 
-                        <a href="#">
+                        <Link to="/about">
                             <li className="li">
                                 About us
                             </li>
-                        </a>
+                        </Link>
                     </ul>
 
                     {/* cta button */}
