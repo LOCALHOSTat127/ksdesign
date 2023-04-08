@@ -2,7 +2,7 @@ import "./style.css";
 import categories from "../../data/categories.json";
 
 
-export const Section = ({ padZero, headingNone, mt, borderRadious,ONCLICKHANDLER ,bgnone}) => {
+export const Section = ({ padZero, headingNone, mt, borderRadious, ONCLICKHANDLER, bgnone }) => {
 
   return (
     <section
@@ -20,23 +20,23 @@ export const Section = ({ padZero, headingNone, mt, borderRadious,ONCLICKHANDLER
         marginTop: `${mt && mt}px`,
       }} className='grid__items '>
         {categories &&
-          categories.map(({ id, src, alt, name, decs ,category__id}) => {
+          categories.map(({ id, src, alt, name, decs, category__id }) => {
             return (
               <>
                 <div key={id} style={{
-                  
+
                   borderRadius: `${borderRadious && borderRadious}px`,
-                }} 
-                onClick={ONCLICKHANDLER}
-                data-cid={category__id}
-                data-cname={name}
-                 className="grid__item  flex  flex-aic">
+                }}
+                  onClick={ONCLICKHANDLER}
+                  data-cid={category__id}
+                  data-cname={name}
+                  className="grid__item  flex  flex-aic">
                   <img src={process.env.PUBLIC_URL + src} alt={alt} className='svg' />
                   <span>
                     <p className='cat__name'>{name}</p>
                     <p style={{
-                      width : "100%",
-                      
+                      width: "100%",
+
                     }} className='cat__desc'>{decs}</p>
                   </span>
                 </div>

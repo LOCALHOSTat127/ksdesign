@@ -1,34 +1,18 @@
 import { useEffect } from 'react'
 import "./style.css";
 import Button from '@mui/material/Button';
-import { Navigate, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { mark_ad_type_step_status, set_ad_type_step_config } from "../../../app/features/ad_config/ad_booking_config_slice";
+
+import AD_TYPES from "../../../data/classified_cards.json";
+
+
 const SelectAdType = () => {
   const NAVIGATE = useNavigate();
   const dispatch = useDispatch();
   const ad_state = useSelector((state) => state.ad_booking_config);
 
-  const AD_TYPES = [
-    {
-      ad_type_name: "Classified Text Ads",
-      ad_type_desc: "Text based Classified Ads are best to Advertise information in  with minimal charges yet impactful.",
-      ad_type_img: "/Assets/png/ad_cat_1.png",
-      ad_type: "classified_text"
-    },
-    {
-      ad_type_name: "Classified Display Ads",
-      ad_type_desc: "Text based Classified Ads are best to Advertise information in  with minimal charges yet impactful.",
-      ad_type_img: "/Assets/png/ad_cat_2.png",
-      ad_type: "classified_display"
-    },
-    {
-      ad_type_name: "Display Ads",
-      ad_type_desc: "Text based Classified Ads are best to Advertise information in  with minimal charges yet impactful.",
-      ad_type_img: "/Assets/png/ad_cat_3.png",
-      ad_type: "display_ad"
-    }
-  ]
 
 
 
@@ -57,10 +41,10 @@ const SelectAdType = () => {
       <div className="adtypes__list">
         <div className="adtypeslider">
           {
-            AD_TYPES.map((({ ad_type_name, ad_type_desc, ad_type_img, ad_type }) => {
+            AD_TYPES.map((({ id,ad_type_name, ad_type_desc, ad_type_img, ad_type }) => {
               return (
                 <>
-                  <div className="adtype__card">
+                  <div key={id} className="adtype__card">
                     <div
                       style={{
                         backgroundImage: `url(${` ${process.env.PUBLIC_URL}${ad_type_img}`})`,

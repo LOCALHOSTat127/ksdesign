@@ -3,12 +3,13 @@
   height: 100%;
   display: flex;
   flex-direction: column;
-  gap: 70px;
+  gap: 10px;
 }
 .select_newspaper_n_edition .selection__controlls__jacket {
+  position: relative;
   background-color: #FFFFFF;
   box-shadow: rgba(9, 30, 66, 0.25) 0px 1px 1px, rgba(9, 30, 66, 0.13) 0px 0px 1px 1px;
-  min-height: 600px;
+  min-height: 200px;
   padding: 30px 32px;
 }
 .select_newspaper_n_edition .selection__controlls__jacket .heading__outer {
@@ -26,4 +27,15 @@
   font-weight: 200;
   color: #201f1f;
   font-size: 14px;
+}
+.select_newspaper_n_edition .price_list_outlet_main {
+  position: relative;
+  background-color: #FFFFFF;
+  box-shadow: rgba(9, 30, 66, 0.25) 0px 1px 1px, rgba(9, 30, 66, 0.13) 0px 0px 1px 1px;
+  min-height: 200px;
+  padding: 30px 32px;
+  display: none;
+}
+.select_newspaper_n_edition .price_list_outlet_main.show_results {
+  display: flex;
 }/*# sourceMappingURL=style.css.map */

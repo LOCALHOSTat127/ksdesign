@@ -77,9 +77,6 @@ const FileItem = ({ doc_name, max_size = 2, file_type, isRequired = false, error
             blobID: e.target.dataset.blobId
         }));
 
-
-
-
     }
 
     useEffect(() => {

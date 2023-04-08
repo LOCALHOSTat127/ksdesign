@@ -12,6 +12,11 @@ export const Section = () => {
 
     let navigate = useNavigate();
     const STEP_FORWARD_HANDLER = (e) => {
+        if(!e.target.offsetParent.dataset.cid || !e.target.offsetParent.dataset.cname){
+            alert("Please Select again.");
+            return 0;
+        }
+
         dispatch(set_ad_cat_step_config({
             cat_id : e.target.offsetParent.dataset.cid,
             cat_name : e.target.offsetParent.dataset.cname

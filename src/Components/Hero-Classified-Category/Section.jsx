@@ -1,27 +1,47 @@
-import { useState } from "react";
 import "./style.css";
-import classified_cards from "../../data/classified_cards.json";
-
+import AD_TYPES from "../../data/classified_cards.json";
+import { Navigate, useNavigate } from 'react-router-dom';
+import { useSelector, useDispatch } from 'react-redux';
+import { mark_ad_type_step_status, set_ad_type_step_config } from "../../app/features/ad_config/ad_booking_config_slice";
 
 export const Section = () => {
-    
+    const NAVIGATE = useNavigate();
+    const dispatch = useDispatch();
+    const ad_state = useSelector((state) => state.ad_booking_config);
 
+
+    const STEP_FORWARD_HANDLER = (e) => {
+        let card = document.getElementById(e.target.dataset.cardId);
+        dispatch(set_ad_type_step_config(card.dataset.adType));
+        dispatch(mark_ad_type_step_status(true));
+
+
+        if (ad_state.FIRST_STEP.CATEGORY_SELECTION_STEP.isDone === true) {
+
+            NAVIGATE(`/ad/select/newspaper`, { replace: true })
+        } else {
+            NAVIGATE(`/ad/select/category`);
+        }
+
+    }
 
     return (
         <div className='category__outer'>
             <h2 className="heading">Book Classified Text/Display Ads</h2>
             <div className="cards">
-                {classified_cards &&
-                    classified_cards.map(({ id, heading, bg_img, desc, TO_DIRECT }) => {
+                {AD_TYPES &&
+                    AD_TYPES.map(({ id, ad_type_name, ad_type_desc, ad_type_img, ad_type }) => {
                         return (
                             <>
-                                <div  key={id} id={id}  className="card">
-                                    <div style={{
-                                        backgroundImage:`url(${process.env.PUBLIC_URL+bg_img})`
-                                    }} className="img">
+                                <div id={`${ad_type}_${id}`} data-ad-type={ad_type} onClick={STEP_FORWARD_HANDLER} key={id} data-card-id={`${ad_type}_${id}`} className="card">
+                                    <div
+                                        data-card-id={`${ad_type}_${id}`}
+                                        style={{
+                                            backgroundImage: `url(${process.env.PUBLIC_URL + ad_type_img})`
+                                        }} className="img">
                                     </div>
-                                    <h2>{heading}</h2>
-                                    <p>{desc}</p>
+                                    <h2 data-card-id={`${ad_type}_${id}`}>{ad_type_name}</h2>
+                                    <p data-card-id={`${ad_type}_${id}`}>{ad_type_desc}</p>
                                 </div>
                             </>
                         )

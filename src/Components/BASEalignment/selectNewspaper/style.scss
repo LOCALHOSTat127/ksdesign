@@ -8,15 +8,17 @@
     display: flex;
     flex-direction: column;
 
-    gap: 70px;
+    gap: 10px;
 
     .selection__controlls__jacket {
+        position: relative;
         background-color: #FFFFFF;
         box-shadow: rgba(9, 30, 66, 0.25) 0px 1px 1px, rgba(9, 30, 66, 0.13) 0px 0px 1px 1px;
-        min-height: 600px;
+        min-height: 200px;
         padding: 30px 32px;
+
         .heading__outer {
-       
+
             display: flex;
             flex-flow: column;
             gap: 3px;
@@ -36,5 +38,18 @@
             }
         }
 
+    }
+
+
+    .price_list_outlet_main {
+        position: relative;
+        background-color: #FFFFFF;
+        box-shadow: rgba(9, 30, 66, 0.25) 0px 1px 1px, rgba(9, 30, 66, 0.13) 0px 0px 1px 1px;
+        min-height: 200px;
+        padding: 30px 32px;
+        display: none;
+        &.show_results {
+            display: flex;
+        }
     }
 }

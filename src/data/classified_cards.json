@@ -1,26 +1,23 @@
 [
     {
         "id": 1,
-        "heading": "Classified Text Ads",
-        "desc": "Text based Classified Ads are best to Advertise information in  with minimal charges yet impactful.",
-        "bg_img": "/Assets/png/ad_cat_1.png",
-        "btn_txt": "Bokk yours Now",
-        "TO_DIRECT": "#"
+        "ad_type_name": "Classified Text Ads",
+        "ad_type_desc": "Text based Classified Ads are best to Advertise information in  with minimal charges yet impactful.",
+        "ad_type_img": "/Assets/png/ad_cat_1.png",
+        "ad_type": "classified_text"
     },
     {
         "id": 2,
-        "heading": "Classified Display Ad",
-        "desc": "Text based Classified Ads are best to Advertise information in  with minimal charges yet impactful.",
-        "bg_img": "/Assets/png/ad_cat_2.png",
-        "btn_txt": "Bokk yours Now",
-        "TO_DIRECT": "#"
+        "ad_type_name": "Classified Display Ad",
+        "ad_type_desc": "Text based Classified Ads are best to Advertise information in  with minimal charges yet impactful.",
+        "ad_type_img": "/Assets/png/ad_cat_2.png",
+        "ad_type": "classified_display"
     },
     {
         "id": 3,
-        "heading": "Display Ads",
-        "desc": "Text based Classified Ads are best to Advertise information in  with minimal charges yet impactful.",
-        "bg_img": "/Assets/png/ad_cat_3.png",
-        "btn_txt": "Bokk yours Now",
-        "TO_DIRECT": "#"
+        "ad_type_name": "Display Ads",
+        "ad_type_desc": "Text based Classified Ads are best to Advertise information in  with minimal charges yet impactful.",
+        "ad_type_img": "/Assets/png/ad_cat_3.png",
+        "ad_type": "display_ad"
     }
 ]
