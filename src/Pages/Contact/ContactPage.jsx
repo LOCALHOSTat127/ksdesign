@@ -3,6 +3,9 @@ import "./style.css";
 import 'leaflet/dist/leaflet.css';
 import validator from 'validator';
 
+
+import Communication_provider from '../../Api/Communication/communication_utils';
+
 import { ReactComponent as CallSvg } from "../../assets/svg/call-icon.svg";
 import { ReactComponent as MailSvg } from "../../assets/svg/mail.svg";
 import { ReactComponent as LocationSvg } from "../../assets/svg/location.svg";
@@ -23,7 +26,6 @@ import Button from '@mui/material/Button';
 import LinearProgress from '@mui/material/LinearProgress';
 
 import SendIcon from '@mui/icons-material/Send';
-import axios from 'axios';
 
 
 
@@ -32,17 +34,10 @@ const position = [26.952338, 75.869942];
 
 
 const ContactPage = () => {
+  
 
 
-
-
-    // Set config defaults when creating the instance
-    const instance = axios.create({
-        baseURL: 'http://172.20.10.2:5050'
-    });
-
-    // Alter defaults after instance has been created
-    instance.defaults.headers.common['Authorization'] = "ASHJSFDNJKDBFKJD1651651";
+  
 
 
 
@@ -167,23 +162,16 @@ const ContactPage = () => {
     const handleSubmitForm = async () => {
         if (checkErr() === true) {
             setSending(1);
-            let response = await instance({
-                method: 'post',
-                url: "/communication/full_contact_query",
-                data: {
-                    first_name: msgConfig.first_name,
-                    last_name: msgConfig.last_name,
-                    phone: msgConfig.phone,
-                    user_email: msgConfig.emailid,
-                    reason_to_contact: msgConfig.reason_to_contact
-                }
-            })
 
-            if (response.data.status != 200) {
+
+
+            let response = await Communication_provider.send_full_mail_query(msgConfig);
+
+            if (response.status != 200) {
                 setSending(0);
                 setError(prev => ({
-                    ERR_CODE: response.data.status,
-                    ERR_MSG: response.data.msg,
+                    ERR_CODE: response.err_code,
+                    ERR_MSG: response.err_msg,
                     isERR: true
                 }))
             } else {
@@ -195,9 +183,7 @@ const ContactPage = () => {
                     phone: "",
                     reason_to_contact: ""
                 }))
-
             }
-
         }
     }
 

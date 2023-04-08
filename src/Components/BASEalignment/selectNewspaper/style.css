@@ -1,0 +1,29 @@
+.select_newspaper_n_edition {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 70px;
+}
+.select_newspaper_n_edition .selection__controlls__jacket {
+  background-color: #FFFFFF;
+  box-shadow: rgba(9, 30, 66, 0.25) 0px 1px 1px, rgba(9, 30, 66, 0.13) 0px 0px 1px 1px;
+  min-height: 600px;
+  padding: 30px 32px;
+}
+.select_newspaper_n_edition .selection__controlls__jacket .heading__outer {
+  display: flex;
+  flex-flow: column;
+  gap: 3px;
+  margin-bottom: 30px;
+}
+.select_newspaper_n_edition .selection__controlls__jacket .heading__outer h2 {
+  color: black;
+  font-weight: 500;
+  font-size: 18px;
+}
+.select_newspaper_n_edition .selection__controlls__jacket .heading__outer p {
+  font-weight: 200;
+  color: #201f1f;
+  font-size: 14px;
+}/*# sourceMappingURL=style.css.map */

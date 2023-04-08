@@ -41,6 +41,7 @@ const initialState = {
             config_info: {
                 newspaper_name: null,
                 newspaper_id: null,
+                cat_config_id : null,
                 selected_editions: [
                     {
                         edition_name: null,
@@ -163,7 +164,7 @@ export const ad_booking_config = createSlice({
             state.FIRST_STEP.AD_TYPE_SELECTION_STEP.isDone = action.payload;
         },
         set_ad_type_step_config: (state, action) => {
-            state.FIRST_STEP.AD_TYPE_SELECTION_STEP.config_info.ad_type = action.payload.ad_type;
+            state.FIRST_STEP.AD_TYPE_SELECTION_STEP.config_info.ad_type = action.payload;
         },
         // 1.3
         mark_paper_info_step_status: (state, action) => {
@@ -171,7 +172,8 @@ export const ad_booking_config = createSlice({
         },
         set_paper_basic_info: (state, action) => {
             state.FIRST_STEP.PAPER_EDITION_SELECTION_STEP.config_info.newspaper_id = action.payload.nid;
-            state.FIRST_STEP.PAPER_EDITION_SELECTION_STEP.config_info.newspaper_name = action.payload.paperName;
+            state.FIRST_STEP.PAPER_EDITION_SELECTION_STEP.config_info.newspaper_name = action.payload.paperName; 
+            state.FIRST_STEP.PAPER_EDITION_SELECTION_STEP.config_info.cat_config_id = action.payload.cat_config_id; 
         },
         set_paper_editions: (state, action) => {
             state.FIRST_STEP.PAPER_EDITION_SELECTION_STEP.config_info.selected_editions = action.payload;
