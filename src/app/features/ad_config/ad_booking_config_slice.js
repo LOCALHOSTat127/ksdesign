@@ -2,7 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
     FIRST_STEP: {
-        isDone: false,
+        isDone: true,
         parent_step_name: "AD_CONFIG_SELECTION",
 
         CATEGORY_SELECTION_STEP: {
@@ -41,7 +41,7 @@ const initialState = {
             config_info: {
                 newspaper_name: null,
                 newspaper_id: null,
-                cat_config_id : null,
+                cat_config_id: null,
                 selected_editions: [
                     {
                         edition_name: null,
@@ -63,7 +63,7 @@ const initialState = {
 
     },
     SECOND_STEP: {
-        isDone: false,
+        isDone: true,
         parent_step_name: "COMPOSE_AD",
         prev_step: "PAPER_PACKAGE_EDITION",
         next_step: "PAYMENT_PAGE",
@@ -114,8 +114,8 @@ const initialState = {
             },
             selected_offer: null,
             documents: {
-                bucket_uri : null,
-                docs : []
+                bucket_uri: null,
+                docs: []
             },
             cost_summary: {
                 base_price: 0,
@@ -172,8 +172,8 @@ export const ad_booking_config = createSlice({
         },
         set_paper_basic_info: (state, action) => {
             state.FIRST_STEP.PAPER_EDITION_SELECTION_STEP.config_info.newspaper_id = action.payload.nid;
-            state.FIRST_STEP.PAPER_EDITION_SELECTION_STEP.config_info.newspaper_name = action.payload.paperName; 
-            state.FIRST_STEP.PAPER_EDITION_SELECTION_STEP.config_info.cat_config_id = action.payload.cat_config_id; 
+            state.FIRST_STEP.PAPER_EDITION_SELECTION_STEP.config_info.newspaper_name = action.payload.paperName;
+            state.FIRST_STEP.PAPER_EDITION_SELECTION_STEP.config_info.cat_config_id = action.payload.cat_config_id;
         },
         set_paper_editions: (state, action) => {
             state.FIRST_STEP.PAPER_EDITION_SELECTION_STEP.config_info.selected_editions = action.payload;
@@ -237,8 +237,11 @@ export const ad_booking_config = createSlice({
             state.THIRD_STEP.isDone = action.payload;
         },
         // 3.1
+        set_selected_dates: (state, action) => {
+            state.THIRD_STEP.config_info.selected_dates = Object.assign({selected: false}, action.payload);
+        },
         set_paymet_page_config: (state, action) => {
-            state.THIRD_STEP.config_info.selected_dates = action.payload.selected_dates;
+
             state.THIRD_STEP.config_info.customer_contact_info = action.payload.customer_contact_info;
             state.THIRD_STEP.config_info.selected_offer = action.payload?.selected_offer;
             state.THIRD_STEP.config_info.documents = action.payload?.documents;
@@ -255,20 +258,20 @@ export const ad_booking_config = createSlice({
         set_payment_response: (state, action) => {
             state.THIRD_STEP.config_info.payment_config.response = action.payload;
         },
-        set_bucket_uri : (state,action) =>{
+        set_bucket_uri: (state, action) => {
             state.THIRD_STEP.config_info.documents.bucket_uri = action.payload;
         },
-        get_bucket_uri : (state) =>{
+        get_bucket_uri: (state) => {
             return (state.THIRD_STEP.config_info.documents.bucket_uri);
         },
-        push_bucket_doc : (state,action) =>{
+        push_bucket_doc: (state, action) => {
             state.THIRD_STEP.config_info.documents.docs.push(action.payload);
         }
     }
 })
 
 
-export const { mark_first_step_status, mark_ad_cat_step_status, set_ad_cat_step_config, mark_ad_type_step_status, set_ad_type_step_config, mark_paper_info_step_status, set_paper_basic_info, set_paper_editions, set_paper_package, mark_compose_step_status, set_compose_step_config, set_ad_stats, set_special_enhancement, set_heading_config, mark_payment_step_status, set_paymet_page_config, isPaymentDone, isPaymentVerified, set_payment_response,set_bucket_uri,get_bucket_uri,push_bucket_doc } = ad_booking_config.actions;
+export const { mark_first_step_status, mark_ad_cat_step_status, set_ad_cat_step_config, mark_ad_type_step_status, set_ad_type_step_config, mark_paper_info_step_status, set_paper_basic_info, set_paper_editions, set_paper_package, mark_compose_step_status, set_compose_step_config, set_ad_stats, set_special_enhancement, set_heading_config, mark_payment_step_status, set_paymet_page_config, isPaymentDone, isPaymentVerified, set_payment_response, set_bucket_uri, get_bucket_uri, push_bucket_doc,set_selected_dates } = ad_booking_config.actions;
 export default ad_booking_config.reducer;
 
 

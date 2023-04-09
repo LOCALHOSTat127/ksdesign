@@ -1,0 +1,100 @@
+.calender__wrapper {
+  width: 100%;
+  height: 100%;
+  border-radius: 4px;
+  color: black;
+}
+.calender__wrapper header {
+  padding: 16px 16px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.calender__wrapper header .current_date {
+  font-size: 15px;
+  font-weight: 500;
+  width: inherit;
+}
+.calender__wrapper header .calander__controlls {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  justify-content: flex-end;
+  gap: 12px;
+}
+.calender__wrapper header .calander__controlls .cntrls {
+  position: relative;
+  cursor: pointer;
+  width: 24px;
+  height: 24px;
+  background-color: white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.calender__wrapper header .calander__controlls .cntrls .svg {
+  width: 100%;
+  height: auto;
+  max-width: 22px;
+}
+.calender__wrapper header .calander__controlls .cntrls:hover {
+  background-color: rgba(216, 233, 237, 0.8901960784);
+}
+.calender__wrapper .weeks {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: space-around;
+  padding: 0px 16px;
+  margin-top: 9px;
+}
+.calender__wrapper .weeks .weak {
+  font-weight: 400;
+  font-size: 14px;
+}
+.calender__wrapper .days {
+  text-align: center;
+  margin-top: 12px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 0px 16px;
+  gap: 6px;
+}
+.calender__wrapper .days .day {
+  margin-bottom: 8px;
+  width: 14.2857142857%;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 120ms ease;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  cursor: pointer;
+}
+.calender__wrapper .days .day.today {
+  background-color: rgba(72, 111, 238, 0.8901960784);
+  color: white;
+  font-weight: 600;
+}
+.calender__wrapper .days .day.selected {
+  background-color: rgba(0, 0, 0, 0.8901960784);
+  color: white;
+}
+.calender__wrapper .days .day:hover {
+  background-color: rgba(72, 111, 238, 0.8901960784);
+  color: white;
+}
+.calender__wrapper .days .day.disabled {
+  color: #acacac;
+}
+.calender__wrapper .days .day.disabled:hover {
+  background-color: none;
+  color: #acacac;
+}/*# sourceMappingURL=style.css.map */
