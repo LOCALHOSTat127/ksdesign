@@ -5,6 +5,7 @@ import {
     ref,
     uploadBytesResumable, getDownloadURL
 } from "firebase/storage";
+
 import storage from "../../../../Api/Firebase/firebase";
 import { Base64 } from 'js-base64';
 import { useDispatch, useSelector } from 'react-redux';
@@ -17,7 +18,11 @@ const FileItem = ({ doc_name, max_size = 2, file_type, isRequired = false, error
     const [isUploading, setUploading] = useState(false);
     const [uploadProgress, setProgress] = useState(0);
     const [isUploadDone, setUploadDone] = useState(false);
-    const store_bucket_url = useSelector(state => state.ad_booking_config.THIRD_STEP.config_info.documents.bucket_uri);
+    const ad_state = useSelector((state) => state.ad_booking_config);
+    const store_bucket_url = ad_state.THIRD_STEP.config_info.documents.bucket_uri;
+    const isStepLocked = ad_state.THIRD_STEP.config_info.customer_contact_info.isDone;
+
+
 
     let dispatch = useDispatch();
     const user_first_name = "sahil";
@@ -30,9 +35,10 @@ const FileItem = ({ doc_name, max_size = 2, file_type, isRequired = false, error
 
 
 
+
     const uploadFIle = () => {
 
-       
+
         let folder_name = null;
         setUploading((prev) => prev = true);
 
@@ -99,13 +105,12 @@ const FileItem = ({ doc_name, max_size = 2, file_type, isRequired = false, error
                     {doc_name}
                 </p>
                 <div className="minor__data__notes">
-                    <p className={`file__size ${file?.length != 0 && "green"}`}>
-                        2 MB max size
-                        {/* {file?.length != 0 ? `${Math.round(file.size / 10000)} MB uploaded` : "2 MB max size"} */}
+                    <p className={`file__size`}>
+                        {max_size} MB max size
 
                     </p>
                     <p className="available__file__fontmats">
-                        2 MB max size
+                        {file_type}
 
                     </p>
                     <p style={{
@@ -143,11 +148,13 @@ const FileItem = ({ doc_name, max_size = 2, file_type, isRequired = false, error
 
                     </> :
                     <>
-                        <Button sx={{
-                            backgroundColor: "#EBEBEB",
-                            color: "black",
-                            padding: "6px 12px",
-                        }} aria-label="upload picture" component="label" startIcon={<CloudSvg />}>
+                        <Button
+                            disabled={isStepLocked === false ? true : false}
+                            sx={{
+                                backgroundColor: "#EBEBEB",
+                                color: "black",
+                                padding: "6px 12px",
+                            }} aria-label="upload picture" component="label" startIcon={<CloudSvg />}>
                             <input data-blob-id={`FILE_${index}`} required onChange={handleFile} hidden accept={`image/${file_type}`} type="file" />
 
                             Upload

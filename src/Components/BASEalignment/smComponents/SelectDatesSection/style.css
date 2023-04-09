@@ -1,0 +1,35 @@
+.offers {
+  max-height: 300px;
+}
+.offers .offers__list {
+  height: 100%;
+  padding: 20px 13px;
+  overflow-y: scroll;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.offers .offers__list .offer_wrapper {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  color: black;
+  border: 1px solid;
+  padding: 9px 15px;
+  border-radius: 4px;
+  max-width: 50%;
+  transform: all 150ms ease;
+}
+.offers .offers__list .offer_wrapper:hover {
+  background-color: rgba(118, 162, 255, 0.2705882353);
+}
+.offers .offers__list .offer_wrapper.selected {
+  background-color: rgba(118, 162, 255, 0.2705882353);
+}
+.offers .offers__list .offer_wrapper .sm__svg {
+  width: 100%;
+  height: auto;
+  max-width: 26px;
+}/*# sourceMappingURL=style.css.map */

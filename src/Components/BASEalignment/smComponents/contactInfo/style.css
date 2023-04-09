@@ -1,0 +1,37 @@
+.contact_info_ {
+  width: 100%;
+}
+.contact_info_ .heading__outer {
+  display: flex;
+  flex-flow: column;
+  gap: 3px;
+  margin-bottom: 15px;
+}
+.contact_info_ .heading__outer h2 {
+  color: black;
+  font-weight: 500;
+  font-size: 18px;
+}
+.contact_info_ .heading__outer p {
+  font-weight: 500;
+  color: #fa0303;
+  font-size: 14px;
+  text-transform: capitalize;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.contact_info_ .heading__outer p .svg {
+  width: 100%;
+  height: auto;
+  max-width: 20px;
+}
+.contact_info_ .inner_contact {
+  min-height: 100px;
+  background-color: #EBEBEB;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 20px;
+}/*# sourceMappingURL=style.css.map */

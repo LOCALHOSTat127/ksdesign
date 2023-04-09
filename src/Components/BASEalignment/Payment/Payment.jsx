@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react'
 import "./style.css";
+import ContactInfo from '../smComponents/contactInfo/contactInfo';
 
 
 
@@ -55,6 +56,11 @@ const PaymentComponent = () => {
         <section className="payment__component">
             {/* Select dates/offers */}
             <SelectDateSection />
+
+
+            {/* CUSTOMER_CONTACT_INFO */}
+            <ContactInfo />
+
 
             {/* required documents */}
             {FILEBLOGCONFIG.isRequiredDocs && <FileSection FILEBLOGCONFIG={FILEBLOGCONFIG} />}

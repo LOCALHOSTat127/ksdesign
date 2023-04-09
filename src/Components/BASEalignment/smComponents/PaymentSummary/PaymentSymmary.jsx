@@ -1,6 +1,6 @@
 import { useState } from 'react'
 
-
+import { useDispatch, useSelector } from 'react-redux';
 import Payment_Provider from '../../../../Api/razorpay/razorpay_utils';
 import CircularProgress from '@mui/material/CircularProgress';
 import { ReactComponent as RightArrow } from "../../../../assets/svg/right-arrow.svg";
@@ -8,6 +8,8 @@ import { ReactComponent as RightArrow } from "../../../../assets/svg/right-arrow
 
 
 const PaymentSymmary = () => {
+
+    const ad_state = useSelector((state) => state.ad_booking_config);
   
 
     const [paymentInitilising, setPaymentInitilized] = useState(false);
@@ -68,12 +70,12 @@ const PaymentSymmary = () => {
 
 
                         <div className="ad_Cat">
-                            <p className="ad_cat contant">Obituary , Shraadh</p>
+                            <p className="ad_cat contant">{ad_state.FIRST_STEP.CATEGORY_SELECTION_STEP.config_info.category_name}</p>
 
                         </div>
 
                         <div className="ad_txt">
-                            <p className="ad_txt contant">(Name) left for (His/Her) heavenly abode on (Date) at (Location). He will be deeply remembered for his dsdmsk ms. He is mourned by his (Names of Family Members/ Friends/ Relatives).</p>
+                            <p className="ad_txt contant">{ad_state.SECOND_STEP.config_info.ad_text}</p>
                         </div>
 
                     </div>

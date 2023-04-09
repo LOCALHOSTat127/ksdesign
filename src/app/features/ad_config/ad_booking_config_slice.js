@@ -108,6 +108,7 @@ const initialState = {
         config_info: {
             selected_dates: [],
             customer_contact_info: {
+                isDone : false,
                 contact_email: null,
                 contact_person_name: null,
                 contact_phone: null,
@@ -240,9 +241,13 @@ export const ad_booking_config = createSlice({
         set_selected_dates: (state, action) => {
             state.THIRD_STEP.config_info.selected_dates = Object.assign({selected: false}, action.payload);
         },
+        set_contact_info : (state,action) =>{
+            state.THIRD_STEP.config_info.customer_contact_info.isDone = action.payload.isdone;
+            state.THIRD_STEP.config_info.customer_contact_info.contact_email = action.payload.email;
+            state.THIRD_STEP.config_info.customer_contact_info.contact_person_name = action.payload.fullname;
+            state.THIRD_STEP.config_info.customer_contact_info.contact_phone = action.payload.mobile;
+        },
         set_paymet_page_config: (state, action) => {
-
-            state.THIRD_STEP.config_info.customer_contact_info = action.payload.customer_contact_info;
             state.THIRD_STEP.config_info.selected_offer = action.payload?.selected_offer;
             state.THIRD_STEP.config_info.documents = action.payload?.documents;
             state.THIRD_STEP.config_info.cost_summary = action.payload.cost_summary;
@@ -271,7 +276,7 @@ export const ad_booking_config = createSlice({
 })
 
 
-export const { mark_first_step_status, mark_ad_cat_step_status, set_ad_cat_step_config, mark_ad_type_step_status, set_ad_type_step_config, mark_paper_info_step_status, set_paper_basic_info, set_paper_editions, set_paper_package, mark_compose_step_status, set_compose_step_config, set_ad_stats, set_special_enhancement, set_heading_config, mark_payment_step_status, set_paymet_page_config, isPaymentDone, isPaymentVerified, set_payment_response, set_bucket_uri, get_bucket_uri, push_bucket_doc,set_selected_dates } = ad_booking_config.actions;
+export const { mark_first_step_status, mark_ad_cat_step_status,set_contact_info, set_ad_cat_step_config, mark_ad_type_step_status, set_ad_type_step_config, mark_paper_info_step_status, set_paper_basic_info, set_paper_editions, set_paper_package, mark_compose_step_status, set_compose_step_config, set_ad_stats, set_special_enhancement, set_heading_config, mark_payment_step_status, set_paymet_page_config, isPaymentDone, isPaymentVerified, set_payment_response, set_bucket_uri, get_bucket_uri, push_bucket_doc,set_selected_dates } = ad_booking_config.actions;
 export default ad_booking_config.reducer;
 
 
