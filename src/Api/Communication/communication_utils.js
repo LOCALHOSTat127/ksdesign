@@ -45,4 +45,28 @@ export default class Communication_provider {
 
         return server_response.data;
     }
+
+
+
+
+    // send_full_mail_query
+    static send_small_mail_query = async (emailID) => {
+        let server_response = await axios({
+            method: 'post',
+            url: 'http://172.20.10.2:5000/communication/small_contact_query',
+            headers: {
+                "Content-Type": "Application/json",
+                "Accept": "Application/json",
+
+                // API_KEY_INCREPTED
+                Authorization: 'Bearer ' + process.env.REACT_APP_BACKEND_API_KEY,
+            },
+            data: {
+                emailID : emailID
+            }
+        });
+
+
+        return server_response.data;
+    }
 }

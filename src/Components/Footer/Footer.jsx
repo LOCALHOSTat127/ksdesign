@@ -9,6 +9,9 @@ import { ReactComponent as FooterLogo } from "../../assets/svg/white_footer_logo
 import { ReactComponent as LocationSvg } from "../../assets/svg/location-sm.svg";
 import { ReactComponent as CallSvg } from "../../assets/svg/call-grey-sm.svg";
 
+import Communication_provider from '../../Api/Communication/communication_utils';
+
+
 const Footer = () => {
     const [emailState, setState] = useState({
         email: "",
@@ -32,7 +35,7 @@ const Footer = () => {
     }
 
 
-    const sendMail = (e) => {
+    const sendMail = async (e) => {
         document.getElementById('email__feild__footer').value = "";
         setState(prev => ({
             ...prev,
@@ -41,22 +44,35 @@ const Footer = () => {
             isSent: false,
         }));
 
-        setTimeout(() => {
+
+
+        const server_response = await Communication_provider.send_small_mail_query(emailState.email);
+
+        if (server_response.status === 200) {
+            setTimeout(() => {
+                setState(prev => ({
+                    ...prev,
+                    isSending: true,
+                    isSent: true,
+                }));
+            }, 2000);
+
+            setTimeout(() => {
+                setState(prev => ({
+                    ...prev,
+                    isValid: false,
+                    isSending: false,
+                    isSent: false,
+                }));
+            }, 4500);
+        } else {
+            alert("Error while sending Email,Try again later.")
             setState(prev => ({
                 ...prev,
                 isSending: true,
                 isSent: true,
             }));
-        }, 2000);
-
-        setTimeout(() => {
-            setState(prev => ({
-                ...prev,
-                isValid: false,
-                isSending: false,
-                isSent: false,
-            }));
-        }, 4500);
+        }
     }
 
 
@@ -97,7 +113,7 @@ const Footer = () => {
                             </p>
                         </div>
                         <div>
-                            <CallSvg className='sm__svg'/>
+                            <CallSvg className='sm__svg' />
                             <p>+91 9950696910</p>
                         </div>
                     </div>

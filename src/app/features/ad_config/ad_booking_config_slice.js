@@ -2,7 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
     FIRST_STEP: {
-        isDone: true,
+        isDone: false,
         parent_step_name: "AD_CONFIG_SELECTION",
 
         CATEGORY_SELECTION_STEP: {
@@ -63,7 +63,7 @@ const initialState = {
 
     },
     SECOND_STEP: {
-        isDone: true,
+        isDone: false,
         parent_step_name: "COMPOSE_AD",
         prev_step: "PAPER_PACKAGE_EDITION",
         next_step: "PAYMENT_PAGE",
@@ -102,7 +102,7 @@ const initialState = {
 
     },
     THIRD_STEP: {
-        isDone: true,
+        isDone: false,
         parent_step_name: "PAYMENT_PAGE",
         prev_step: "SECOND_STEP_COMPOSE_AD",
         next_step: null,
