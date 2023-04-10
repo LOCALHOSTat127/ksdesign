@@ -6,6 +6,7 @@ import Calender from '../calender/calender';
 import "./style.css";
 
 const SelectDateSection = () => {
+    const offers = [];
 
     return (
         <>
@@ -26,19 +27,22 @@ const SelectDateSection = () => {
                         {/* offers here... */}
 
                         <div className="offers__list">
-                            <div className="offer_wrapper">
-                                <OfferSvg className='sm__svg' />
-                                <p >Buy ads for 7 Days & get 2 Days free</p>
-                            </div>
-                            <div className="offer_wrapper">
-                                <OfferSvg className='sm__svg' />
-                                <p >Buy ads for 7 Days & get 2 Days free</p>
-                            </div>
-                            <div className="offer_wrapper">
-                                <OfferSvg className='sm__svg' />
-                                <p >Buy ads for 7 Days & get 2 Days free</p>
-                            </div>
-                        
+                            { 
+                            offers.length > 0 ? 
+                                offers.map((({ offer_msg }) => {
+                                    return (
+
+                                        <div className="offer_wrapper">
+                                            <OfferSvg className='sm__svg' />
+                                            <p >{offer_msg}</p>
+                                        </div>
+                                    )
+                                })) : 
+                                <p style={{
+                                    color: "#1e1c1c",
+                                    fontSize: "16px",
+                                }} >No offers found!</p>
+                            }
                         </div>
                     </div>
                 </div>

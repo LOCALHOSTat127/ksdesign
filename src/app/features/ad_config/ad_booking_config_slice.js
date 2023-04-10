@@ -87,8 +87,10 @@ const initialState = {
             special_enhancement: {
                 isEmail: false,
                 email_id_charge: 0,
-                isPhone: true,
+                isPhone: false,
                 phone_number_charge: 0,
+                isTranslation: false,
+                translation_charge: 0
             },
             heading_config: {
                 major_heading: null,
@@ -100,7 +102,7 @@ const initialState = {
 
     },
     THIRD_STEP: {
-        isDone: false,
+        isDone: true,
         parent_step_name: "PAYMENT_PAGE",
         prev_step: "SECOND_STEP_COMPOSE_AD",
         next_step: null,
@@ -108,7 +110,7 @@ const initialState = {
         config_info: {
             selected_dates: [],
             customer_contact_info: {
-                isDone : false,
+                isDone: false,
                 contact_email: null,
                 contact_person_name: null,
                 contact_phone: null,
@@ -188,23 +190,14 @@ export const ad_booking_config = createSlice({
         },
         // 2.1
         set_compose_step_config: (state, action) => {
-            state.SECOND_STEP.config_info.ad_text = action.payload.ad_textFieldClasses;
+            state.SECOND_STEP.config_info.ad_text = action.payload.ad_text;
 
-            if (action.payload.pallet?.isBgClr === true) {
-                state.SECOND_STEP.config_info.pallet_config.isBgClr = action.payload.pallet.isBgClr;
-                state.SECOND_STEP.config_info.pallet_config.bg_color_charge = action.payload.pallet.bg_color_charge;
-            }
-
-
-            if (action.payload.pallet?.isBorder === true) {
-                state.SECOND_STEP.config_info.pallet_config.isBorder = action.payload.pallet.isBorder;
-                state.SECOND_STEP.config_info.pallet_config.border_charge = action.payload.pallet.border_charge;
-            }
-
-            if (action.payload.pallet?.isMarker === true) {
-                state.SECOND_STEP.config_info.pallet_config.isMarker = action.payload.pallet.isMarker;
-                state.SECOND_STEP.config_info.pallet_config.marker_charge = action.payload.pallet.marker_charge;
-            }
+            state.SECOND_STEP.config_info.pallet_config.isBgClr = action.payload.isBgClr;
+            state.SECOND_STEP.config_info.pallet_config.bg_color_charge = action.payload.bg_color_charge;
+            state.SECOND_STEP.config_info.pallet_config.isBorder = action.payload.isBorder;
+            state.SECOND_STEP.config_info.pallet_config.border_charge = action.payload.border_charge;
+            state.SECOND_STEP.config_info.pallet_config.isMarker = action.payload.isMarker;
+            state.SECOND_STEP.config_info.pallet_config.marker_charge = action.payload.marker_charge;
         },
 
         // 2.2
@@ -216,15 +209,12 @@ export const ad_booking_config = createSlice({
         },
         // 2.3
         set_special_enhancement: (state, action) => {
-            if (action.payload?.isEmail != null) {
-                state.SECOND_STEP.config_info.special_enhancement.isEmail = action.payload?.isEmail;
-                state.SECOND_STEP.config_info.special_enhancement.email_id_charge = action.payload.email_id_charge;
-            }
-
-            if (action.payload?.isPhone != null) {
-                state.SECOND_STEP.config_info.special_enhancement.isPhone = action.payload?.isPhone;
-                state.SECOND_STEP.config_info.special_enhancement.phone_number_charge = action.payload.phone_number_charge;
-            }
+            state.SECOND_STEP.config_info.special_enhancement.isEmail = action.payload?.isEmail;
+            state.SECOND_STEP.config_info.special_enhancement.email_id_charge = action.payload.email_id_charge;
+            state.SECOND_STEP.config_info.special_enhancement.isPhone = action.payload?.isPhone;
+            state.SECOND_STEP.config_info.special_enhancement.phone_number_charge = action.payload.phone_number_charge;
+            state.SECOND_STEP.config_info.special_enhancement.isTranslation = action.payload?.isTranslation;
+            state.SECOND_STEP.config_info.special_enhancement.translation_charge = action.payload.translation_charge;
         },
         // 2.4
         set_heading_config: (state, action) => {
@@ -239,9 +229,9 @@ export const ad_booking_config = createSlice({
         },
         // 3.1
         set_selected_dates: (state, action) => {
-            state.THIRD_STEP.config_info.selected_dates = Object.assign({selected: false}, action.payload);
+            state.THIRD_STEP.config_info.selected_dates = Object.assign({ selected: false }, action.payload);
         },
-        set_contact_info : (state,action) =>{
+        set_contact_info: (state, action) => {
             state.THIRD_STEP.config_info.customer_contact_info.isDone = action.payload.isdone;
             state.THIRD_STEP.config_info.customer_contact_info.contact_email = action.payload.email;
             state.THIRD_STEP.config_info.customer_contact_info.contact_person_name = action.payload.fullname;
@@ -276,7 +266,7 @@ export const ad_booking_config = createSlice({
 })
 
 
-export const { mark_first_step_status, mark_ad_cat_step_status,set_contact_info, set_ad_cat_step_config, mark_ad_type_step_status, set_ad_type_step_config, mark_paper_info_step_status, set_paper_basic_info, set_paper_editions, set_paper_package, mark_compose_step_status, set_compose_step_config, set_ad_stats, set_special_enhancement, set_heading_config, mark_payment_step_status, set_paymet_page_config, isPaymentDone, isPaymentVerified, set_payment_response, set_bucket_uri, get_bucket_uri, push_bucket_doc,set_selected_dates } = ad_booking_config.actions;
+export const { mark_first_step_status, mark_ad_cat_step_status, set_contact_info, set_ad_cat_step_config, mark_ad_type_step_status, set_ad_type_step_config, mark_paper_info_step_status, set_paper_basic_info, set_paper_editions, set_paper_package, mark_compose_step_status, set_compose_step_config, set_ad_stats, set_special_enhancement, set_heading_config, mark_payment_step_status, set_paymet_page_config, isPaymentDone, isPaymentVerified, set_payment_response, set_bucket_uri, get_bucket_uri, push_bucket_doc, set_selected_dates } = ad_booking_config.actions;
 export default ad_booking_config.reducer;
 
 

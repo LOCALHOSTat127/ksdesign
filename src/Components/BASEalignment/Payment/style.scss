@@ -56,7 +56,7 @@
                 width: 100%;
                 background-color: transparent;
                 display: grid;
-                grid-template-columns: .25fr .75fr;
+                grid-template-columns: .30fr .70fr;
                 grid-template-rows: 1fr;
                 gap: 15px;
 
@@ -80,9 +80,9 @@
                     gap: 5px;
 
                     .flatter__row {
-                        background-color: #cccccc;
+                        background: linear-gradient(240deg, #8780d6, #c198eb);
                         width: fit-content;
-                        padding: 8px;
+                        padding: 5px;
                         border-radius: 4px;
                         display: flex;
                         align-items: center;
@@ -94,9 +94,13 @@
                             background-color: white;
                             width: 100%;
                             height: auto;
-                            max-width: 24px;
-                            padding: 4px;
+                            max-width: 17px;
+                            padding: 2px;
                             border-radius: 50%;
+                        }
+
+                        p {
+                            font-size: 13px;
                         }
                     }
                 }

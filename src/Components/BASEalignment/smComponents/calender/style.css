@@ -66,7 +66,7 @@
   gap: 6px;
 }
 .calender__wrapper .days .day {
-  margin-bottom: 8px;
+  margin-bottom: 10px;
   width: 14.2857142857%;
   position: relative;
   display: flex;

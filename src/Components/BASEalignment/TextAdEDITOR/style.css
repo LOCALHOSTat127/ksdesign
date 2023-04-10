@@ -189,6 +189,9 @@
   gap: 15px;
   flex-direction: column;
 }
+.TextEditor__ground .main__upper__containor .sidepanel .sub__controlls .disabled {
+  box-shadow: none;
+}
 .TextEditor__ground .main__upper__containor .sidepanel .sub__controlls .checkboxouter {
   text-align: center;
   position: relative;
@@ -354,7 +357,6 @@
 }
 .TextEditor__ground .second__lower__containor .ad__heading__containor {
   background: #F8F8F8;
-  margin-bottom: 30px;
   padding: 20px;
 }
 .TextEditor__ground .second__lower__containor .ad__heading__containor .panel__heading h2 {
@@ -456,6 +458,14 @@
   text-justify: newspaper;
 }
 
+.loading__box {
+  min-height: 300px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+}
+
 @media only screen and (max-width: 768px) {
   .TextEditor__ground .main__upper__containor {
     grid-template-columns: 1fr;
@@ -516,6 +526,9 @@
   }
   .TextEditor__ground .main__upper__containor .special__enhancement__box .ehnesment__inpt__boxs {
     flex-direction: column;
+  }
+  .TextEditor__ground .second__lower__containor .proceed_box {
+    background-color: red;
   }
   .TextEditor__ground .second__lower__containor .ad__heading__containor .heading__window {
     margin-top: 5px;

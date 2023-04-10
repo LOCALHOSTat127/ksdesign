@@ -39,7 +39,7 @@
   width: 100%;
   background-color: transparent;
   display: grid;
-  grid-template-columns: 0.25fr 0.75fr;
+  grid-template-columns: 0.3fr 0.7fr;
   grid-template-rows: 1fr;
   gap: 15px;
 }
@@ -62,10 +62,10 @@
   gap: 5px;
 }
 .payment__component .component__div .inner__section.date__inner .offers .flatter__row {
-  background-color: #cccccc;
+  background: linear-gradient(240deg, #8780d6, #c198eb);
   width: -moz-fit-content;
   width: fit-content;
-  padding: 8px;
+  padding: 5px;
   border-radius: 4px;
   display: flex;
   align-items: center;
@@ -77,9 +77,12 @@
   background-color: white;
   width: 100%;
   height: auto;
-  max-width: 24px;
-  padding: 4px;
+  max-width: 17px;
+  padding: 2px;
   border-radius: 50%;
+}
+.payment__component .component__div .inner__section.date__inner .offers .flatter__row p {
+  font-size: 13px;
 }
 .payment__component .component__div .inner__section.date__inner .selected__dates__row {
   min-height: 60px;
