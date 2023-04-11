@@ -24,7 +24,7 @@ const HeroSection = () => {
             <TypeAnimation
               className='type__txt'
               sequence={[
-                'On Digital Media',
+                'Or Digital Media',
                 1300,
                 'On Telivision',
                 1300,

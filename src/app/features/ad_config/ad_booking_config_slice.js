@@ -2,11 +2,11 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
     FIRST_STEP: {
-        isDone: false,
+        isDone: true,
         parent_step_name: "AD_CONFIG_SELECTION",
 
         CATEGORY_SELECTION_STEP: {
-            isDone: false,
+            isDone: true,
             child_step_name: "AD_CATEGORY_SELECTION",
             step_url: "http://172.20.10.2:3001/ad/select/category",
             prev_step: null,
@@ -19,7 +19,7 @@ const initialState = {
         },
 
         AD_TYPE_SELECTION_STEP: {
-            isDone: false,
+            isDone: true,
             child_step_name: "AD_TYPE_SELECTION",
             step_url: "http://172.20.10.2:3001/ad/select/adtype",
             prev_step: "AD_CATEGORY",
@@ -31,7 +31,7 @@ const initialState = {
         },
 
         PAPER_EDITION_SELECTION_STEP: {
-            isDone: false,
+            isDone: true,
             child_step_name: "AD_EDITION_SELECTION",
             step_url: "http://172.20.10.2:3001/ad/select/newspaper",
             prev_step: "AD_TYPE",
@@ -63,7 +63,7 @@ const initialState = {
 
     },
     SECOND_STEP: {
-        isDone: false,
+        isDone: true,
         parent_step_name: "COMPOSE_AD",
         prev_step: "PAPER_PACKAGE_EDITION",
         next_step: "PAYMENT_PAGE",
@@ -102,7 +102,7 @@ const initialState = {
 
     },
     THIRD_STEP: {
-        isDone: false,
+        isDone: true,
         parent_step_name: "PAYMENT_PAGE",
         prev_step: "SECOND_STEP_COMPOSE_AD",
         next_step: null,
