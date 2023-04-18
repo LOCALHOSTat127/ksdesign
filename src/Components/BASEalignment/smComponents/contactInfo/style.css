@@ -15,7 +15,7 @@
 .contact_info_ .heading__outer p {
   font-weight: 500;
   color: #fa0303;
-  font-size: 14px;
+  font-size: clamp(9px, 4vh, 14px);
   text-transform: capitalize;
   display: flex;
   align-items: center;
@@ -34,4 +34,22 @@
   align-items: center;
   gap: 10px;
   padding: 20px;
+}
+
+@media only screen and (max-width: 768px) {
+  .contact_info_ .heading__outer p {
+    font-size: 10px;
+    gap: 6px;
+  }
+  .contact_info_ .heading__outer p .svg {
+    width: 100%;
+    height: auto;
+    max-width: 17px;
+  }
+  .contact_info_ .inner_contact {
+    flex-direction: column;
+    padding: 14px;
+    align-items: flex-start;
+    gap: 15px;
+  }
 }/*# sourceMappingURL=style.css.map */

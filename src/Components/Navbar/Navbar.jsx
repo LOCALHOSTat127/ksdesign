@@ -1,54 +1,68 @@
-import { useState ,useEffect} from 'react'
+import { useState, useEffect } from 'react'
 import "./Navbar.css";
 
-import {Link, useNavigate} from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 // Importing Assets/img
 import Logo from "../../assets/svg/logo.png";
 import { ReactComponent as OpenMemu } from "../../assets/svg/openMenu.svg";
 import { ReactComponent as MailSvg } from "../../assets/svg/send-mail.svg";
 import { ReactComponent as CloseMenu } from "../../assets/svg/closemenu.svg";
-import { ReactComponent as CallSvg } from "../../assets/svg/call-svg.svg";
-import { ReactComponent as Home } from "../../assets/svg/home-svg.svg";
 import { ReactComponent as Services } from "../../assets/svg/services-svg.svg";
 import { ReactComponent as Aboutus } from "../../assets/svg/about-us-svg.svg";
 
-
+import DevLopment from "../../assets/png/dev.gif";
 
 const Navbar = () => {
     const navigate = useNavigate();
     const [isOpen, setOpen] = useState(0);
-    const [show,handleShow] = useState(false);
+    const [show, handleShow] = useState(false);
 
-    const handleNavTransisation = () =>{
-        if(window.scrollY > 10){
+    const handleNavTransisation = () => {
+        if (window.scrollY > 10) {
             handleShow(true);
-        }else{
+        } else {
             handleShow(false);
         }
     }
 
 
     useEffect(() => {
-        window.addEventListener("scroll",handleNavTransisation);
-        return () => window.removeEventListener("scroll",handleNavTransisation)
+        window.addEventListener("scroll", handleNavTransisation);
+        return () => window.removeEventListener("scroll", handleNavTransisation)
     }, []);
 
 
+    const take_to_top = () =>{
+        window.scrollTo(0,0);
+        setOpen(false);
+    }
+
+
     return (
-        <header  className={`navbar__outer ${show && "show"}`}>
+        <header className={`navbar__outer ${show && "show"}`}>
             <menu className="flex flex-jcsb flex-aic deaktop__menu">
                 {/* Logo */}
-                <img onClick={((e) =>{
-                        navigate("/");
-                    })} src={Logo} id="logo" className="cp" />
+                <img alt='logo' onClick={((e) => {
+                    navigate("/");
+                })} src={Logo} id="logo" className="cp" />
 
                 {/* ul>li */}
                 <nav className="flex menu__list">
                     <ul className="flex">
-                        <a href="#">
-                            <li className="li active">
-                                Track my AD
+                        <a href="/web-development">
+                            <li style={{
+                                display: "flex",
+                                alignItems: "center",
+                                gap: "12px"
+                            }} className="li active">
+                                <img style={{
+                                    width: "100 %",
+                                    height: "auto",
+                                    maxWidth: "24px",
+                                    maxHeight: "24px",
+                                }} src={DevLopment} alt="website-development" />
+                                Web Development
                             </li>
                         </a>
 
@@ -67,10 +81,10 @@ const Navbar = () => {
 
                     {/* cta button */}
                     <button
-                    onClick={((e) =>{
-                        navigate("/contact");
-                    })}
-                     id='nav__contact__us__btn' className='flex flex-aic flex-jcsa'>
+                        onClick={((e) => {
+                            navigate("/contact");
+                        })}
+                        id='nav__contact__us__btn' className='flex flex-aic flex-jcsa'>
                         Contact us
                         <MailSvg className='mail__svg' />
                     </button>
@@ -94,34 +108,47 @@ const Navbar = () => {
                         }}
                         className='closemenu__svg cp' />
                     <ul className="flex fd-col">
-                        <a href="#">
-                            <li className="li active ">
-                                <Home className='mini__svg'/>
-                                Home
+                        <a href="/web-development">
+                            <li style={{
+                                display: "flex",
+                                alignItems: "center",
+                                gap: "12px"
+                            }} className="li active ">
+                                <img style={{
+                                    width: "100 %",
+                                    height: "auto",
+                                    maxWidth: "24px",
+                                    maxHeight: "24px",
+                                }} src={DevLopment} alt="website-development" />
+                                Website Design
                             </li>
                         </a>
 
-                        <a href="#">
+                        <a href="/services">
                             <li className="li">
-                                <Services className='mini__svg'/>
+                                <Services className='mini__svg' />
                                 Services
                             </li>
                         </a>
 
-                        <a href="#">
+                        <Link to="/about">
                             <li className="li">
-                                <Aboutus className='mini__svg'/>
+                                <Aboutus className='mini__svg' />
                                 About us
                             </li>
-                        </a>
+                        </Link >
                     </ul>
                 </div>
-                <a href="tel:+91 8824953771">
-                    <button className='mobile__call__btn cp flex flex-aic flex-jcc'>
-                        <CallSvg className='call__svg' />
-                        Book on Call
-                    </button>
-                </a>
+
+                <button
+                    onClick={((e) => {
+                        navigate("/contact");
+                        take_to_top();
+                    })} className='mobile__call__btn cp flex flex-aic flex-jcc'>
+                    <MailSvg className='call__svg' />
+                    Contact Us
+                </button>
+
             </div>
         </header>
     )

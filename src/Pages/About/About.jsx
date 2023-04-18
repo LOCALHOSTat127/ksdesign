@@ -13,7 +13,7 @@ const AboutUs = () => {
     return (
         <section className="about_us_page">
 
-            <div className="card fdrr">
+            <div className="card fdrr first_section">
                 <div className="img">
                     <img style={{
                         maxWidth: "600px"
@@ -28,7 +28,7 @@ const AboutUs = () => {
                         lineHeight: "57px",
                         fontVariant: "none",
                         textTransform: "capitalize"
-                    }}>Alet’s make that perfect <span style={{
+                    }}>Let’s make that perfect <span style={{
                         color: "#D268CC"
                     }} >Growth Plan</span></h1>
                     <div style={{
@@ -64,14 +64,14 @@ const AboutUs = () => {
                             borderRadius: "0px",
                             padding: "11px 64px 11px 20px;",
                          
-                        }} variant="contained">Let’t talk more on chat</Button>
+                        }} variant="contained">Let’s talk more on chat</Button>
 
                 </div>
             </div>
 
 
 
-            <div className="card">
+            <div className="card second_section">
                 <div className="img">
                     <img style={{
                         maxWidth: "600px"
@@ -96,7 +96,7 @@ const AboutUs = () => {
 
 
 
-            <div className="card fdrr">
+            <div className="card fdrr third_section">
                 <div className="img">
                     <img style={{
                         maxWidth: "600px"

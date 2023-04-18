@@ -1,5 +1,4 @@
 .offers {
-    max-height: 300px;
     .offers__list {
         height: 100%;
         padding: 20px 13px;
@@ -20,11 +19,13 @@
             border-radius: 4px;
             max-width: calc(50%);
             transform: all 150ms ease;
-            &:hover{
+
+
+            &:hover {
                 background-color: #76a2ff45;
             }
 
-            &.selected{
+            &.selected {
                 background-color: #76a2ff45;
             }
 
@@ -32,6 +33,21 @@
                 width: 100%;
                 height: auto;
                 max-width: 26px;
+            }
+        }
+    }
+}
+
+
+@media only screen and (max-width:768px) {
+    .offers {
+        .offers__list {
+            padding: 20px 0px;
+            .offer_wrapper {
+                font-weight: 500;
+                padding: 15px 15px;
+                border-radius: 4px;
+                max-width: calc(100%);
             }
         }
     }

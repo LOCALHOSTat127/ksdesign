@@ -45,7 +45,7 @@
             flex-direction: column;
             padding: 20px;
 
-            .redirect_timer{
+            .redirect_timer {
                 display: none;
                 background: #9a8dd74a;
                 margin-top: 24px;
@@ -140,4 +140,36 @@
     }
 
 
+}
+
+
+
+@media only screen and (max-width:768px) {
+    .payment_verification {
+        .payment_status_component {
+            display: flex;
+            flex-direction: column;
+            gap: 54px;
+
+            .status_indigator {
+                padding: 0px;
+               
+
+                p {
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: flex-start;
+                    gap: 24px;
+                }
+            }
+
+            .img {
+                img {
+                    object-fit: contain;
+                    width: 100%;
+                    height: 100%;
+                }
+            }
+        }
+    }
 }

@@ -5,7 +5,7 @@ import {set_contact_info} from "../../../../app/features/ad_config/ad_booking_co
 import "./style.css";
 import validator from 'validator';
 import { ReactComponent as WarningSvg } from "../../../../assets/svg/warning.svg";
-import { ReactComponent as EditSvg } from "../../../../assets/svg/editSvg.svg";
+
 import { ReactComponent as SaveSvg } from "../../../../assets/svg/saveSvg.svg";
 import Dialog from '@mui/material/Dialog';
 import DialogActions from '@mui/material/DialogActions';
@@ -45,7 +45,7 @@ const ContactInfo = () => {
         }
 
         for (let i = 0; i < phoneNumber.length; i++) {
-            if (validator.isNumeric(phoneNumber[i]) == false) {
+            if (validator.isNumeric(phoneNumber[i]) === false) {
                 return false;
             }
         }
@@ -132,7 +132,9 @@ const ContactInfo = () => {
                     Note : once this information is saved, cannot be changed.</p>
             </div>
             <div className='inner_contact'>
-                <TextField disabled={isLocked} id="contact_name"
+                <TextField sx={{
+                    width : "100%"
+                }} disabled={isLocked} id="contact_name"
                     label="Name"
                     variant="outlined"
                     value={userinfo.fullname}
@@ -141,7 +143,9 @@ const ContactInfo = () => {
                         fullname: e.target.value
                     }))}
                 />
-                <TextField disabled={isLocked} id="contact_phone"
+                <TextField sx={{
+                    width : "100%"
+                }} disabled={isLocked} id="contact_phone"
                     label="Phone"
                     variant="outlined"
                     value={userinfo.mobile}
@@ -150,7 +154,9 @@ const ContactInfo = () => {
                         mobile: e.target.value
                     }))}
                 />
-                <TextField
+                <TextField sx={{
+                    width : "100%"
+                }}
                     disabled={isLocked}
                     id="contact_email"
                     label="Email"

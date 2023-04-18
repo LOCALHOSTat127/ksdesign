@@ -45,15 +45,24 @@
   margin: auto;
   background: linear-gradient(to bottom, rgb(6, 4, 34), rgb(7, 7, 14)) !important;
 }
-.category__outer .heading {
+.category__outer .section__heading {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 44px;
+}
+.category__outer .section__heading h2 {
   font-style: normal;
   text-transform: capitalize;
-  font-size: clamp(18px, 4vw, 32px);
+  font-size: clamp(27px, 4vw, 32px);
   font-weight: 600;
   font-family: inherit;
   font-variant: all-petite-caps;
-  margin-bottom: 44px;
-  position: relative;
+}
+.category__outer .section__heading p {
+  font-family: inherit;
+  font-weight: 300;
+  color: rgba(255, 255, 255, 0.808);
+  font-size: clamp(15px, 3vw, 16px);
 }
 .category__outer .cards {
   display: grid;

@@ -200,7 +200,7 @@
                                 font-weight: 700;
 
 
-                                &.hidemsg{
+                                &.hidemsg {
                                     display: none;
                                 }
                             }
@@ -226,7 +226,7 @@
 @media only screen and (max-width:768px) {
     .contact__page {
 
-        padding: 60px 0px 40px 0px;
+        padding: 60px 20px 40px 20px;
 
         .page__inner__box {
 
@@ -236,13 +236,20 @@
                 flex-direction: column-reverse;
 
                 .sidepanel__text {
-                    padding: 20px;
+                    padding: 32px 20px;
 
                     .text__outer {
                         display: none;
                     }
 
 
+
+                    .socials {
+                        ul {
+                            align-items: center;
+                            justify-content: center;
+                        }
+                    }
 
 
 
@@ -251,24 +258,38 @@
                 .contact__box__controlls {
                     min-height: 500px;
                     overflow: hidden;
+                    border-radius: 4px;
 
                     .innerbox {
+                        padding: 20px;
                         border-radius: 12px 12px 0px 0px;
                     }
 
                     .contact__box__input {
                         gap: 0px;
-                        padding: 20px 10px 10px 10px;
+
+
+                        .name__line {
+                            gap: 10px;
+                            flex-direction: row;
+                        }
+
+                        .contact__info__line {
+                            flex-direction: column;
+                            gap: 14px;
+                        }
 
                         .feild {
                             padding: 20px 0px;
-                            gap: 10px;
+
 
                             &.send__message__line {
                                 flex-direction: column;
-                                .err_msg{
+
+                                .err_msg {
                                     text-align: left;
                                 }
+
                                 .MuiButtonBase-root {
                                     width: 100%;
                                 }

@@ -1,43 +1,44 @@
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Quicksand:wght@700&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Righteous&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Righteous&display=swap');
+
 .flex {
-  display: flex;
+    display: flex;
 }
 
 .fd-col {
-  flex-direction: column;
+    flex-direction: column;
 }
 
 .fd-row {
-  flex-direction: row;
+    flex-direction: row;
 }
 
 .flex-aic {
-  align-items: center;
+    align-items: center;
 }
 
 .flex-jcc {
-  justify-content: center;
+    justify-content: center;
 }
 
 .df-aic-jcc {
-  display: flex;
-  align-items: center;
-  justify-content: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .flex-jcsb {
-  justify-content: space-between;
+    justify-content: space-between;
 }
 
 .flex-jcsa {
-  justify-content: space-around;
+    justify-content: space-around;
 }
 
 .cp {
-  cursor: pointer;
+    cursor: pointer;
 }
 
 /* ---colours */
@@ -124,13 +125,13 @@ time,
 mark,
 audio,
 video {
-  margin: 0;
-  padding: 0;
-  border: 0;
-  font-size: 100%;
-  font: inherit;
-  box-sizing: border-box;
-  font-family: "Poppins", sans-serif;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    font: inherit;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
 }
 
 /* HTML5 display-role reset for older browsers */
@@ -145,47 +146,48 @@ hgroup,
 menu,
 nav,
 section {
-  display: block;
+    display: block;
 }
 
 html {
-  font-family: "Poppins", sans-serif;
-  scroll-behavior: smooth;
+    font-family: "Poppins", sans-serif;
+    scroll-behavior: smooth;
 }
 
 body {
-  font-size: 16px;
+    font-size: 16px;
+
 }
 
 ol,
 ul {
-  list-style: none;
+    list-style: none;
 }
 
 blockquote,
 q {
-  quotes: none;
+    quotes: none;
 }
 
 blockquote:before,
 blockquote:after,
 q:before,
 q:after {
-  content: "";
-  content: none;
+    content: "";
+    content: none;
 }
 
 table {
-  border-collapse: collapse;
-  border-spacing: 0;
+    border-collapse: collapse;
+    border-spacing: 0;
 }
 
 a {
-  text-decoration: none;
+    text-decoration: none;
 }
 
 ::-webkit-scrollbar {
-  display: none;
+    display: none;
 }
 
 /*# sourceMappingURL=index.css.map */

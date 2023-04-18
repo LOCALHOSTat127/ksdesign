@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import React from 'react';
 import "./style.css";
 import ContactInfo from '../smComponents/contactInfo/contactInfo';
 
@@ -33,6 +33,7 @@ const PaymentComponent = () => {
                 isRequired: true,
                 index: 1
             },
+            
 
         ]
 
@@ -40,11 +41,7 @@ const PaymentComponent = () => {
     };
 
 
-    const [error, setError] = useState({
-        msg: "Please Upload File",
-        err_code: 200,
-        isErr: true
-    });
+   
 
 
 

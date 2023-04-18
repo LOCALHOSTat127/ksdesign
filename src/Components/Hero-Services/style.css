@@ -45,6 +45,25 @@
   margin: auto;
   background: linear-gradient(to bottom, rgb(6, 4, 34), rgb(7, 7, 14)) !important;
 }
+.services__section .section__heading {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 44px;
+}
+.services__section .section__heading h2 {
+  font-style: normal;
+  text-transform: capitalize;
+  font-size: clamp(27px, 4vw, 32px);
+  font-weight: 600;
+  font-family: inherit;
+  font-variant: all-petite-caps;
+}
+.services__section .section__heading p {
+  font-family: inherit;
+  font-weight: 300;
+  color: rgba(255, 255, 255, 0.808);
+  font-size: clamp(15px, 3vw, 16px);
+}
 .services__section .services {
   min-height: 400px;
   display: grid;
@@ -63,6 +82,7 @@
   align-items: center;
   justify-content: center;
   cursor: pointer;
+  padding: 20px;
 }
 .services__section .services .service:hover {
   background: rgba(64, 80, 226, 0.4666666667);

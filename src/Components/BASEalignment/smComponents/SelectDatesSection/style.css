@@ -1,6 +1,3 @@
-.offers {
-  max-height: 300px;
-}
 .offers .offers__list {
   height: 100%;
   padding: 20px 13px;
@@ -32,4 +29,16 @@
   width: 100%;
   height: auto;
   max-width: 26px;
+}
+
+@media only screen and (max-width: 768px) {
+  .offers .offers__list {
+    padding: 20px 0px;
+  }
+  .offers .offers__list .offer_wrapper {
+    font-weight: 500;
+    padding: 15px 15px;
+    border-radius: 4px;
+    max-width: 100%;
+  }
 }/*# sourceMappingURL=style.css.map */

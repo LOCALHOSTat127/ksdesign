@@ -1,6 +1,6 @@
 import { useState } from 'react'
 
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 import Payment_Provider from '../../../../Api/razorpay/razorpay_utils';
 import CircularProgress from '@mui/material/CircularProgress';
 import { ReactComponent as RightArrow } from "../../../../assets/svg/right-arrow.svg";
@@ -74,7 +74,7 @@ const PaymentSymmary = () => {
 
                         </div>
 
-                        <div className="ad_txt">
+                        <div className="ad_Txt">
                             <p className="ad_txt contant">{ad_state.SECOND_STEP.config_info.ad_text}</p>
                         </div>
 

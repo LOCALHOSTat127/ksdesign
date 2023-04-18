@@ -151,31 +151,43 @@
 
 @media only screen and (max-width: 768px) {
   .contact__page {
-    padding: 60px 0px 40px 0px;
+    padding: 60px 20px 40px 20px;
   }
   .contact__page .page__inner__box .contact__box {
     flex-direction: column-reverse;
   }
   .contact__page .page__inner__box .contact__box .sidepanel__text {
-    padding: 20px;
+    padding: 32px 20px;
   }
   .contact__page .page__inner__box .contact__box .sidepanel__text .text__outer {
     display: none;
   }
+  .contact__page .page__inner__box .contact__box .sidepanel__text .socials ul {
+    align-items: center;
+    justify-content: center;
+  }
   .contact__page .page__inner__box .contact__box .contact__box__controlls {
     min-height: 500px;
     overflow: hidden;
+    border-radius: 4px;
   }
   .contact__page .page__inner__box .contact__box .contact__box__controlls .innerbox {
+    padding: 20px;
     border-radius: 12px 12px 0px 0px;
   }
   .contact__page .page__inner__box .contact__box .contact__box__controlls .contact__box__input {
     gap: 0px;
-    padding: 20px 10px 10px 10px;
+  }
+  .contact__page .page__inner__box .contact__box .contact__box__controlls .contact__box__input .name__line {
+    gap: 10px;
+    flex-direction: row;
+  }
+  .contact__page .page__inner__box .contact__box .contact__box__controlls .contact__box__input .contact__info__line {
+    flex-direction: column;
+    gap: 14px;
   }
   .contact__page .page__inner__box .contact__box .contact__box__controlls .contact__box__input .feild {
     padding: 20px 0px;
-    gap: 10px;
   }
   .contact__page .page__inner__box .contact__box .contact__box__controlls .contact__box__input .feild.send__message__line {
     flex-direction: column;

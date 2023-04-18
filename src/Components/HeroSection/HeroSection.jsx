@@ -5,11 +5,47 @@ import { useNavigate } from 'react-router-dom';
 
 import { TypeAnimation } from 'react-type-animation';
 import HeroImage from "../../assets/png/heroimgfinal.png";
+import HeroImageSecond from "../../assets/png/hero_image_mobile.png";
 import { ReactComponent as RightArrow } from "../../assets/svg/right-arrow.svg";
 
 
-const HeroSection = () => {
+
+// Controlls_section
+const HeroControlls = ({ type }) => {
   const NAVIGATE = useNavigate();
+  return (
+    <>
+      <p className={`subhedding ${type}`}>
+        Advertise your products,services and business on Digital as well as Print media platforms. We have covered all major Ad mediums at very minimal prices.
+      </p>
+
+
+      <div className={`hero__controlls ${type}`}>
+        <a href="#services">
+          <button className="bookad__box browes__collection">
+            Brwose Services
+            <RightArrow className='btn__svg' />
+            <div className="hid__line"></div>
+          </button>
+        </a>
+        <button
+          onClick={((e) => {
+            NAVIGATE('/ad/select/category')
+          })}
+          className="bookad__box">
+          Book AD online
+          <RightArrow className='btn__svg' />
+          <div className="hid__line"></div>
+        </button>
+      </div>
+
+    </>
+  )
+}
+
+
+const HeroSection = () => {
+
   return (
     <section className='Hero__section__outer'>
       <div className="content__containor">
@@ -43,52 +79,43 @@ const HeroSection = () => {
 
 
         <div className="services__grid">
+          <p>in Just 3 Steps</p>
+          <div className="steps_display">
+            <ul>
+              <li className="step">
+                Select
+                <div className="step_line"></div>
+              </li>
+              <li className="step">
+                Compose
+                <div className="step_line"></div>
+              </li>
+              <li className="step">
+                Publish
 
+              </li>
+            </ul>
+          </div>
         </div>
+        <HeroControlls type={"desktop"} />
 
 
 
-        <p className="subhedding">
-          Advertise your products,services and business on Digital as well as Print media platforms. We have covered all major Ad mediums at very minimal prices.
-        </p>
-
-
-        <div className="hero__controlls">
-          <a href="#services">
-            <button className="bookad__box browes__collection">
-              Brwose Services
-              <RightArrow className='btn__svg' />
-              <div className="hid__line"></div>
-            </button>
-          </a>
-          <button
-          onClick={((e) =>{
-            NAVIGATE('/ad/select/category')
-          })} 
-          className="bookad__box">
-            Book AD online
-            <RightArrow className='btn__svg' />
-            <div className="hid__line"></div>
-          </button>
-        </div>
 
       </div>
-      <div
-        style={{
-          width: "100%"
-        }} className="img__containor">
-        <img style={{
-          width: "auto",
-          height: "100%",
-          transform: 'translateX(-45px)',
-          maxHeight: "600px",
-        }} src={HeroImage} alt="Hero_image"  />
+      <div className="image_outer">
+        <div
+          className="img__containor">
+          <img src={HeroImage} alt="Hero_image" />
+        </div>
+        <div className="wrapper">
+          <HeroControlls type={"mobile"} />
+        </div>
       </div>
     </section>
   )
 }
 
 export default HeroSection;
-
 
 

@@ -5,6 +5,9 @@ import { useNavigate } from 'react-router-dom';
 import SnakeLine from "../../assets/svg/snakeline.svg";
 import BgImg from "../../assets/png/hero_editor.png";
 
+
+
+
 export const Section = () => {
     const NAVIGATE = useNavigate();
     return (

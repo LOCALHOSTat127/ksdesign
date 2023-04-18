@@ -14,7 +14,7 @@ export const Section = ({ padZero, headingNone, mt, borderRadious, ONCLICKHANDLE
         display: `${headingNone && "none"}`
       }} className='section__heading'>
         <h2>Top Ads Category in Newspaper.</h2>
-        <p>These are the mose popular categories.</p>
+        <p>These are the mose popular AD categories.</p>
       </span>
       <div style={{
         marginTop: `${mt && mt}px`,
