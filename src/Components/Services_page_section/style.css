@@ -1,0 +1,205 @@
+.services_containor {
+  display: flex;
+  flex-direction: column;
+  gap: 42px;
+  width: 100%;
+  padding: 170px 70px 60px 70px;
+  margin: auto;
+  background: linear-gradient(to bottom, rgb(6, 4, 34), rgb(7, 7, 14)) !important;
+}
+.services_containor .ads_services__main__containor {
+  display: flex;
+  gap: 40px;
+}
+.services_containor .ads_services__main__containor .text__contant__containor {
+  flex: 1 1 40%;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+.services_containor .ads_services__main__containor .text__contant__containor h2 {
+  font-style: normal;
+  font-weight: 800;
+  font-size: clamp(37px, 4vh, 74px);
+  letter-spacing: 0.005em;
+  text-transform: capitalize;
+  color: #FFFFFF;
+}
+.services_containor .ads_services__main__containor .text__contant__containor h2 span {
+  color: #76FFC5;
+}
+.services_containor .ads_services__main__containor .text__contant__containor p {
+  width: 100%;
+  font-weight: 100;
+  font-size: clamp(17px, 4vh, 20px);
+  color: #b3b3b3;
+}
+.services_containor .ads_services__main__containor .primary__servicess__containor {
+  min-height: 300px;
+  flex: 1 1 60%;
+  width: 100%;
+  height: 100%;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: 1fr 1fr;
+  gap: 24px;
+  padding: 0px 0px 0px 34px;
+}
+.services_containor .ads_services__main__containor .primary__servicess__containor .service {
+  width: 100%;
+  height: 100%;
+  background-color: white;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  color: black;
+  gap: 12px;
+  cursor: pointer;
+  padding: 20px;
+  transition: all 40ms ease-in-out;
+}
+.services_containor .ads_services__main__containor .primary__servicess__containor .service:active {
+  transform: scale(0.8);
+}
+.services_containor .ads_services__main__containor .primary__servicess__containor .service .service__svg {
+  width: 100%;
+  height: auto;
+  max-width: 74px;
+}
+.services_containor .ads_services__main__containor .primary__servicess__containor .service.servie__newspaper__ad {
+  grid-column: 1/2;
+  grid-row: 1/2;
+}
+.services_containor .ads_services__main__containor .primary__servicess__containor .service.servie__riksha__ad {
+  grid-column: 1/2;
+  grid-row: 2/3;
+}
+.services_containor .ads_services__main__containor .primary__servicess__containor .service.servie__socialmedia__ad {
+  grid-column: 3/4;
+  grid-row: 1/2;
+}
+.services_containor .ads_services__main__containor .primary__servicess__containor .service.servie__television__ad {
+  grid-column: 2/3;
+  grid-row: 1/2;
+}
+.services_containor .ads_services__main__containor .primary__servicess__containor .service.talk__to_expert {
+  grid-column: 2/-1;
+  grid-row: 2/3;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 30px;
+  padding: 15px 20px;
+}
+.services_containor .ads_services__main__containor .primary__servicess__containor .service.talk__to_expert .wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.services_containor .ads_services__main__containor .primary__servicess__containor .service.talk__to_expert .wrapper h2 {
+  font-style: normal;
+  font-weight: 600;
+  font-size: clamp(18px, 4vh, 20px);
+  text-transform: capitalize;
+  color: #000000;
+}
+.services_containor .ads_services__main__containor .primary__servicess__containor .service.talk__to_expert .wrapper p {
+  font-weight: 400;
+  font-size: clamp(12px, 4vh, 14px);
+  text-transform: capitalize;
+  color: #040404;
+}
+.services_containor .ads_services__main__containor .primary__servicess__containor .service.talk__to_expert:hover .quick__contact .arr__svg {
+  max-width: 90px;
+}
+.services_containor .ads_services__main__containor .primary__servicess__containor .service.talk__to_expert .quick__contact {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+.services_containor .ads_services__main__containor .primary__servicess__containor .service.talk__to_expert .quick__contact p {
+  font-style: normal;
+  font-weight: 600;
+  font-size: clamp(14px, 4vh, 16px);
+  text-transform: capitalize;
+  color: #69008E;
+}
+.services_containor .ads_services__main__containor .primary__servicess__containor .service.talk__to_expert .quick__contact .arr__svg {
+  width: 100%;
+  height: auto;
+  max-width: 80px;
+  transition: all 150ms ease-in-out;
+}
+.services_containor .secondary__services__containor {
+  min-height: 400px;
+  padding: 24px 20px;
+  background: linear-gradient(321.47deg, #0C58ED 14.82%, rgba(190, 17, 251, 0.76) 78.89%);
+}
+
+@media only screen and (max-width: 780px) {
+  .services_containor {
+    padding: 90px 20px 40px 20px !important;
+  }
+  .services_containor .ads_services__main__containor {
+    flex-direction: column;
+  }
+  .services_containor .ads_services__main__containor .text__contant__containor p {
+    font-size: 16px;
+    width: 100%;
+    text-justify: distribute-all-lines;
+    letter-spacing: none;
+    word-wrap: break-word;
+    width: 100% !important;
+  }
+  .services_containor .ads_services__main__containor .primary__servicess__containor {
+    padding: 0px 0px 0px 0px;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: repeat(3, 1fr);
+  }
+  .services_containor .ads_services__main__containor .primary__servicess__containor .service {
+    width: 100%;
+    height: 100%;
+    background-color: white;
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    color: black;
+    gap: 12px;
+    cursor: pointer;
+    padding: 20px;
+    transition: all 40ms ease-in-out;
+  }
+  .services_containor .ads_services__main__containor .primary__servicess__containor .service:active {
+    transform: scale(0.9);
+  }
+  .services_containor .ads_services__main__containor .primary__servicess__containor .service .service__svg {
+    width: 100%;
+    height: auto;
+    max-width: 64px;
+  }
+  .services_containor .ads_services__main__containor .primary__servicess__containor .service.servie__newspaper__ad {
+    grid-column: 1/2;
+    grid-row: 1/2;
+  }
+  .services_containor .ads_services__main__containor .primary__servicess__containor .service.servie__riksha__ad {
+    grid-column: 2/3;
+    grid-row: 2/3;
+  }
+  .services_containor .ads_services__main__containor .primary__servicess__containor .service.servie__socialmedia__ad {
+    grid-column: 1/2;
+    grid-row: 2/3;
+  }
+  .services_containor .ads_services__main__containor .primary__servicess__containor .service.servie__television__ad {
+    grid-column: 2/3;
+    grid-row: 1/2;
+  }
+  .services_containor .ads_services__main__containor .primary__servicess__containor .service.talk__to_expert {
+    grid-column: 1/3;
+    grid-row: 3/4;
+    padding: 34px 20px;
+  }
+}/*# sourceMappingURL=style.css.map */

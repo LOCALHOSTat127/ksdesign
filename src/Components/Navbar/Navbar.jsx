@@ -33,8 +33,8 @@ const Navbar = () => {
     }, []);
 
 
-    const take_to_top = () =>{
-        window.scrollTo(0,0);
+    const take_to_top = () => {
+        window.scrollTo(0, 0);
         setOpen(false);
     }
 
@@ -45,6 +45,7 @@ const Navbar = () => {
                 {/* Logo */}
                 <img alt='logo' onClick={((e) => {
                     navigate("/");
+                    take_to_top();
                 })} src={Logo} id="logo" className="cp" />
 
                 {/* ul>li */}
@@ -66,23 +67,31 @@ const Navbar = () => {
                             </li>
                         </a>
 
-                        <a href="#services">
-                            <li className="li">
-                                Services
-                            </li>
-                        </a>
 
-                        <Link to="/about">
-                            <li className="li">
-                                About us
-                            </li>
-                        </Link>
+                        <li onClick={((e) => {
+                            navigate("/services");
+                            take_to_top();
+                        })} className="li">
+                            Services
+                        </li>
+
+
+
+                        <li
+                            onClick={((e) => {
+                                navigate("/about");
+                                take_to_top();
+                            })} className="li">
+                            About us
+                        </li>
+
                     </ul>
 
                     {/* cta button */}
                     <button
                         onClick={((e) => {
                             navigate("/contact");
+                            take_to_top();
                         })}
                         id='nav__contact__us__btn' className='flex flex-aic flex-jcsa'>
                         Contact us
@@ -124,19 +133,25 @@ const Navbar = () => {
                             </li>
                         </a>
 
-                        <a href="/services">
-                            <li className="li">
-                                <Services className='mini__svg' />
-                                Services
-                            </li>
-                        </a>
 
-                        <Link to="/about">
-                            <li className="li">
-                                <Aboutus className='mini__svg' />
-                                About us
-                            </li>
-                        </Link >
+                        <li onClick={((e) => {
+                            navigate("/services");
+                            take_to_top();
+                        })} className="li">
+                            <Services className='mini__svg' />
+                            Services
+                        </li>
+
+
+
+                        <li onClick={((e) => {
+                            navigate("/about");
+                            take_to_top();
+                        })} className="li">
+                            <Aboutus className='mini__svg' />
+                            About us
+                        </li>
+
                     </ul>
                 </div>
 

@@ -67,6 +67,7 @@
                     font-size: 0.9rem;
                     font-weight: $font-400;
                     transition: all 120ms ease-in-out;
+                    cursor: pointer;
                 }
 
                 li:hover {
@@ -198,6 +199,7 @@
 
 
             li {
+                cursor: pointer;
                 margin-bottom: 34px;
                 font-weight: $font-400;
                 color: white;

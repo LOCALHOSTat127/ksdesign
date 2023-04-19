@@ -17,7 +17,7 @@ import LockStep from "./Api/StepsLock/LockStep";
 import { Section as SelectNewspaper } from "./Components/BASEalignment/selectNewspaper/Section";
 import { store } from "./app/store";
 import { Provider } from "react-redux";
-
+import Services from "./Components/Services_page_section/Services";
 
 
 import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
@@ -48,6 +48,7 @@ const App = () => {
               </Route>
               <Route path="/about" element={<AboutUs />} />
               <Route path="/contact" element={<ContactPage />} />
+              <Route path="/services" element={<Services isFull={true} />} />
             </Route>
             <Route path="*" element={<Navigate to="/" replace />} />
           </Routes>

@@ -12,7 +12,7 @@ import ServicesSection from "../../Components/Hero-Services/ServicesSection";
 import { useDispatch } from "react-redux";
 import { useNavigate } from 'react-router-dom';
 import { mark_ad_cat_step_status, set_ad_cat_step_config } from "../../app/features/ad_config/ad_booking_config_slice";
-
+import Services from "../../Components/Services_page_section/Services";
 
 
 const Home = () => {
@@ -48,10 +48,10 @@ const Home = () => {
 
       </div>
       {/* Home page other Sections */}
+      <Services  paddown={true} isFull={false} />
       <AdCategory ONCLICKHANDLER={STEP_FORWARD_HANDLER} />
       <ClassifiedCategory />
       <EditorAd />
-      <ServicesSection />
     </>
   )
 }

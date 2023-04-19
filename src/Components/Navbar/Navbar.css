@@ -80,6 +80,7 @@
   font-size: 0.9rem;
   font-weight: 400;
   transition: all 120ms ease-in-out;
+  cursor: pointer;
 }
 .navbar__outer .deaktop__menu .menu__list ul li:hover {
   color: #d3d3d3;
@@ -169,6 +170,7 @@
   padding-right: 6px;
 }
 .navbar__outer .mobile__menu ul li {
+  cursor: pointer;
   margin-bottom: 34px;
   font-weight: 400;
   color: white;
