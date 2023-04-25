@@ -26,12 +26,17 @@ const Home = () => {
       return 0;
     }
 
+    if (e.target.offsetParent.dataset.isonpopupsale === "true") {
+      alert("Serivce Not Available yet!");
+      return true;
+    }
+
     dispatch(set_ad_cat_step_config({
       cat_id: e.target.offsetParent.dataset.cid,
       cat_name: e.target.offsetParent.dataset.cname
     }))
     dispatch(mark_ad_cat_step_status(true));
-
+    window.scrollTo(0,0);
     navigate(`/ad/select/adtype?cat_id=${e.target.offsetParent.dataset.cid}&cat_name=${e.target.offsetParent.dataset.cname}`);
 
   }
@@ -48,7 +53,7 @@ const Home = () => {
 
       </div>
       {/* Home page other Sections */}
-      <Services  paddown={true} isFull={false} />
+      <Services paddown={true} isFull={false} />
       <AdCategory ONCLICKHANDLER={STEP_FORWARD_HANDLER} />
       <ClassifiedCategory />
       <EditorAd />

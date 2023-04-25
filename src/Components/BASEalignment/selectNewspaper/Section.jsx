@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
 import "./style.css";
-import debounce from 'lodash.debounce';
+
 
 import { useSelector, useDispatch } from 'react-redux'
 import { useNavigate } from 'react-router-dom';
@@ -13,21 +13,20 @@ import {
 
 } from "../../../app/features/ad_config/ad_booking_config_slice";
 
+import KeyboardArrowRightIcon from '@mui/icons-material/KeyboardArrowRight';
+import { ReactComponent as EditionsSvg } from '../../../assets/svg/editions.svg';
+import { ReactComponent as PackageSvg } from '../../../assets/svg/packages.svg';
 
-
-
-import OutlinedInput from '@mui/material/OutlinedInput';
 import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
-import ListItemText from '@mui/material/ListItemText';
 import Select from '@mui/material/Select';
-import Checkbox from '@mui/material/Checkbox';
 import LinearProgress from '@mui/material/LinearProgress';
 
 
 
 import Firebase_Utils from '../../../Api/Firebase/firebase_utils';
+import { NoiseAwareOutlined, SignalCellularNull } from '@mui/icons-material';
 
 
 
@@ -39,111 +38,162 @@ export const Section = () => {
     let navigate = useNavigate();
     const ad_state = useSelector((state) => state.ad_booking_config);
 
-
-    const [newsPapers, setNewsPapers] = useState(null);
-    const [slectedPaper, setSelectedPaper] = useState(null);
-
-    const [editions, setEditions] = useState([]);
-    const [selectedEditions, setEditionsList] = useState([]);
-
-
-    const [packages, setPackages] = useState(null);
-    const [selectPackage, setPackage] = useState(null);
-
-
+    const [newsPapersList, setNewsPapersList] = useState(null);
+    const [fetchedEditionsList, setFetchedEditionsList] = useState(null);
+    const [fetchedPackageList, setFetchedPackageList] = useState(null);
+    const [currentNewsPapaer, setCurrentNewsPaper] = useState(null);
+    let selectedEditionsToGo = [];
+    const [selectedPackageToGo, setSelectedPackageToGo] = useState(null);
     const [isFetching, setFetching] = useState(false);
     const [isUiRendered, setUIRendred] = useState(false);
+    const [proceedBtn,setProceedBtn] = useState(false);
+
+
+
+
+
 
 
 
 
     // Handler_function
-    const STEP_FORWARD_HANDLER = (e) => {
-        dispatch(mark_paper_info_step_status(true));
-        dispatch(set_paper_basic_info({
-            nid: slectedPaper.NID,
-            paperName: slectedPaper.paperName,
-            cat_config_id: slectedPaper.CAT_CONFIG_ID,
-        }))
+    // const STEP_FORWARD_HANDLER = (e) => {
+    //     dispatch(mark_paper_info_step_status(true));
+    //     dispatch(set_paper_basic_info({
+    //         nid: slectedPaper.NID,
+    //         paperName: slectedPaper.paperName,
+    //         cat_config_id: slectedPaper.CAT_CONFIG_ID,
+    //     }))
 
-        if (ad_state.FIRST_STEP.CATEGORY_SELECTION_STEP.isDone === true && ad_state.FIRST_STEP.AD_TYPE_SELECTION_STEP.isDone === true) {
-            dispatch(mark_first_step_status(true));
-        }
+    //     if (ad_state.FIRST_STEP.CATEGORY_SELECTION_STEP.isDone === true && ad_state.FIRST_STEP.AD_TYPE_SELECTION_STEP.isDone === true) {
+    //         dispatch(mark_first_step_status(true));
+    //     }
 
-        if (ad_state.FIRST_STEP.CATEGORY_SELECTION_STEP.isDone === true && ad_state.FIRST_STEP.AD_TYPE_SELECTION_STEP.isDone === true) {
-            navigate(`/ad/compose/${ad_state.FIRST_STEP.AD_TYPE_SELECTION_STEP.config_info.ad_type === 'classified_text' ? 'textad' :
-                true === 'textdisplayad' ? '' : 'textad'}`);
-        } else {
-            navigate(`/ad/select/category`);
-        }
-    }
+    //     if (ad_state.FIRST_STEP.CATEGORY_SELECTION_STEP.isDone === true && ad_state.FIRST_STEP.AD_TYPE_SELECTION_STEP.isDone === true) {
+    //         navigate(`/ad/compose/${ad_state.FIRST_STEP.AD_TYPE_SELECTION_STEP.config_info.ad_type === 'classified_text' ? 'textad' :
+    //             true === 'textdisplayad' ? '' : 'textad'}`);
+    //     } else {
+    //         navigate(`/ad/select/category`);
+    //     }
+    // }
 
-    const delay = () => {
-        return new Promise((resolve, reject) => {
-            setTimeout(() => {
-                resolve(true);
-            }, 1500);
-        })
-    }
 
-    // fetch_packages_prices
-    const fetch_prices = async (selected_editions) => {
+
+
+
+
+
+
+
+
+    const fetch_rate_card = async () => {
         setFetching(true);
         setUIRendred(false);
-        await delay();
+        let response = await Firebase_Utils.fetch_price_list(
+            currentNewsPapaer.total_editions,
+            ad_state.FIRST_STEP.CATEGORY_SELECTION_STEP.config_info.category_id,
+            currentNewsPapaer.NID.split("_")[1]
+        );
+
+        let packages_response = await Firebase_Utils.fetch_packages_list(
+            currentNewsPapaer.NID.split("_")[1],
+            ad_state.FIRST_STEP.CATEGORY_SELECTION_STEP.config_info.category_id
+        );
+
         setFetching(false);
         setUIRendred(true);
-    }
+        if (response.status === 200 && packages_response.status === 200 && response.items > 0) {
+            const tempRateCards = [];
+            const tempPackages = [];
 
-    const debounced_fetch_prices = debounce(fetch_prices, 1500);
+            response.data.map((card) => {
+                tempRateCards.push({
+                    edition_name: card.editionName,
+                    price: card.price_config.minPrice,
+                    minSep: card.price_config.minSep,
+                    sep: card.price_config.sep,
+                    maxSep: card.price_config.maxSep,
+                    doc_config: card.documents_config,
+                    misc_config: card.misc_config,
+                    pallet_rules: card.paller_config,
+                    schemes: card.schemes
+                })
+            })
 
-
-    // handle_editions_change
-    const handle_editions_change = (e) => {
-        setEditionsList(typeof e.target.value === 'string' ? e.target.value.split(',') : e.target.value);
-
-        if (e.target.value[0] === "None") {
-            return 0;
+            packages_response?.data?.packages.map((packg) => {
+                tempPackages.push({
+                    pacakge_name: packg.packageName,
+                    package_desc: packg.packageDesc,
+                    package_price: packg.price_config.minPrice,
+                    sep: packg.price_config.sep,
+                    min_sep: packg.price_config.minSep,
+                    max_sep: packg.price_config.maxSep
+                })
+            })
+            setFetchedEditionsList(tempRateCards);
+            setFetchedPackageList(tempPackages)
         } else {
-            debounced_fetch_prices(e.target.value);
+            setFetchedEditionsList(null);
+            setFetchedPackageList(null)
         }
-
     }
-
-
-
-
 
     // handle_paper_Select
     const handlePaperSelect = (e) => {
-        setUIRendred(false);
+        setProceedBtn(false);
         if (e.target.value === "None") {
-            setEditionsList([]);
-            setEditions([]);
-            return 0;
+            setFetchedEditionsList([]);
+            setUIRendred(false);
+            setCurrentNewsPaper(null);
+            return false;
         }
-        setEditionsList([]);
-        setEditions([]);
-        const current_paper = newsPapers.filter((paper) => {
+
+        const current_paper = newsPapersList.filter((paper) => {
             if (paper.NID === e.target.value) {
                 return paper;
             }
         })
-        setSelectedPaper(current_paper[0]);
+        setCurrentNewsPaper(current_paper[0]);
     }
 
-    const fetch_editions = async () => {
-        setFetching(true);
-        let response = await Firebase_Utils.fetch_editions_by_nid(slectedPaper?.NID);
 
-        if (response.status === 200) {
-            setEditions(response.data.editions_list);
-            setFetching(false);
-        } else {
-            setFetching(false);
-            alert(response.status_txt);
+    const handle_edition_select = (e) => {
+        const isPresent = selectedEditionsToGo.filter((edition) => {
+            if (edition.edition_name === e.target.offsetParent.id) {
+                return edition;
+            }
+        })
+        console.log(isPresent);
+        if (isPresent.length === 0) {
+            e.target.offsetParent.classList.add("selected");
+            const edition_config = fetchedEditionsList.filter((edition) => {
+                if (edition.edition_name === e.target.offsetParent.id) {
+                    return edition;
+                }
+            })
+
+            selectedEditionsToGo.push(...edition_config);
+        }else{
+            console.log("bok");
+            const remaningCards = selectedEditionsToGo.filter((edition) => {
+                if (edition.edition_name !== e.target.offsetParent.id) {
+                    return edition;
+                }
+            })
+            selectedEditionsToGo = remaningCards;
+            e.target.offsetParent.classList.remove("selected")
+        }
+
+
+        if(selectedEditionsToGo.length > 0){
+            setProceedBtn(true);
+        }else{
+            setProceedBtn(false);
         }
     }
+
+
+
 
 
     // fetching-Newspapers-on-page-load
@@ -153,7 +203,7 @@ export const Section = () => {
 
             let response = await Firebase_Utils.get_newspapers();
             if (response?.status === 200) {
-                setNewsPapers(response.data.newspaper_collection);
+                setNewsPapersList(response.data.newspaper_collection);
                 setFetching(false);
             }
         }
@@ -161,11 +211,18 @@ export const Section = () => {
     }, [])
 
 
+
+
     useEffect(() => {
-        if (slectedPaper !== null) {
-            fetch_editions();
+        if (currentNewsPapaer != null) {
+            fetch_rate_card();
         }
-    }, [slectedPaper])
+    }, [currentNewsPapaer])
+
+
+
+
+
 
 
 
@@ -183,66 +240,185 @@ export const Section = () => {
                     <h2>Select Newspaper & Editions</h2>
                     <p>Select from any Special  Offer(s) if available.</p>
                 </div>
-                <FormControl disabled={isFetching === true ? true : false} sx={{ m: 1, maxWidth: "300px", width: "100%" }} size="meadium">
-                    <InputLabel id="select_newspaper">Newspaper</InputLabel>
-                    <Select
-                        labelId="select_newspaper"
-                        id="select_newspaper"
-                        onChange={handlePaperSelect}
-                        value={slectedPaper?.NID}
-                        label="Newspaper"
+                <div className="flex__outer">
+                    <FormControl disabled={isFetching === true ? true : false} sx={{ m: 1, maxWidth: "300px", width: "100%" }} size="meadium">
+                        <InputLabel id="select_newspaper">Newspaper</InputLabel>
+                        <Select
+                            labelId="select_newspaper"
+                            id="select_newspaper"
+                            onChange={handlePaperSelect}
+                            value={currentNewsPapaer?.NID}
+                            label="Newspaper"
 
-                    >
-                        <MenuItem value="None">
-                            <em>Select Newspaper</em>
-                        </MenuItem>
-
-                        {newsPapers?.map((paper) => {
-                            return (
-                                <MenuItem disabled={isFetching === true ? true : false} value={paper?.NID}>
-                                    {paper.paperName}
-                                </MenuItem>
-                            )
-                        })}
-
-
-                    </Select>
-                </FormControl>
-
-                <FormControl disabled={isFetching === true ? true : false} sx={{ m: 1, maxWidth: "300px", width: "100%" }} size="meadium">
-                    <InputLabel id="select_editions">Editions</InputLabel>
-                    <Select
-                        labelId="select_editions"
-                        id="select_editions"
-                        multiple
-                        value={selectedEditions}
-                        onChange={handle_editions_change}
-                        input={<OutlinedInput label="Tag" />}
-                        renderValue={(selected) => selected.join(', ')}
-                        MenuProps={{
-                            PaperProps: {
-                                style: {
-                                    maxHeight: 48 * 4.5 + 8,
-                                    width: 250,
-                                },
-                            },
-                        }}
-                    >    <MenuItem value="None">
-                            <em>Select Editions</em>
-                        </MenuItem>
-                        {editions?.map((edition) => (
-                            <MenuItem disabled={isFetching === true ? true : false} key={edition} value={edition}>
-                                <Checkbox checked={selectedEditions?.indexOf(edition) > -1} />
-                                <ListItemText primary={edition} />
+                        >
+                            <MenuItem value="None">
+                                <em>Select Newspaper</em>
                             </MenuItem>
-                        ))}
-                    </Select>
-                </FormControl>
 
+                            {newsPapersList?.map((paper) => {
+                                return (
+                                    <MenuItem disabled={isFetching === true ? true : false} value={paper?.NID}>
+                                        {paper.newsPaperName}
+                                    </MenuItem>
+                                )
+                            })}
+
+
+                        </Select>
+                    </FormControl>
+
+                    <div className="meta_data">
+                        <div className="paper__logo">
+                            <img src={currentNewsPapaer && currentNewsPapaer.paperLogo} alt={currentNewsPapaer && currentNewsPapaer.newsPaperName} />
+                        </div>
+
+                        <p>
+                            Category :
+                            <p className="cat_name">{ad_state.FIRST_STEP.CATEGORY_SELECTION_STEP.config_info.category_name}</p>
+                        </p>
+                    </div>
+                </div>
             </div>
 
             <div className={`price_list_outlet_main ${isUiRendered == true ? "show_results" : null}`}>
+                <div className="editions__cards_display">
+                    <div style={{
+                        display: "flex",
+                        alignItems: "center",
+                        justifyContent: "space-between"
+                    }} className="status__line">
+                        <div style={{
+                            display: "flex",
+                            alignItems: "center",
+                            gap: "7px",
+                            background: "#0072ff17",
+                            width: "fit-content",
+                            padding: "6px",
+                            borderRadius: "4px"
+                        }}>
+                            <EditionsSvg style={{
+                                width: "20px",
+                                height: "20px"
+                            }} className='svg' />
+                            <h2 style={{
+                                color: "black"
+                            }}>Select Edition(s)</h2>
 
+                        </div>
+                        <button disabled={proceedBtn === false ? true : false} className={`proceed_with_editions ${proceedBtn === false ? 'disabled' : null}`}>
+                            Proceed & Compose AD
+                            <KeyboardArrowRightIcon sx={{
+                                position: "absolute",
+                                right: "8px",
+                                top: "50%",
+                                transform: "translateY(-50%)",
+
+
+                            }} className='svg' />
+                        </button>
+                    </div>
+                    <div className="editions__cards">
+                        {fetchedEditionsList && fetchedEditionsList.map(((card) => {
+                            return (
+                                <div key={card.edition_name} id={card.edition_name} className="rate_card_edition">
+                                    <div onClick={handle_edition_select} className="click_shadow"></div>
+
+                                    <div className='right_side'>
+                                        <h2 className="edition__name">{card.edition_name}</h2>
+                                        <p className="meta_data">
+                                            max words : {card.maxSep}
+                                        </p>
+                                    </div>
+                                    <div className="left__side">
+                                        <p className="min_price">
+                                            <p className="symbol">
+                                                ₹ </p>
+                                            <p className='price'>{card.price}</p>
+                                        </p>
+                                        <div className="seperator"></div>
+                                        <p className="seprator">
+                                            {card.minSep}/{card.sep}
+                                        </p>
+                                    </div>
+
+                                </div>
+                            )
+
+                        }))}
+                    </div>
+
+                </div>
+
+                <div className="packages__display">
+                    <div style={{
+                        display: "flex",
+                        alignItems: "center",
+                        gap: "7px",
+                        background: "#0072ff17",
+                        width: "fit-content",
+                        padding: "6px",
+                        borderRadius: "4px"
+                    }}>
+                        <PackageSvg style={{
+                            width: "20px",
+                            height: "20px"
+                        }} className='svg' />
+                        <h2 style={{
+                            color: "black"
+                        }}>Special Packages</h2>
+                    </div>
+
+                    {fetchedPackageList ? fetchedPackageList.map(((packg) => {
+                        return (
+                            <div className="package__card">
+                                <div className="primary__info">
+                                    <h2 className="package__name">{packg.pacakge_name}</h2>
+                                    <p className="package__desc">
+                                        {packg.package_desc}
+                                    </p>
+                                </div>
+                                <div style={{
+                                    display: "flex",
+                                    alignItems: "center",
+                                    gap: "30px"
+                                }} className="outer__jacket">
+                                    <div className="meta__info">
+                                        <p className="min__words">
+                                            <p className="words">{packg.min_sep}</p>
+                                            <p className="set">/{`${packg.sep} `}Min</p>
+                                        </p>
+                                        <p className="max__words">
+                                            <p className="words">{packg.max_sep}</p>
+                                            <p className="set">/{`${packg.sep} `}Max</p>
+                                        </p>
+                                    </div>
+                                    <button style={{
+                                        display: "flex",
+                                        alignItems: "center",
+                                        gap: "24px",
+                                        width: "200px",
+                                        position: "relative"
+                                    }} className="proceed__with__package">Select
+                                        <p className="price">
+                                            ₹{packg.package_price}
+                                        </p>
+
+                                        <KeyboardArrowRightIcon sx={{
+                                            position: "absolute",
+                                            right: "-22px",
+                                            top: "50%",
+                                            transform: "translateY(-50%)",
+
+
+                                        }} className='svg' />
+                                    </button>
+                                </div>
+                            </div>
+                        )
+                    })) : <p style={{
+                        color: "black"
+                    }}>No Packages Found!</p>}
+                </div>
             </div>
         </section>
     )

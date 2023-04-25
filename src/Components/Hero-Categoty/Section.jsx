@@ -20,7 +20,7 @@ export const Section = ({ padZero, headingNone, mt, borderRadious, ONCLICKHANDLE
         marginTop: `${mt && mt}px`,
       }} className='grid__items '>
         {categories &&
-          categories.map(({ id, src, alt, name, decs, category__id }) => {
+          categories.map(({ id, src, alt, name, decs, category__id,isOnPopupSale }) => {
             return (
               <>
                 <div key={id} style={{
@@ -30,6 +30,7 @@ export const Section = ({ padZero, headingNone, mt, borderRadious, ONCLICKHANDLE
                   onClick={ONCLICKHANDLER}
                   data-cid={category__id}
                   data-cname={name}
+                  data-isonpopupsale={isOnPopupSale}
                   className="grid__item  flex  flex-aic">
                   <img src={process.env.PUBLIC_URL + src} alt={alt} className='svg' />
                   <span>
@@ -43,13 +44,6 @@ export const Section = ({ padZero, headingNone, mt, borderRadious, ONCLICKHANDLE
               </>
             )
           })}
-        <div className="grid__item  flex  flex-aic flex-jcc">
-          <span key={123} style={{
-            alignItems: "center"
-          }}>
-            <p className='cat__name'>More Category</p>
-          </span>
-        </div>
       </div>
     </section>
   )

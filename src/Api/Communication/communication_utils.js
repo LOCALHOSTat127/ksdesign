@@ -1,5 +1,8 @@
 import axios from "axios";
 import URLS from "../urls/urls_config";
+
+
+
 export default class Communication_provider {
     static send_order_confirmation_self = async (orderID) => {
         let server_response = await axios({
@@ -62,11 +65,56 @@ export default class Communication_provider {
                 Authorization: 'Bearer ' + process.env.REACT_APP_BACKEND_API_KEY,
             },
             data: {
-                emailID : emailID
+                emailID: emailID
             }
         });
 
 
         return server_response.data;
+    }
+
+
+
+    // check_recent_cotacts
+    static check_active_contact = () => {
+        const storage_data = localStorage.getItem("CONTACT_INSTANCE");
+        const contact_instance = JSON.parse(storage_data);
+        const date = new Date();
+
+        if (!contact_instance) {
+            return false;
+        }
+
+
+
+        if ((date.getTime() / 1000) > contact_instance.expire_time) {
+            localStorage.removeItem("CONTACT_INSTANCE");
+            return false;
+        } else {
+            console.log(contact_instance);
+            return true;
+        }
+    }
+
+
+
+    // create_new_contact_instance
+    static create_new_contact_instance = () => {
+        const INSTANCE = {
+            hasContacted: true,
+            expire_time: null,
+        };
+
+        const date = new Date();
+
+        if (this.check_active_contact() === false) {
+            let timestamp = new Date(Date.UTC(date.getFullYear(), date.getMonth(), (date.getDate() + 2), date.getHours(), date.getMinutes(), date.getSeconds()));
+            INSTANCE.expire_time = timestamp.getTime() / 1000;
+
+            localStorage.setItem("CONTACT_INSTANCE",JSON.stringify(INSTANCE));
+            return true;
+        }else{
+            return false;
+        }
     }
 }

@@ -150,6 +150,13 @@ const EditorText = () => {
         const server_reponse = await axios({
             method: "post",
             url: "http://172.20.10.2:5000/db/get_cat_config",
+            headers: {
+                "Content-Type": "Application/json",
+                "Accept": "Application/json",
+
+                // API_KEY_INCREPTED
+                Authorization: 'Bearer ' + process.env.REACT_APP_BACKEND_API_KEY,
+            },
             data: {
                 caegory_config_id: "8D6a9YEu8uVHXd6RBCJg",
                 category_id: "CC_126001",
@@ -187,7 +194,7 @@ const EditorText = () => {
 
     const check_for_error = () => {
         handleUpdatePrice();
-   
+
         return false;
     }
 
@@ -215,11 +222,11 @@ const EditorText = () => {
 
             dispatch(set_special_enhancement({
                 isEmail: enhansments.isemailreq === true ? enhansments.email_address : false,
-                email_id_charge: enhansments.isemailreq === true ?  configurations.special_enhancement.methods[0].charge : 0,
+                email_id_charge: enhansments.isemailreq === true ? configurations.special_enhancement.methods[0].charge : 0,
                 isPhone: enhansments.ismobilereq === true ? enhansments.mobile_number : false,
-                phone_number_charge: enhansments.ismobilereq === true ?  configurations.special_enhancement.methods[2].charge : 0,
+                phone_number_charge: enhansments.ismobilereq === true ? configurations.special_enhancement.methods[2].charge : 0,
                 isTranslation: enhansments.istranslationreq === true ? true : false,
-                translation_charge: enhansments.istranslationreq === true ?  configurations.special_enhancement.methods[1].charge : 0
+                translation_charge: enhansments.istranslationreq === true ? configurations.special_enhancement.methods[1].charge : 0
             }))
 
             dispatch(mark_compose_step_status(true));
@@ -560,10 +567,10 @@ const EditorText = () => {
 
                                                 <TextField
                                                     value={enhansments.email_address}
-                                                    onChange={(e) =>{
-                                                        setEnhansments((prev) =>({
+                                                    onChange={(e) => {
+                                                        setEnhansments((prev) => ({
                                                             ...prev,
-                                                            email_address : e.target.value
+                                                            email_address: e.target.value
                                                         }))
                                                     }}
                                                     sx={{

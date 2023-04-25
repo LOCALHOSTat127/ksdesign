@@ -21,13 +21,15 @@ const HeroControlls = ({ type }) => {
 
 
       <div className={`hero__controlls ${type}`}>
-        <a href="#services">
-          <button className="bookad__box browes__collection">
-            Brwose Services
-            <RightArrow className='btn__svg' />
-            <div className="hid__line"></div>
-          </button>
-        </a>
+
+        <button onClick={(e) =>{
+          NAVIGATE('/services');
+        }} className="bookad__box browes__collection">
+          Brwose Services
+          <RightArrow className='btn__svg' />
+          <div className="hid__line"></div>
+        </button>
+
         <button
           onClick={((e) => {
             NAVIGATE('/ad/select/category')

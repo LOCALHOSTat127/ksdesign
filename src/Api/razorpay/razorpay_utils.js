@@ -5,6 +5,8 @@ import { store } from "../../app/store";
 import URLS from '../urls/urls_config';
 import { set_payment_response } from "../../app/features/ad_config/ad_booking_config_slice";
 
+
+
 export default class Payment_Provider {
 
     // class-variables

@@ -21,5 +21,7 @@ export default class URLS {
     static DATABASE_ROUTES = {
         get_newspapers: `${process.env.REACT_APP_SERVER_URI}:${process.env.REACT_APP_SERVER_PORT}/db/get_newspapers`,
         get_editions_by_nid: `${process.env.REACT_APP_SERVER_URI}:${process.env.REACT_APP_SERVER_PORT}/db/get_editions`,
+        get_editions_list: `${process.env.REACT_APP_SERVER_URI}:${process.env.REACT_APP_SERVER_PORT}/db/get_editions_price_list`,
+        get_packages_list: `${process.env.REACT_APP_SERVER_URI}:${process.env.REACT_APP_SERVER_PORT}/db/get_packages_list`,
     }
 }

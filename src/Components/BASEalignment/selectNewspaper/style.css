@@ -28,14 +28,221 @@
   color: #201f1f;
   font-size: 14px;
 }
-.select_newspaper_n_edition .price_list_outlet_main {
+.select_newspaper_n_edition .selection__controlls__jacket .flex__outer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.select_newspaper_n_edition .selection__controlls__jacket .flex__outer .meta_data {
+  display: flex;
+  height: 100%;
+  align-items: center;
+  gap: 42px;
+}
+.select_newspaper_n_edition .selection__controlls__jacket .flex__outer .meta_data .paper__logo img {
+  width: 100%;
+  height: auto;
+  max-width: 260px;
+}
+.select_newspaper_n_edition .selection__controlls__jacket .flex__outer .meta_data p {
+  display: flex;
+  color: black;
+  align-items: center;
+  gap: 12px;
+  background: rgba(0, 20, 255, 0.2392156863);
+  padding: 4px 12px;
+  border-radius: 4px;
+  font-size: 14px;
+}
+.select_newspaper_n_edition .selection__controlls__jacket .flex__outer .meta_data .cat_name {
+  background: none;
+  border: none;
+  border-radius: 0px;
+  font-weight: 600;
+}
+
+.price_list_outlet_main {
   position: relative;
   background-color: #FFFFFF;
   box-shadow: rgba(9, 30, 66, 0.25) 0px 1px 1px, rgba(9, 30, 66, 0.13) 0px 0px 1px 1px;
-  min-height: 200px;
-  padding: 30px 32px;
+  padding: 24px 14px;
   display: none;
 }
-.select_newspaper_n_edition .price_list_outlet_main.show_results {
+.price_list_outlet_main.show_results {
   display: flex;
+  flex-direction: column;
+  gap: 54px;
+}
+.price_list_outlet_main .editions__cards_display {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+.price_list_outlet_main .editions__cards_display .status__line .proceed_with_editions {
+  font-size: 17px;
+  border: none;
+  padding: 12px 45px 12px 15px;
+  background: black;
+  color: white;
+  font-weight: 500;
+  border-radius: 3px;
+  cursor: pointer;
+  position: relative;
+}
+.price_list_outlet_main .editions__cards_display .status__line .proceed_with_editions.disabled {
+  background: #a7a7a7;
+}
+.price_list_outlet_main .editions__cards_display .status__line .proceed_with_editions:hover .svg {
+  transition: all 120ms ease;
+  right: 2px;
+}
+.price_list_outlet_main .editions__cards_display .editions__cards {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: auto;
+  gap: 18px;
+}
+.price_list_outlet_main .editions__cards_display .editions__cards .rate_card_edition {
+  cursor: pointer;
+  max-height: 65px;
+  min-height: 58px;
+  padding: 5px 12px;
+  color: black;
+  width: 100%;
+  max-width: 282px;
+  border-radius: 4px;
+  background: #f8f8f8;
+  border: 1px solid black;
+  transition: all 180ms ease;
+  position: relative;
+  display: flex;
+  gap: 16px;
+  align-items: center;
+  justify-content: space-between;
+}
+.price_list_outlet_main .editions__cards_display .editions__cards .rate_card_edition .click_shadow {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: rgba(255, 0, 0, 0);
+  left: 0;
+  top: 0;
+}
+.price_list_outlet_main .editions__cards_display .editions__cards .rate_card_edition.selected {
+  border: 1px solid black;
+  background: rgba(40, 255, 0, 0.36);
+}
+.price_list_outlet_main .editions__cards_display .editions__cards .rate_card_edition.selected .left__side .min_price .price {
+  color: #000000;
+}
+.price_list_outlet_main .editions__cards_display .editions__cards .rate_card_edition.selected .left__side .min_price .symbol {
+  color: rgba(0, 0, 0, 0.7098039216);
+}
+.price_list_outlet_main .editions__cards_display .editions__cards .rate_card_edition.selected .left__side .seprator {
+  color: #202020;
+}
+.price_list_outlet_main .editions__cards_display .editions__cards .rate_card_edition:active {
+  scale: 0.85;
+  border: 1px solid black;
+  background: rgba(40, 255, 0, 0.36);
+}
+.price_list_outlet_main .editions__cards_display .editions__cards .rate_card_edition:hover {
+  background: #dadce5;
+}
+.price_list_outlet_main .editions__cards_display .editions__cards .rate_card_edition .right_side .edition__name {
+  font-size: 17px;
+  font-weight: 600;
+}
+.price_list_outlet_main .editions__cards_display .editions__cards .rate_card_edition .right_side .meta_data {
+  font-size: 12px;
+  text-transform: lowercase;
+}
+.price_list_outlet_main .editions__cards_display .editions__cards .rate_card_edition .left__side {
+  display: flex;
+  align-items: flex-end;
+  flex-direction: column;
+}
+.price_list_outlet_main .editions__cards_display .editions__cards .rate_card_edition .left__side .min_price {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 20px;
+}
+.price_list_outlet_main .editions__cards_display .editions__cards .rate_card_edition .left__side .min_price .price {
+  font-weight: 600;
+  color: #008d00;
+}
+.price_list_outlet_main .editions__cards_display .editions__cards .rate_card_edition .left__side .seprator {
+  font-size: 13px;
+  color: #646464;
+}
+.price_list_outlet_main .packages__display {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+.price_list_outlet_main .packages__display .package__card {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: rgba(102, 102, 215, 0);
+  padding: 15px 24px;
+  background: rgba(174, 167, 255, 0.16);
+  border-radius: 4px;
+  border: 1px solid;
+}
+.price_list_outlet_main .packages__display .package__card .primary__info .package__name {
+  color: black;
+  font-size: 16px;
+  font-weight: 600;
+}
+.price_list_outlet_main .packages__display .package__card .primary__info .package__desc {
+  color: #1a1a1a;
+}
+.price_list_outlet_main .packages__display .package__card .meta__info {
+  display: flex;
+  align-items: center;
+  gap: 25px;
+}
+.price_list_outlet_main .packages__display .package__card .meta__info .package_price {
+  font-weight: 600;
+  color: #025c02;
+  font-size: 21px;
+}
+.price_list_outlet_main .packages__display .package__card .meta__info .min__words {
+  display: flex;
+  align-items: center;
+  color: black;
+  font-size: 13px;
+}
+.price_list_outlet_main .packages__display .package__card .meta__info .min__words .set {
+  display: flex;
+  color: black;
+  font-size: 13px;
+}
+.price_list_outlet_main .packages__display .package__card .max__words {
+  display: flex;
+  align-items: center;
+  color: black;
+  font-size: 13px;
+}
+.price_list_outlet_main .packages__display .package__card .max__words .set {
+  display: flex;
+  color: black;
+  font-size: 13px;
+}
+.price_list_outlet_main .proceed__with__package {
+  font-size: 18px;
+  border: none;
+  outline: none;
+  padding: 11px 29px;
+  background: black;
+  color: white;
+  font-weight: 500;
+  border-radius: 4px;
+  cursor: pointer;
+}
+.price_list_outlet_main .proceed__with__package:hover .svg {
+  transition: all 120ms ease;
+  right: 4px;
 }/*# sourceMappingURL=style.css.map */

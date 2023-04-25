@@ -1,9 +1,8 @@
-import { useEffect } from 'react'
 import "./style.css";
 import { useNavigate } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { Section as CategoryList } from "../../Hero-Categoty/Section";
-import {mark_ad_cat_step_status,set_ad_cat_step_config} from "../../../app/features/ad_config/ad_booking_config_slice";
+import { mark_ad_cat_step_status, set_ad_cat_step_config } from "../../../app/features/ad_config/ad_booking_config_slice";
 
 
 export const Section = () => {
@@ -12,19 +11,26 @@ export const Section = () => {
 
     let navigate = useNavigate();
     const STEP_FORWARD_HANDLER = (e) => {
-        if(!e.target.offsetParent.dataset.cid || !e.target.offsetParent.dataset.cname){
+        if (!e.target.offsetParent.dataset.cid || !e.target.offsetParent.dataset.cname) {
             alert("Please Select again.");
             return 0;
         }
 
+        if (e.target.offsetParent.dataset.isonpopupsale === "true") {
+            alert("Serivce Not Available yet!");
+            return true;
+        }
+
         dispatch(set_ad_cat_step_config({
-            cat_id : e.target.offsetParent.dataset.cid,
-            cat_name : e.target.offsetParent.dataset.cname
+            cat_id: e.target.offsetParent.dataset.cid,
+            cat_name: e.target.offsetParent.dataset.cname
         }))
         dispatch(mark_ad_cat_step_status(true));
         if (ad_state.FIRST_STEP.AD_TYPE_SELECTION_STEP.isDone === true) {
+            window.scrollTo(0, 0);
             navigate(`/ad/select/newspaper`);
         } else {
+            window.scrollTo(0, 0);
             navigate(`/ad/select/adtype?cat_id=${e.target.offsetParent.dataset.cid}&cat_name=${e.target.offsetParent.dataset.cname}`);
         }
     }

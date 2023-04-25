@@ -8,7 +8,14 @@ import { ReactComponent as MailSent } from "../../assets/svg/sent.svg";
 import { ReactComponent as FooterLogo } from "../../assets/svg/white_footer_logo.svg";
 import { ReactComponent as LocationSvg } from "../../assets/svg/location-sm.svg";
 import { ReactComponent as CallSvg } from "../../assets/svg/call-grey-sm.svg";
+import Dialog from '@mui/material/Dialog';
+import DialogActions from '@mui/material/DialogActions';
+import DialogContent from '@mui/material/DialogContent';
+import DialogContentText from '@mui/material/DialogContentText';
+import DialogTitle from '@mui/material/DialogTitle';
 
+
+import Button from '@mui/material/Button';
 import Communication_provider from '../../Api/Communication/communication_utils';
 
 
@@ -19,6 +26,9 @@ const Footer = () => {
         isSending: false,
         isSent: false,
     });
+
+    const [open, setOpen] = useState(false);
+
 
     const handleSubmit = (event) => {
         if (EmailValidator.validate(emailState.email) === true) {
@@ -44,40 +54,80 @@ const Footer = () => {
             isSent: false,
         }));
 
+        const isActiveInstance = Communication_provider.check_active_contact();
 
 
-        const server_response = await Communication_provider.send_small_mail_query(emailState.email);
+        if (isActiveInstance === false) {
+            const server_response = await Communication_provider.send_small_mail_query(emailState.email);
 
-        if (server_response.status === 200) {
-            setTimeout(() => {
+            if (server_response.status === 200) {
+
+                Communication_provider.create_new_contact_instance();
+                setTimeout(() => {
+                    setState(prev => ({
+                        ...prev,
+                        isSending: true,
+                        isSent: true,
+                    }));
+                }, 2000);
+
+                setTimeout(() => {
+                    setState(prev => ({
+                        ...prev,
+                        isValid: false,
+                        isSending: false,
+                        isSent: false,
+                    }));
+                }, 4500);
+            } else {
+                alert("Error while sending Email,Try again later.")
                 setState(prev => ({
                     ...prev,
                     isSending: true,
                     isSent: true,
                 }));
-            }, 2000);
-
-            setTimeout(() => {
-                setState(prev => ({
-                    ...prev,
-                    isValid: false,
-                    isSending: false,
-                    isSent: false,
-                }));
-            }, 4500);
+            }
         } else {
-            alert("Error while sending Email,Try again later.")
+            setOpen(true);
             setState(prev => ({
                 ...prev,
-                isSending: true,
-                isSent: true,
+                isValid: false,
+                isSending: false,
+                isSent: false,
             }));
         }
+
+
     }
 
 
     return (
         <section className="footer__outer">
+            <Dialog
+                open={open}
+                aria-labelledby="alert-dialog-title"
+                aria-describedby="alert-dialog-description"
+            >
+                <DialogTitle id="alert-dialog-title">
+                    {"Please Wait for 48 Hours."}
+                </DialogTitle>
+                <DialogContent>
+                    <DialogContentText id="alert-dialog-description">
+                        We have your query registed with our team.
+                        Our Team will get back to you within 48 Hours.
+                        <br/>
+                        Thank You for cooperating with us.
+                    </DialogContentText>
+                </DialogContent>
+                <DialogActions>
+
+                    <Button onClick={(e) => {
+                        setOpen(false);
+                    }} autoFocus>
+                        Close
+                    </Button>
+                </DialogActions>
+            </Dialog>
             <div className="inner flex">
                 <div className="section__top section">
                     <p>Get  in touch.</p>

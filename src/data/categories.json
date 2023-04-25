@@ -4,87 +4,107 @@
 		"src": "/Assets/svgs/job-seeker.png",
 		"alt": "Recruitment / job",
 		"name": "Recruitment / job",
-		"category__id" : 126001,
+		"category__id": 14001,
+		"isOnPopupSale" : false,
 		"decs": "Hire employees by advertising in newspapers under the subcategory like situation vacant, multiple vacancies, situation abroad etc."
 	},
 	{
 		"id": 2,
-		"src": "/Assets/svgs/wedding-rings.png",
-		"alt": "Metrimonial",
-		"name": "Metrimonial",
-		"category__id" : 126002,
-		"decs": "Book Wanted Bride/Groom ads by picking specific sub-categories like caste, religion, community, language."
+		"src": "/Assets/svgs/death.png",
+		"alt": "Obituary",
+		"category__id": 14002,
+		"isOnPopupSale" : false,
+		"name": "Obituary (Death)",
+		"decs": "Book Obituary ads of your loved ones to convey the news of death among your friends and relatives."
 	},
 	{
 		"id": 3,
-		"src": "/Assets/svgs/death.png",
-		"alt": "Obituary",
-		"category__id" : 126003,
-		"name": "Obituary (Death)",
-		"decs": "Book Obituary ads of your loved ones to convey the news of death among your friends and relatives."
+		"src": "/Assets/svgs/wedding-rings.png",
+		"alt": "Metrimonial",
+		"name": "Metrimonial",
+		"isOnPopupSale" : false,
+		"category__id": 14003,
+		"decs": "Book Wanted Bride/Groom ads by picking specific sub-categories like caste, religion, community, language."
 	},
 	{
 		"id": 4,
 		"src": "/Assets/svgs/house.png",
 		"alt": "Property Sale",
 		"name": "Property Sale",
-		"category__id" : 126004,
-		"decs": "Book Obituary ads of your loved ones to convey the news of death among your friends and relatives."
+		"isOnPopupSale" : false,
+		"category__id": 14004,
+		"decs": "Buy or Sell your property, land, premises, and accommodation throughout India by advertising in leading newspapers."
 	},
 	{
 		"id": 5,
-		"src": "/Assets/svgs/business.png",
-		"alt": "Business",
-		"name": "Business",
-		"category__id" : 126005,
-		"decs": "For offering business proposals, place your ads under the sub-categories like agents & agencies, business offers, franchisee, etc."
+		"src": "/Assets/svgs/houserent.png",
+		"alt": "Property Rent",
+		"name": "Property Rent",
+		"isOnPopupSale" : false,
+		"category__id": 14005,
+		"decs": "Buy or Sell your property, land, premises, and accommodation throughout India by advertising in leading newspapers."
 	},
 	{
 		"id": 6,
-		"src": "/Assets/svgs/education.png",
-		"alt": "Education",
-		"name": "Education",
-		"category__id" : 126006,
-		"decs": "Advertise professional courses, distance education,abroad courses in different formats in leading newspapers."
+		"src": "/Assets/svgs/lostnfind.png",
+		"alt": "Lost & Found",
+		"name": "Lost & Found",
+		"isOnPopupSale" : false,
+		"category__id": 14006,
+		"decs": "For offering business proposals, place your ads under the sub-categories like agents & agencies, business offers, franchisee, etc."
 	},
 	{
 		"id": 7,
 		"src": "/Assets/svgs/astrology.png",
 		"alt": "Astrology",
 		"name": "Astrology",
-		"category__id" : 126007,
+		"isOnPopupSale" : false,
+		"category__id": 14007,
 		"decs": "Book astrology ads under various sub-categories which includes numerologist, palmistry, poojas, personal problems etc."
 	},
 	{
 		"id": 8,
-		"src": "/Assets/svgs/lostnfind.png",
-		"alt": "Lost & Found",
-		"name": "Lost & Found",
-		"category__id" : 126008,
-		"decs": "Have you lost any important document? For e.g marksheets, certificates, admit cards etc. then place an ad in this category."
+		"src": "/Assets/svgs/education.png",
+		"alt": "Education",
+		"name": "Education",
+		"isOnPopupSale" : false,
+		"category__id": 14008,
+		"decs": "Advertise professional courses, distance education,abroad courses in different formats in leading newspapers."
 	},
 	{
 		"id": 9,
-		"src": "/Assets/svgs/tender.png",
-		"alt": "Tender / Notice",
-		"name": "Tender / Notice",
-		"category__id" : 126009,
-		"decs": "Book tender ads and auction ads under this category."
-	},
-	{
-		"id": 10,
-		"src": "/Assets/svgs/namechange.png",
-		"alt": "Name Change",
-		"name": "Name Change",
-		"category__id" : 126010,
-		"decs": "Book change of name ads under this category to inform corcerned authorities about the change in your new name."
-	},
-	{
-		"id": 11,
 		"src": "/Assets/svgs/vehical.png",
 		"alt": "Vehical Sale",
 		"name": "Vehical Sale",
-		"category__id" : 126011,
+		"isOnPopupSale" : false,
+		"category__id": 14009,
 		"decs": "Buy or Sell your vehicles by placing ads under a particular subcategory to get more responses."
+	},
+	{
+		"id": 10,
+		"src": "/Assets/svgs/business.png",
+		"alt": "Business",
+		"name": "Business",
+		"isOnPopupSale" : false,
+		"category__id": 14010,
+		"decs": "For offering business proposals, place your ads under the sub-categories like agents & agencies, business offers, franchisee, etc."
+	},
+	{
+		"id": 11,
+		"src": "/Assets/svgs/namechange.png",
+		"alt": "Name Change",
+		"name": "Name Change",
+		"isOnPopupSale" : false,
+		"category__id": 14011,
+		"decs": "Book change of name ads under this category to inform corcerned authorities about the change in your new name."
+	},
+	{
+		"id": 12,
+		"src": "/Assets/svgs/tender.png",
+		"alt": "Tender / Notice",
+		"name": "Tender / Notice",
+		"isOnPopupSale" : true,
+		"category__id": 14012,
+		"decs": "Book tender ads and auction ads under this category."
 	}
 ]

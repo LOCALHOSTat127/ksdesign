@@ -3,6 +3,11 @@ import "./style.css";
 import 'leaflet/dist/leaflet.css';
 import validator from 'validator';
 import Alert from "../../Components/utils_component/Alert";
+import Dialog from '@mui/material/Dialog';
+import DialogActions from '@mui/material/DialogActions';
+import DialogContent from '@mui/material/DialogContent';
+import DialogContentText from '@mui/material/DialogContentText';
+import DialogTitle from '@mui/material/DialogTitle';
 
 
 import Communication_provider from '../../Api/Communication/communication_utils';
@@ -56,7 +61,7 @@ const ContactPage = () => {
         phone: "",
         reason_to_contact: ""
     });
-
+    const [open, setOpen] = useState(false);
 
     // handling componene load/unload
     const handleClick = (e) => {
@@ -165,28 +170,40 @@ const ContactPage = () => {
         if (checkErr() === true) {
             setSending(1);
 
+            if (Communication_provider.check_active_contact() === false) {
+                let response = await Communication_provider.send_full_mail_query(msgConfig);
 
-
-            let response = await Communication_provider.send_full_mail_query(msgConfig);
-
-            if (response.status != 200) {
-                setSending(0);
-                setError(prev => ({
-                    ERR_CODE: response.err_code,
-                    ERR_MSG: response.err_msg,
-                    isERR: true
-                }))
+                if (response.status != 200) {
+                    setSending(0);
+                    setError(prev => ({
+                        ERR_CODE: response.err_code,
+                        ERR_MSG: response.err_msg,
+                        isERR: true
+                    }))
+                } else {
+                    setSending(0);
+                    Communication_provider.create_new_contact_instance();
+                    setMsgConfig((prev) => ({
+                        first_name: "",
+                        last_name: "",
+                        emailid: "",
+                        phone: "",
+                        reason_to_contact: ""
+                    }))
+                }
             } else {
                 setSending(0);
-             
                 setMsgConfig((prev) => ({
                     first_name: "",
                     last_name: "",
                     emailid: "",
                     phone: "",
                     reason_to_contact: ""
-                }))
+                }));
+                setOpen(true);
             }
+
+
         }
     }
 
@@ -195,7 +212,31 @@ const ContactPage = () => {
 
     return (
         <section className="contact__page">
-           
+            <Dialog
+                open={open}
+                aria-labelledby="alert-dialog-title"
+                aria-describedby="alert-dialog-description"
+            >
+                <DialogTitle id="alert-dialog-title">
+                    {"Please Wait for 48 Hours."}
+                </DialogTitle>
+                <DialogContent>
+                    <DialogContentText id="alert-dialog-description">
+                        We have your query registed with our team.
+                        Our Team will get back to you within 48 Hours.
+                        <br />
+                        Thank You for cooperating with us.
+                    </DialogContentText>
+                </DialogContent>
+                <DialogActions>
+
+                    <Button onClick={(e) => {
+                        setOpen(false);
+                    }} autoFocus>
+                        Close
+                    </Button>
+                </DialogActions>
+            </Dialog>
             <div className="page__inner__box">
                 <div className="contact__box">
                     <div className="sidepanel__text">
@@ -248,7 +289,7 @@ const ContactPage = () => {
                         </div>
                     </div>
                     <div className="contact__box__controlls">
-                    <Alert msg={"Invalid Last Name"} />
+                        <Alert msg={"Invalid Last Name"} />
 
                         {isMapActive ?
                             <>
@@ -392,7 +433,7 @@ const ContactPage = () => {
                                             Send Message
                                         </Button>
                                         <p className={`err_msg ${isError.isERR === false ? "hidemsg" : null}`}>{`${isError.ERR_MSG}`}</p>
-                                      
+
                                     </div>
                                 </div>
 
