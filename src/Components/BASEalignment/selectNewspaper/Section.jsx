@@ -26,7 +26,7 @@ import LinearProgress from '@mui/material/LinearProgress';
 
 
 import Firebase_Utils from '../../../Api/Firebase/firebase_utils';
-import { NoiseAwareOutlined, SignalCellularNull } from '@mui/icons-material';
+
 
 
 
@@ -42,40 +42,15 @@ export const Section = () => {
     const [fetchedEditionsList, setFetchedEditionsList] = useState(null);
     const [fetchedPackageList, setFetchedPackageList] = useState(null);
     const [currentNewsPapaer, setCurrentNewsPaper] = useState(null);
-    let selectedEditionsToGo = [];
-    const [selectedPackageToGo, setSelectedPackageToGo] = useState(null);
     const [isFetching, setFetching] = useState(false);
     const [isUiRendered, setUIRendred] = useState(false);
-    const [proceedBtn,setProceedBtn] = useState(false);
+    let selectedEditionsToGo = [];
 
 
 
 
 
 
-
-
-
-    // Handler_function
-    // const STEP_FORWARD_HANDLER = (e) => {
-    //     dispatch(mark_paper_info_step_status(true));
-    //     dispatch(set_paper_basic_info({
-    //         nid: slectedPaper.NID,
-    //         paperName: slectedPaper.paperName,
-    //         cat_config_id: slectedPaper.CAT_CONFIG_ID,
-    //     }))
-
-    //     if (ad_state.FIRST_STEP.CATEGORY_SELECTION_STEP.isDone === true && ad_state.FIRST_STEP.AD_TYPE_SELECTION_STEP.isDone === true) {
-    //         dispatch(mark_first_step_status(true));
-    //     }
-
-    //     if (ad_state.FIRST_STEP.CATEGORY_SELECTION_STEP.isDone === true && ad_state.FIRST_STEP.AD_TYPE_SELECTION_STEP.isDone === true) {
-    //         navigate(`/ad/compose/${ad_state.FIRST_STEP.AD_TYPE_SELECTION_STEP.config_info.ad_type === 'classified_text' ? 'textad' :
-    //             true === 'textdisplayad' ? '' : 'textad'}`);
-    //     } else {
-    //         navigate(`/ad/select/category`);
-    //     }
-    // }
 
 
 
@@ -102,45 +77,54 @@ export const Section = () => {
 
         setFetching(false);
         setUIRendred(true);
-        if (response.status === 200 && packages_response.status === 200 && response.items > 0) {
+
+        if (response.status === 200) {
             const tempRateCards = [];
-            const tempPackages = [];
-
-            response.data.map((card) => {
-                tempRateCards.push({
-                    edition_name: card.editionName,
-                    price: card.price_config.minPrice,
-                    minSep: card.price_config.minSep,
-                    sep: card.price_config.sep,
-                    maxSep: card.price_config.maxSep,
-                    doc_config: card.documents_config,
-                    misc_config: card.misc_config,
-                    pallet_rules: card.paller_config,
-                    schemes: card.schemes
-                })
-            })
-
-            packages_response?.data?.packages.map((packg) => {
-                tempPackages.push({
-                    pacakge_name: packg.packageName,
-                    package_desc: packg.packageDesc,
-                    package_price: packg.price_config.minPrice,
-                    sep: packg.price_config.sep,
-                    min_sep: packg.price_config.minSep,
-                    max_sep: packg.price_config.maxSep
-                })
-            })
-            setFetchedEditionsList(tempRateCards);
-            setFetchedPackageList(tempPackages)
-        } else {
-            setFetchedEditionsList(null);
-            setFetchedPackageList(null)
+            if (response.items > 0) {
+                response.data.map((card) => {
+                    tempRateCards.push({
+                        edition_name: card.editionName,
+                        price_config: card.price_config,
+                        price: card.price_config.minPrice,
+                        minSep: card.price_config.minSep,
+                        sep: card.price_config.sep,
+                        maxSep: card.price_config.maxSep,
+                        doc_config: card.documents_config,
+                        misc_config: card.misc_config,
+                        pallet_rules: card.paller_config,
+                        schemes: card.schemes
+                    })
+                });
+                setFetchedEditionsList(tempRateCards);
+            } else {
+                setFetchedEditionsList(null);
+            }
         }
+
+
+        if (packages_response.status === 200) {
+            const tempPackages = [];
+            if (packages_response.data?.packages) {
+                packages_response?.data?.packages.map((packg) => {
+                    tempPackages.push({
+                        pacakge_name: packg.packageName,
+                        package_desc: packg.packageDesc,
+                        package_price: packg.price_config.minPrice,
+                        sep: packg.price_config.sep,
+                        min_sep: packg.price_config.minSep,
+                        max_sep: packg.price_config.maxSep
+                    })
+                })
+                setFetchedPackageList(tempPackages)
+            } else {
+                setFetchedPackageList(null)
+            }
+        }
+
     }
 
     // handle_paper_Select
     const handlePaperSelect = (e) => {
-        setProceedBtn(false);
         if (e.target.value === "None") {
             setFetchedEditionsList([]);
             setUIRendred(false);
@@ -153,46 +137,110 @@ export const Section = () => {
                 return paper;
             }
         })
+
         setCurrentNewsPaper(current_paper[0]);
     }
 
 
+
+
+
+
     const handle_edition_select = (e) => {
-        const isPresent = selectedEditionsToGo.filter((edition) => {
-            if (edition.edition_name === e.target.offsetParent.id) {
-                return edition;
+        if (e) {
+            if (e.target.offsetParent.classList.contains("selected") === false) {
+                const new_edition = fetchedEditionsList.filter((edition) => {
+                    if (edition.edition_name === e.target.offsetParent.id) {
+                        return edition;
+                    }
+                })
+
+                selectedEditionsToGo.push(...new_edition);
+                e.target.offsetParent.classList.add("selected");
+            } else {
+                const filted_editions = selectedEditionsToGo.filter((edition) => {
+                    if (edition.edition_name != e.target.offsetParent.id) {
+                        return edition;
+                    }
+                })
+                selectedEditionsToGo = new Array(...filted_editions);
+                e.target.offsetParent.classList.remove("selected");
             }
-        })
-        console.log(isPresent);
-        if (isPresent.length === 0) {
-            e.target.offsetParent.classList.add("selected");
-            const edition_config = fetchedEditionsList.filter((edition) => {
-                if (edition.edition_name === e.target.offsetParent.id) {
-                    return edition;
-                }
-            })
-
-            selectedEditionsToGo.push(...edition_config);
-        }else{
-            console.log("bok");
-            const remaningCards = selectedEditionsToGo.filter((edition) => {
-                if (edition.edition_name !== e.target.offsetParent.id) {
-                    return edition;
-                }
-            })
-            selectedEditionsToGo = remaningCards;
-            e.target.offsetParent.classList.remove("selected")
-        }
 
 
-        if(selectedEditionsToGo.length > 0){
-            setProceedBtn(true);
-        }else{
-            setProceedBtn(false);
         }
     }
 
 
+
+
+
+
+    const PROCEED_TO_COMPOSE = (e) => {
+        if (!e.target?.dataset?.handlercaller) {
+            return false;
+        }
+
+
+        if (e.target?.dataset?.handlercaller === "edition") {
+            if (selectedEditionsToGo.length <= 0) {
+                alert("Select atleast 1 Edition");
+                return false;
+            }
+
+            dispatch(set_paper_editions(selectedEditionsToGo));
+            dispatch(set_paper_basic_info({
+                nid: currentNewsPapaer.NID.split("_")[1],
+                paperName: currentNewsPapaer.newsPaperName,
+                from_the_paper: currentNewsPapaer.fromThePaper,
+                cat_config_id: ad_state.FIRST_STEP.CATEGORY_SELECTION_STEP.config_info.category_id
+            }))
+            dispatch(mark_paper_info_step_status(true));
+            dispatch(mark_first_step_status(true));
+            dispatch(set_paper_package(null));
+
+            if (ad_state.FIRST_STEP.CATEGORY_SELECTION_STEP.isDone === true && ad_state.FIRST_STEP.AD_TYPE_SELECTION_STEP.isDone === true) {
+                navigate(`/ad/compose/${ad_state.FIRST_STEP.AD_TYPE_SELECTION_STEP.config_info.ad_type === 'classified_text' ? 'textad' :
+                    ad_state.FIRST_STEP.AD_TYPE_SELECTION_STEP.config_info.ad_type === 'textdisplayad' ? 'textdisplayad' : '/'}`);
+            } else {
+                navigate(`/ad/select/category`);
+            }
+        } else if (e.target?.dataset?.handlercaller === "package") {
+
+
+            let selectedPackage = null;
+            fetchedPackageList.forEach((pckg, index) => {
+                if (index == e.target.dataset.packageid) {
+                    selectedPackage = pckg;
+                }
+            })
+
+
+            if (selectedPackage === null) {
+                alert("Select Any Pacakge");
+                return false;
+            }
+
+
+            dispatch(set_paper_editions(null));
+            dispatch(set_paper_basic_info({
+                nid: currentNewsPapaer.NID.split("_")[1],
+                paperName: currentNewsPapaer.newsPaperName,
+                from_the_paper: currentNewsPapaer.fromThePaper,
+                cat_config_id: ad_state.FIRST_STEP.CATEGORY_SELECTION_STEP.config_info.category_id
+            }))
+            dispatch(mark_paper_info_step_status(true));
+            dispatch(mark_first_step_status(true));
+            dispatch(set_paper_package(selectedPackage));
+
+            if (ad_state.FIRST_STEP.CATEGORY_SELECTION_STEP.isDone === true && ad_state.FIRST_STEP.AD_TYPE_SELECTION_STEP.isDone === true) {
+                navigate(`/ad/compose/${ad_state.FIRST_STEP.AD_TYPE_SELECTION_STEP.config_info.ad_type === 'classified_text' ? 'textad' :
+                    ad_state.FIRST_STEP.AD_TYPE_SELECTION_STEP.config_info.ad_type === 'textdisplayad' ? 'textdisplayad' : '/'}`);
+            } else {
+                navigate(`/ad/select/category`);
+            }
+        }
+    }
 
 
 
@@ -205,6 +253,7 @@ export const Section = () => {
             if (response?.status === 200) {
                 setNewsPapersList(response.data.newspaper_collection);
                 setFetching(false);
+                console.log(response.data.newspaper_collection);
             }
         }
         fetch_newspapers();
@@ -281,12 +330,83 @@ export const Section = () => {
             </div>
 
             <div className={`price_list_outlet_main ${isUiRendered == true ? "show_results" : null}`}>
-                <div className="editions__cards_display">
-                    <div style={{
-                        display: "flex",
-                        alignItems: "center",
-                        justifyContent: "space-between"
-                    }} className="status__line">
+
+                {fetchedEditionsList && <>
+                    <div className="editions__cards_display">
+                        <div style={{
+                            display: "flex",
+                            alignItems: "center",
+                            justifyContent: "space-between"
+                        }} className="status__line">
+                            <div style={{
+                                display: "flex",
+                                alignItems: "center",
+                                gap: "7px",
+                                background: "#0072ff17",
+                                width: "fit-content",
+                                padding: "6px",
+                                borderRadius: "4px"
+                            }}>
+                                <EditionsSvg style={{
+                                    width: "20px",
+                                    height: "20px"
+                                }} className='svg' />
+                                <h2 style={{
+                                    color: "black"
+                                }}>Select Edition(s)</h2>
+
+                            </div>
+                            <button
+                                data-handlercaller="edition"
+                                onClick={PROCEED_TO_COMPOSE}
+                                className="proceed_with_editions">
+                                Proceed & Compose AD
+                                <KeyboardArrowRightIcon data-handlercaller="edition" sx={{
+                                    position: "absolute",
+                                    right: "8px",
+                                    top: "50%",
+                                    transform: "translateY(-50%)",
+
+
+                                }} className='svg' />
+                            </button>
+                        </div>
+
+                        <div className="editions__cards">
+                            {fetchedEditionsList && fetchedEditionsList.map(((card) => {
+                                return (
+                                    <div key={card.edition_name} id={card.edition_name} className="rate_card_edition">
+                                        <div onClick={handle_edition_select} className="click_shadow"></div>
+
+                                        <div className='right_side'>
+                                            <h2 className="edition__name">{card.edition_name}</h2>
+                                            <p className="meta_data">
+                                                max words : {card.maxSep}
+                                            </p>
+                                        </div>
+                                        <div className="left__side">
+                                            <p className="min_price">
+                                                <p className="symbol">
+                                                    ₹ </p>
+                                                <p className='price'>{card.price}</p>
+                                            </p>
+                                            <div className="seperator"></div>
+                                            <p className="seprator">
+                                                {card.minSep}/{card.sep}
+                                            </p>
+                                        </div>
+
+                                    </div>
+                                )
+
+                            }))}
+                        </div>
+
+                    </div>
+                </>}
+
+                {fetchedPackageList && <>
+                    <div className="packages__display">
                         <div style={{
                             display: "flex",
                             alignItems: "center",
@@ -296,129 +416,73 @@ export const Section = () => {
                             padding: "6px",
                             borderRadius: "4px"
                         }}>
-                            <EditionsSvg style={{
+                            <PackageSvg style={{
                                 width: "20px",
                                 height: "20px"
                             }} className='svg' />
                             <h2 style={{
                                 color: "black"
-                            }}>Select Edition(s)</h2>
-
+                            }}>Special Packages</h2>
                         </div>
-                        <button disabled={proceedBtn === false ? true : false} className={`proceed_with_editions ${proceedBtn === false ? 'disabled' : null}`}>
-                            Proceed & Compose AD
-                            <KeyboardArrowRightIcon sx={{
-                                position: "absolute",
-                                right: "8px",
-                                top: "50%",
-                                transform: "translateY(-50%)",
 
-
-                            }} className='svg' />
-                        </button>
-                    </div>
-                    <div className="editions__cards">
-                        {fetchedEditionsList && fetchedEditionsList.map(((card) => {
+                        {fetchedPackageList ? fetchedPackageList.map(((packg, index) => {
                             return (
-                                <div key={card.edition_name} id={card.edition_name} className="rate_card_edition">
-                                    <div onClick={handle_edition_select} className="click_shadow"></div>
-
-                                    <div className='right_side'>
-                                        <h2 className="edition__name">{card.edition_name}</h2>
-                                        <p className="meta_data">
-                                            max words : {card.maxSep}
+                                <div className="package__card">
+                                    <div className="primary__info">
+                                        <h2 className="package__name">{packg.pacakge_name}</h2>
+                                        <p className="package__desc">
+                                            {packg.package_desc}
                                         </p>
                                     </div>
-                                    <div className="left__side">
-                                        <p className="min_price">
-                                            <p className="symbol">
-                                                ₹ </p>
-                                            <p className='price'>{card.price}</p>
-                                        </p>
-                                        <div className="seperator"></div>
-                                        <p className="seprator">
-                                            {card.minSep}/{card.sep}
-                                        </p>
-                                    </div>
-
-                                </div>
-                            )
-
-                        }))}
-                    </div>
-
-                </div>
-
-                <div className="packages__display">
-                    <div style={{
-                        display: "flex",
-                        alignItems: "center",
-                        gap: "7px",
-                        background: "#0072ff17",
-                        width: "fit-content",
-                        padding: "6px",
-                        borderRadius: "4px"
-                    }}>
-                        <PackageSvg style={{
-                            width: "20px",
-                            height: "20px"
-                        }} className='svg' />
-                        <h2 style={{
-                            color: "black"
-                        }}>Special Packages</h2>
-                    </div>
-
-                    {fetchedPackageList ? fetchedPackageList.map(((packg) => {
-                        return (
-                            <div className="package__card">
-                                <div className="primary__info">
-                                    <h2 className="package__name">{packg.pacakge_name}</h2>
-                                    <p className="package__desc">
-                                        {packg.package_desc}
-                                    </p>
-                                </div>
-                                <div style={{
-                                    display: "flex",
-                                    alignItems: "center",
-                                    gap: "30px"
-                                }} className="outer__jacket">
-                                    <div className="meta__info">
-                                        <p className="min__words">
-                                            <p className="words">{packg.min_sep}</p>
-                                            <p className="set">/{`${packg.sep} `}Min</p>
-                                        </p>
-                                        <p className="max__words">
-                                            <p className="words">{packg.max_sep}</p>
-                                            <p className="set">/{`${packg.sep} `}Max</p>
-                                        </p>
-                                    </div>
-                                    <button style={{
+                                    <div style={{
                                         display: "flex",
                                         alignItems: "center",
-                                        gap: "24px",
-                                        width: "200px",
-                                        position: "relative"
-                                    }} className="proceed__with__package">Select
-                                        <p className="price">
-                                            ₹{packg.package_price}
-                                        </p>
+                                        gap: "30px"
+                                    }} className="outer__jacket">
+                                        <div className="meta__info">
+                                            <p className="min__words">
+                                                <p className="words">{packg.min_sep}</p>
+                                                <p className="set">/{`${packg.sep} `}Min</p>
+                                            </p>
+                                            <p className="max__words">
+                                                <p className="words">{packg.max_sep}</p>
+                                                <p className="set">/{`${packg.sep} `}Max</p>
+                                            </p>
+                                        </div>
+                                        <button
+                                            id={index}
+                                            data-handlercaller="package"
+                                            data-packageid={index}
+                                            onClick={PROCEED_TO_COMPOSE}
+                                            style={{
+                                                display: "flex",
+                                                alignItems: "center",
+                                                gap: "24px",
+                                                width: "200px",
+                                                position: "relative"
+                                            }} className="proceed__with__package">Select
+                                            <p data-handlercaller="package" data-packageid={index} className="price">
+                                                ₹{packg.package_price}
+                                            </p>
 
-                                        <KeyboardArrowRightIcon sx={{
-                                            position: "absolute",
-                                            right: "-22px",
-                                            top: "50%",
-                                            transform: "translateY(-50%)",
+                                            <KeyboardArrowRightIcon data-handlercaller="package" data-packageid={index} sx={{
+                                                position: "absolute",
+                                                right: "-22px",
+                                                top: "50%",
+                                                transform: "translateY(-50%)",
 
 
-                                        }} className='svg' />
-                                    </button>
+                                            }} className='svg' />
+                                        </button>
+                                    </div>
                                 </div>
-                            </div>
-                        )
-                    })) : <p style={{
-                        color: "black"
-                    }}>No Packages Found!</p>}
-                </div>
+                            )
+                        })) : <p style={{
+                            color: "black"
+                        }}>No Packages Found!</p>}
+                    </div>
+
+                </>}
             </div>
         </section>
     )

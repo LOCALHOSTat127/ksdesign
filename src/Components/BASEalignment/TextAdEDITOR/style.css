@@ -377,6 +377,38 @@
   padding: 20px 40px;
   padding-left: 0px;
 }
+.TextEditor__ground .second__lower__containor .proceed_box {
+  background: #F8F8F8;
+  padding: 20px 60px;
+  min-height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+.TextEditor__ground .second__lower__containor .proceed_box .proceed_box__btn {
+  overflow: hidden;
+  font-size: clamp(16px, 4vh, 17px);
+  padding: 15px 18px;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+  border-radius: 2px;
+  background: black;
+  color: white;
+  text-transform: capitalize;
+  letter-spacing: 2px;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+.TextEditor__ground .second__lower__containor .proceed_box .proceed_box__btn:hover {
+  background-color: rgba(0, 0, 0, 0.863);
+}
+.TextEditor__ground .second__lower__containor .proceed_box .proceed_box__btn .svg {
+  transition: all 180ms ease;
+  width: 100%;
+  height: 100%;
+  max-width: 28px;
+}
 .TextEditor__ground .second__lower__containor .price__list {
   margin-bottom: 30px;
   position: relative;
@@ -528,13 +560,45 @@
     flex-direction: column;
   }
   .TextEditor__ground .second__lower__containor .proceed_box {
-    background-color: red;
+    background: #F8F8F8;
+    padding: 20px 20px;
+    min-height: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .TextEditor__ground .second__lower__containor .proceed_box .proceed_box__btn {
+    width: 100%;
+    padding: 12px 14px;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+    border-radius: 4px;
+    background: black;
+    color: white;
+    text-transform: capitalize;
+    letter-spacing: 2px;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+  }
+  .TextEditor__ground .second__lower__containor .proceed_box .proceed_box__btn .svg {
+    transform: translateX(0px);
+    max-width: 30px;
+  }
+  .TextEditor__ground .second__lower__containor .ad__heading__containor {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
   }
   .TextEditor__ground .second__lower__containor .ad__heading__containor .heading__window {
     margin-top: 5px;
     grid-template-columns: 1fr;
     grid-template-rows: repeat(3, 1fr);
     gap: 20px;
+    width: 100%;
+    padding: 0px;
+  }
+  .TextEditor__ground .second__lower__containor .ad__heading__containor .heading__window .MuiFormControl-root {
+    margin: 0px;
   }
   .TextEditor__ground .second__lower__containor .ad__heading__containor .heading__window #last__select {
     grid-column: 1/-1;

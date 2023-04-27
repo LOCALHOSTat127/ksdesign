@@ -2,7 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
     FIRST_STEP: {
-        isDone: true,
+        isDone: false,
         parent_step_name: "AD_CONFIG_SELECTION",
 
         CATEGORY_SELECTION_STEP: {
@@ -41,29 +41,16 @@ const initialState = {
             config_info: {
                 newspaper_name: null,
                 newspaper_id: null,
+                from_the_paper : null,
                 cat_config_id: null,
-                selected_editions: [
-                    {
-                        edition_name: null,
-                        edition_id: null,
-                        edition_seperator: null,
-                        edition_per_sep_price: null,
-                        edition_extra_price: null,
-                    }
-                ],
-                selected_package: {
-                    package_name: null,
-                    package_id: null,
-                    package_sep: null,
-                    package_per_sep_price: null,
-                    package_extra_price: null
-                },
+                selected_editions: null,
+                selected_package: null,
             }
         }
 
     },
     SECOND_STEP: {
-        isDone: true,
+        isDone: false,
         parent_step_name: "COMPOSE_AD",
         prev_step: "PAPER_PACKAGE_EDITION",
         next_step: "PAYMENT_PAGE",
@@ -102,7 +89,7 @@ const initialState = {
 
     },
     THIRD_STEP: {
-        isDone: true,
+        isDone: false,
         parent_step_name: "PAYMENT_PAGE",
         prev_step: "SECOND_STEP_COMPOSE_AD",
         next_step: null,
@@ -176,6 +163,7 @@ export const ad_booking_config = createSlice({
         set_paper_basic_info: (state, action) => {
             state.FIRST_STEP.PAPER_EDITION_SELECTION_STEP.config_info.newspaper_id = action.payload.nid;
             state.FIRST_STEP.PAPER_EDITION_SELECTION_STEP.config_info.newspaper_name = action.payload.paperName;
+            state.FIRST_STEP.PAPER_EDITION_SELECTION_STEP.config_info.from_the_paper = action.payload.from_the_paper;
             state.FIRST_STEP.PAPER_EDITION_SELECTION_STEP.config_info.cat_config_id = action.payload.cat_config_id;
         },
         set_paper_editions: (state, action) => {
