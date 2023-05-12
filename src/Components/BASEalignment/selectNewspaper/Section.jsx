@@ -79,9 +79,8 @@ export const Section = () => {
   
         setFetching(false);
         setUIRendred(true);
-
+            console.log(response);
         if (response.status === 200) {
-            console.log(response.data);
             const tempRateCards = [];
             if (response.items > 0) {
                 response.data.map((card) => {
