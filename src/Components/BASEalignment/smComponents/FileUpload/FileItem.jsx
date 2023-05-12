@@ -25,8 +25,6 @@ const FileItem = ({ doc_name, max_size = 2, file_type, isRequired = false, error
 
 
     let dispatch = useDispatch();
-    const user_first_name = "sahil";
-    const user_phone = "7852099185";
     const [file, setFile] = useState({
         fileblob: null,
         blobID: null
@@ -35,21 +33,19 @@ const FileItem = ({ doc_name, max_size = 2, file_type, isRequired = false, error
 
 
 
-
     const uploadFIle = () => {
-
-
         let folder_name = null;
         setUploading((prev) => prev = true);
 
         // generating_bucket_uri
         if (store_bucket_url === null) {
-            folder_name = Base64.encodeURL(Firebase_Utils.get_bucket_uri(user_first_name, user_phone));
+            folder_name = Base64.encodeURL(Firebase_Utils.get_bucket_uri(ad_state.THIRD_STEP.config_info.customer_contact_info.contact_person_name.split(" ")[0],
+            ad_state.THIRD_STEP.config_info.customer_contact_info.contact_phone));
             dispatch(set_bucket_uri(folder_name));
         }
 
 
-        const storageRef = ref(storage, `/${folder_name === null ? store_bucket_url : folder_name}/${file_name}.${file_type}`);
+        const storageRef = ref(storage, `/${folder_name === null ? store_bucket_url : folder_name}/${file_name}.${file.fileblob.name.split(".")[1]}`);
 
 
 
@@ -64,7 +60,7 @@ const FileItem = ({ doc_name, max_size = 2, file_type, isRequired = false, error
                 // download url
                 getDownloadURL(uploadTask.snapshot.ref).then((url) => {
                     dispatch(push_bucket_doc({
-                        file_name: `${file_name}.${file_type}`,
+                        file_name: `${file_name}.${file.fileblob.type}`,
                         download_url: url,
                     }));
                     setUploading(false);
@@ -155,7 +151,7 @@ const FileItem = ({ doc_name, max_size = 2, file_type, isRequired = false, error
                                 color: "black",
                                 padding: "6px 12px",
                             }} aria-label="upload picture" component="label" startIcon={<CloudSvg />}>
-                            <input data-blob-id={`FILE_${index}`} required onChange={handleFile} hidden accept={`image/${file_type}`} type="file" />
+                            <input data-blob-id={`FILE_${index}`} required onChange={handleFile} hidden accept={`*image/${file_type.split(",")[0],file_type.split(",")[1]}`} type="file" />
 
                             Upload
                         </Button>

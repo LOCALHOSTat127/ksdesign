@@ -73,6 +73,7 @@ export default class Payment_Provider {
 
     // generate-order
     static generateNewOrder = async (order_config) => {
+      
         // Fetching new order from the Server.
         let new_order = await axios({
             method: 'post',
@@ -165,6 +166,7 @@ export default class Payment_Provider {
 
     // init_payment_box
     static init_payment_options = (new_order) => {
+
         const PAYMENT_OPTIONS = {
             key: process.env.REACT_APP_RAZORPAY_KEY_ID,
             amount: new_order?.amount,

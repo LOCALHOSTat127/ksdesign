@@ -9,7 +9,8 @@ import {
     set_paper_basic_info,
     set_paper_editions,
     set_paper_package,
-    mark_first_step_status
+    mark_first_step_status,
+  
 
 } from "../../../app/features/ad_config/ad_booking_config_slice";
 
@@ -74,11 +75,13 @@ export const Section = () => {
             currentNewsPapaer.NID.split("_")[1],
             ad_state.FIRST_STEP.CATEGORY_SELECTION_STEP.config_info.category_id
         );
-
+        
+  
         setFetching(false);
         setUIRendred(true);
 
         if (response.status === 200) {
+            console.log(response.data);
             const tempRateCards = [];
             if (response.items > 0) {
                 response.data.map((card) => {
@@ -92,7 +95,7 @@ export const Section = () => {
                         doc_config: card.documents_config,
                         misc_config: card.misc_config,
                         pallet_rules: card.paller_config,
-                        schemes: card.schemes
+                        schemes: card.schemes,
                     })
                 });
                 setFetchedEditionsList(tempRateCards);
@@ -107,14 +110,17 @@ export const Section = () => {
             if (packages_response.data?.packages) {
                 packages_response?.data?.packages.map((packg) => {
                     tempPackages.push({
+                        complete_package : packg,
                         pacakge_name: packg.packageName,
                         package_desc: packg.packageDesc,
                         package_price: packg.price_config.minPrice,
                         sep: packg.price_config.sep,
+                        discount : packg?.discount,
                         min_sep: packg.price_config.minSep,
                         max_sep: packg.price_config.maxSep
                     })
                 })
+            
                 setFetchedPackageList(tempPackages)
             } else {
                 setFetchedPackageList(null)
@@ -125,6 +131,8 @@ export const Section = () => {
 
     // handle_paper_Select
     const handlePaperSelect = (e) => {
+        setFetchedEditionsList(null);
+        setFetchedPackageList(null);
         if (e.target.value === "None") {
             setFetchedEditionsList([]);
             setUIRendred(false);
@@ -177,6 +185,7 @@ export const Section = () => {
 
 
     const PROCEED_TO_COMPOSE = (e) => {
+    
         if (!e.target?.dataset?.handlercaller) {
             return false;
         }
@@ -195,6 +204,7 @@ export const Section = () => {
                 from_the_paper: currentNewsPapaer.fromThePaper,
                 cat_config_id: ad_state.FIRST_STEP.CATEGORY_SELECTION_STEP.config_info.category_id
             }))
+ 
             dispatch(mark_paper_info_step_status(true));
             dispatch(mark_first_step_status(true));
             dispatch(set_paper_package(null));
@@ -221,7 +231,7 @@ export const Section = () => {
                 return false;
             }
 
-
+     
             dispatch(set_paper_editions(null));
             dispatch(set_paper_basic_info({
                 nid: currentNewsPapaer.NID.split("_")[1],

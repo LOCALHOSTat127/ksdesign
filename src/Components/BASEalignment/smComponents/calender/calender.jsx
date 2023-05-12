@@ -1,15 +1,21 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useDeferredValue } from 'react'
 import "./style.css";
 import { debounce } from 'lodash';
 import { ReactComponent as RightArrow } from "../../../../assets/svg/rightArrowSvg.svg";
 import { ReactComponent as LeftArrow } from "../../../../assets/svg/leftArrowSvg.svg";
-import { useDispatch,useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { set_selected_dates } from "../../../../app/features/ad_config/ad_booking_config_slice";
 
-const Calender = () => {
+const Calender = ({ OFFER_CONFIG }) => {
 
     const dispatch = useDispatch();
- 
+    const ad_state = useSelector((state) => state.ad_booking_config);
+
+
+
+
+
+
     const months = [
         "January", "Febuary", "March", "April", "May", "June", "July"
         , "August", "September", "October",
@@ -17,33 +23,55 @@ const Calender = () => {
     ]
 
 
-    let selectedDates = [];
+    let selectedDates = [...ad_state.THIRD_STEP.config_info.selected_dates];
 
-    let date;
-    let currentYear;
-    let currentMonth;
-    let fixed_current_month;
-    let fixed_current_year;
-    let currentDate_month;
-    let today;
-    let lock_next_date;
-    let lastDayOnMonth;
+
+    let date = ad_state.THIRD_STEP.config_info.date_config.date;
+    let currentYear = ad_state.THIRD_STEP.config_info.date_config.currentYear;
+    let currentMonth = ad_state.THIRD_STEP.config_info.date_config.currentMonth;
+    let fixed_current_month = ad_state.THIRD_STEP.config_info.date_config.fixed_current_month;
+    let fixed_current_year = ad_state.THIRD_STEP.config_info.date_config.fixed_current_year;
+    let currentDate_month = ad_state.THIRD_STEP.config_info.date_config.currentDate_month;
+    let lock_next_date = ad_state.THIRD_STEP.config_info.date_config.lock_next_date;
+    let today = ad_state.THIRD_STEP.config_info.date_config.today;
+    let lastDayOnMonth = ad_state.THIRD_STEP.config_info.date_config.lastDayOnMonth;
+
+
+
+
+
 
 
     const dispatch_to_store = () => {
-        dispatch(set_selected_dates(selectedDates));
-    
+        dispatch(set_selected_dates({
+            dates_arr: selectedDates,
+            date: ad_state.THIRD_STEP.config_info.date_config.date,
+            currentYear: currentYear,
+            currentMonth: currentMonth,
+            fixed_current_month: fixed_current_month,
+            fixed_current_year: fixed_current_year,
+            currentDate_month: currentDate_month,
+            lock_next_date: lock_next_date,
+            today: today,
+            lastDayOnMonth: lastDayOnMonth,
+        }));
+
     }
 
 
-    const debounced_dispathc_to_store = debounce(dispatch_to_store, 1200);
+   
+
+
+
+    
 
 
     const handle_date_select = (e) => {
+      
         if (e) {
             if (e.target.classList.contains("disabled") === false) {
-                e.target.classList.toggle("selected")
 
+                e.target.classList.toggle("selected")
                 if (e.target.classList.contains("selected") === false) {
                     let filtred_dates = selectedDates.filter((data) => {
                         if (data !== `${e.target.innerText}/${currentMonth}/${currentYear}`) {
@@ -56,8 +84,7 @@ const Calender = () => {
                     selectedDates.push(`${e.target.innerText}/${currentMonth}/${currentYear}`);
                 }
 
-                dispatch_to_store();
-
+                dispatch_to_store()
             }
         }
     }
@@ -68,6 +95,7 @@ const Calender = () => {
 
 
     const reHydrateCalender = () => {
+
         const currentDate = document.getElementById("current_date");
         const daysWrapper = document.getElementById("days__wrapper");
         currentDate.innerText = `${months[currentMonth]}, ${currentYear}`;
@@ -78,7 +106,7 @@ const Calender = () => {
 
         for (let i = 1; i <= lastDayOnMonth; i++) {
             if (currentMonth === fixed_current_month && currentYear === fixed_current_year && currentDate_month === i) {
-                days_li_tag += `<li class="day today"  >${i}</li>`
+                days_li_tag += `<li class="day today disabled"  >${i}</li>`
             } else {
                 let isSelected = selectedDates.find((data) => data === `${i}/${currentMonth}/${currentYear}`);
                 let appended_date = isSelected != undefined ? `<li class="day selected" >${i}</li>` : `<li class="day" >${i}</li>`
@@ -114,6 +142,9 @@ const Calender = () => {
 
         currentDate.innerText = `${months[currentMonth]}, ${currentYear}`;
 
+
+
+
         reHydrateCalender();
     }
 
@@ -121,8 +152,10 @@ const Calender = () => {
 
 
     const handleCalender_change = (e) => {
+
+
+
         currentMonth = e.target.dataset.btn === "prev" ? (currentMonth - 1) : (currentMonth + 1);
-        e.preventDefault();
         if (currentMonth < 0) {
             currentMonth = 11;
             currentYear = currentYear - 1;
@@ -130,6 +163,7 @@ const Calender = () => {
             currentMonth = 0;
             currentYear = currentYear + 1;
         }
+
         reHydrateCalender();
     }
 
@@ -155,7 +189,9 @@ const Calender = () => {
     useEffect(() => {
         lock_date_by_time();
         renderCalender();
+
     }, [])
+
 
     return (
         <div className="calender__wrapper">
@@ -177,7 +213,7 @@ const Calender = () => {
             </header>
 
             <ul className="weeks">
-                <li className="weak">Sun</li>
+                <li className="weak">{date}</li>
                 <li className="weak">Mon</li>
                 <li className="weak">Tue</li>
                 <li className="weak">Wed</li>

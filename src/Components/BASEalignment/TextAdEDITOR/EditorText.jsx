@@ -16,10 +16,11 @@ import Select from '@mui/material/Select';
 
 import proceedArrow from "../../../assets/png/proceedarrow.gif";
 
+import discountGif from "../../../assets/png/discount.gif";
 
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import { mark_compose_step_status, set_compose_step_config, set_ad_stats, set_special_enhancement, set_heading_config } from "../../../app/features/ad_config/ad_booking_config_slice";
+import { mark_compose_step_status, set_compose_step_config, set_discount, set_ad_stats, set_special_enhancement, set_heading_config } from "../../../app/features/ad_config/ad_booking_config_slice";
 
 
 
@@ -29,74 +30,156 @@ const EditorText = () => {
     const dispatch = useDispatch();
     const NAVIGATE = useNavigate();
     const ad_state = useSelector((state) => state.ad_booking_config);
-    const [COLORS_CONFIG, SETCOLORCONFIG] = useState(null);
+    const [showPreview, setShowPrevice] = useState(0);
+    const [isTick, setTick] = useState(false);
+    const [iseBorder, setBorder] = useState(false);
+    const [isbgclr, setbgclr] = useState(null);
+    const [ADTEXT, setADTEXT] = useState("");
+    const [bgClrCharge, setBgClrCharge] = useState(0);
+    const [words, setWords] = useState(0);
+    const [chars, setChars] = useState(0);
+    const [adPrice, setPrice] = useState(0);
+    const [isDisOpIN, setDisOptIn] = useState(false);
+    const [isTranslationSelected, setTranslation] = useState(false);
+    const [isPhotoOptIn, setPhotoOptin] = useState(false);
 
-
-
-
-    // application_state
-    const [configurations, setConfigurestions] = useState({
-        color_pallet_rules: null,
-        other_pallet_rules: {
-            rules: null,
-            isTick: false,
-            isBorder: false
-        },
-        special_enhancement: null,
-        heading_config: null,
-        selectedEditions: null,
-        selectedPackages: null,
-        price_config: {
-            editions__prices: null,
-            min_sep: null,
-            max_sep: null,
-            sep: null
-        },
-        from_paper: {
-            paper_txt: null,
-            paper_name: null
-        }
+    const [HEADING_SELECTION, setHEADING_SELECTION] = useState({
+        heading_first: null,
+        heading_second: null,
+        heading_third: null,
+        isHeadingSet: true
     })
 
 
-
-    const [enhansments, setEnhansments] = useState({
-        istranslationreq: false,
-    });
 
     const [applicationStates, setApplicationStates] = useState({
         isLOADING: true
     })
 
 
+    const INBUILD_PHOTO_CONFIG = [
+        {
+            photo_type: 0,
+            photo_name: "House",
+            photo_charge: 500,
+            per_day: true
+        },
+        {
+            photo_type: 1,
+            photo_name: "Vehical",
+            photo_charge: 500,
+            per_day: true
+        }
+    ]
 
 
 
 
 
-    const [activeCategory, setActiveCategory] = useState(null);
-    const [activeSubCategory, setActiveSubCategory] = useState(null);
-    const [showPreview, setPreview] = useState(0);
-
-
-
-    // ad_state //push_to_states with price
-    const [words, setWords] = useState(0);
-    const [price, setPrice] = useState(0);
-    const [chars, setChars] = useState(0);
 
 
 
 
-    // user_inputs
-    const [adBGcolor, setBGcolor] = useState(generalColorPallerConfig.color__pallet[0] ? generalColorPallerConfig.color__pallet[0].clr : "#FFFFFF"); // push_to_pallet_config with price
-    const [bgColorPrice, setBgColorPrice] = useState(0);
-    const [isTickOn, setTick] = useState(false); //push_to_pallet_config with price
-    const [isBorderOn, setBorder] = useState(false); //push_to_pallet_config with price
-    const [tickCharge, setTickCharge] = useState(0);
-    const [borderCharge, setBorderCharge] = useState(0);
-    const [ADTEXT, handleADTEXT] = useState(""); //push_to_ad_text
 
+
+    const [PRIMERY_CONFIGBASE, SET_PRIMERY_CONFIG] = useState({
+        isDone: false,
+        colors_config: {
+            TOTAL_BG_CLR_CHARGE: 0,
+            colors: [
+                {
+                    isInUse: false,
+                    isActive: false,
+                    clr: "White",
+                    value: "#ffffff",
+                    price: 0,
+                    id: "White",
+                },
+                {
+                    isInUse: false,
+                    isActive: false,
+                    clr: "LightRed",
+                    value: "#F8CBCC",
+                    price: 0,
+                    id: "LightRed",
+                },
+                {
+                    isInUse: false,
+                    isActive: false,
+                    clr: "Blue",
+                    value: "#99CCFD",
+                    price: 0,
+                    id: "Blue",
+                },
+                {
+                    isInUse: false,
+                    isActive: false,
+                    clr: "Sunglow",
+                    value: "#FDCC32",
+                    price: 0,
+                    id: "Sunglow",
+                }
+            ]
+        },
+        secondry_pallet_config: {
+            isTickActive: false,
+            isTickInUse: false,
+            TICK_PRICES: null,
+            isBorderActive: false,
+            BORDER_PRICES: null,
+            isBorderInUse: false
+        },
+
+        stats_prices: {
+            stats: {
+                words: 0,
+                chars: 0,
+                main_sep: null,
+                max_sep: null,
+                min_sep: null,
+            },
+            prices: {
+                card_name: null,
+                edition: null,
+                package: null,
+                basePrice: null,
+                extraSepPrice: null,
+                total_ad_cost: 0,
+                total_tick_charge: 0,
+                total_bg_charge: 0,
+                is_discount_opt_in: false,
+
+
+                discount: {
+                    isDiscount: false,
+                    discount_name: null,
+                    discount_type: null,
+                    discount: null
+                }
+
+            }
+        },
+
+        misc_config: {
+            heading_config: {
+                IS_HEADING_DONE: false,
+                first_heading: null,
+                second_heading: null,
+                third_heading: null,
+            },
+            enhansments: {
+                isTranslationSelected: false,
+                translationCharge: 100,
+                isBuiltinPhoto: false,
+                photo_type: null
+            },
+
+            from_paper: {
+                paper_name: null,
+                paper_text: null,
+            }
+        }
+    })
 
 
 
@@ -105,180 +188,226 @@ const EditorText = () => {
     // handling_ad_preview_on_mobile
     const handlePreview = () => {
         if (showPreview === 0) {
-            setPreview((prev) => prev + 1);
+            setShowPrevice((prev) => prev + 1);
         } else {
-            setPreview((prev) => prev - 1);
+            setShowPrevice((prev) => prev - 1);
         }
     }
 
 
     // handle_set_bg_clr
     const handleBGclr = (e) => {
-        configurations.color_pallet_rules.forEach((colr) => {
+        PRIMERY_CONFIGBASE.colors_config.colors.forEach((colr) => {
             if (colr.clr === e.target.dataset.clr) {
-                setBGcolor(colr.price);
+                setBgClrCharge(colr.price);
             }
         })
-        setBGcolor((prev) => prev = e.target.value);
+        setbgclr((prev) => prev = e.target.value);
     }
 
     // handling_ad_live_preview_on_desktop
     const handleTyping = (e) => {
-        handleADTEXT((prev) => prev = e.target.value);
+        setADTEXT((prev) => prev = e.target.value);
     }
 
 
-    const loadConfiguration = () => {
-        const palletRulesArr = [];
-        const othetpalletrules = [];
-        const editions_prices = [];
-
-        const TEMP_COLORS_CONFIG = [
-            {
-                value: "#ffffff",
-                isActive: false,
-                clr_name: "White",
-                price: 0,
-            },
-            {
-                value: "#F8CBCC",
-                isActive: false,
-                clr_name: "LightRed",
-                price: 0,
-            },
-            {
-                value: "#99CCFD",
-                isActive: false,
-                clr_name: "Blue",
-                price: 0,
-            },
-            {
-                value: "#FDCC32",
-                isActive: false,
-                clr_name: "Sunglow",
-                price: 0,
-            }
-        ]
-
-
-        const CLR_PRICE = [
-            {
-                clr: "White",
-                price: 0
-            },
-            {
-                clr: "LightRed",
-                price: 0
-            },
-            {
-                clr: "Blue",
-                price: 0
-            }, {
-                clr: "Sunglow",
-                price: 0
-            }
-        ]
-
-
-        let totalTickCharge = 0;
-        let totalBorderCharge = 0;
-
-
-        if (ad_state.FIRST_STEP.PAPER_EDITION_SELECTION_STEP.config_info.selected_editions != null) {
-            ad_state.FIRST_STEP.PAPER_EDITION_SELECTION_STEP.config_info.selected_editions.forEach((edition, index) => {
-
-                palletRulesArr.push(edition.pallet_rules);
-                othetpalletrules.push({
-                    tempEDI: index,
-                    tickPrice: edition.pallet_rules.isTick !== false ? edition.pallet_rules.isTick : 0,
-                    borderPrice: edition.pallet_rules.isBorder !== false ? edition.pallet_rules.isBorder : 0,
-                })
-                editions_prices.push({
-                    edition_name: edition.edition_name,
-                    tempEDI: index,
-                    basePrice: edition.price_config.minPrice,
-                    perExtraSep: edition.price_config.perExtraSep
-                })
-            });
-
-
-
-            for (let i = 0; i < palletRulesArr.length; i++) {
-                if (palletRulesArr[i].isTick != false) {
-                    totalTickCharge += palletRulesArr[i].isTick;
-                }
-
-                if (palletRulesArr[i].isBorder != false) {
-                    totalBorderCharge += palletRulesArr[i].isBorder;
-                   
-                }
-
-           
-                
-                Object.entries(palletRulesArr[i].colors).forEach((clr) => {
-                    if (clr[0] === "isWhite" && clr[1] !== false) {
-                        CLR_PRICE[0].price += palletRulesArr[i].colors.isWhite;
-                    } else if (clr[0] === "isLightRed" && clr[1] !== false) {
-                        CLR_PRICE[1].price += palletRulesArr[i].colors.isLightRed;
-                    } else if (clr[0] === "isBlue" && clr[1] !== false) {
-                        CLR_PRICE[2].price += palletRulesArr[i].colors.isBlue;
-                    } else if (clr[0] === "isYellow" && clr[1] !== false) {
-                        CLR_PRICE[3].price += palletRulesArr[i].colors.isYellow;
-                    }
-                })
-            }
-            CLR_PRICE[0].price = 0;
-            console.log(totalTickCharge);
-            console.log(totalBorderCharge);
-
-
-
-            Object.entries(palletRulesArr[0].colors).forEach((clr) => {
-                if (clr[0] === "isWhite" && clr[1] !== false) {
-                    TEMP_COLORS_CONFIG[0].isActive = true;
-                } else if (clr[0] === "isLightRed" && clr[1] !== false) {
-                    TEMP_COLORS_CONFIG[1].isActive = true;
-                } else if (clr[0] === "isBlue" && clr[1] !== false) {
-                    TEMP_COLORS_CONFIG[2].isActive = true;
-                } else if (clr[0] === "isYellow" && clr[1] !== false) {
-                    TEMP_COLORS_CONFIG[3].isActive = true;
-                }
-            })
 
 
 
 
-            setTickCharge(totalTickCharge);
-            setBorder(totalBorderCharge);
-            setConfigurestions((prev) => ({
+    // SETTING_UP_CONFIG_TO_LOCAL_STATE
+    const SETUP_LOCAL_STATE = () => {
+
+        if (ad_state.FIRST_STEP.PAPER_EDITION_SELECTION_STEP.config_info.selected_package === null) {
+            SET_PRIMERY_CONFIG((prev) => ({
                 ...prev,
-                color_pallet_rules: CLR_PRICE,
-                other_pallet_rules: {
-                    rules: othetpalletrules,
-                    isBorder: othetpalletrules[0].borderPrice === 0 ? false : true,
-                    isTick: othetpalletrules[0].tickPrice === 0 ? false : true,
+                stats_prices: {
+                    stats: {
+                        words: 0,
+                        chars: 0,
+                        main_sep: ad_state.FIRST_STEP.PAPER_EDITION_SELECTION_STEP.config_info.selected_editions[0].sep,
+                        max_sep: ad_state.FIRST_STEP.PAPER_EDITION_SELECTION_STEP.config_info.selected_editions[0].maxSep,
+                        min_sep: ad_state.FIRST_STEP.PAPER_EDITION_SELECTION_STEP.config_info.selected_editions[0].minSep,
+                    },
+                    prices: {
+                        card_name: ad_state.FIRST_STEP.PAPER_EDITION_SELECTION_STEP.config_info.selected_editions[0].edition_name,
+                        edition: ad_state.FIRST_STEP.PAPER_EDITION_SELECTION_STEP.config_info.selected_editions[0],
+                        package: null,
+                        basePrice: ad_state.FIRST_STEP.PAPER_EDITION_SELECTION_STEP.config_info.selected_editions[0].price_config.minPrice,
+                        extraSepPrice: ad_state.FIRST_STEP.PAPER_EDITION_SELECTION_STEP.config_info.selected_editions[0].price_config.perExtraSep,
+                        total_ad_cost: 0,
+                        total_tick_charge: 0,
+                        total_bg_charge: 0,
+                        is_discount_opt_in: false,
+
+                    },
+                    discount: {
+                        isDiscount: ad_state.FIRST_STEP.PAPER_EDITION_SELECTION_STEP.config_info.selected_editions[0].misc_config.discount !== null ? ad_state.FIRST_STEP.PAPER_EDITION_SELECTION_STEP.config_info.selected_editions[0].misc_config.discount : false,
+                        discount_name: ad_state.FIRST_STEP.PAPER_EDITION_SELECTION_STEP.config_info.selected_editions[0].misc_config.discount !== null ? ad_state.FIRST_STEP.PAPER_EDITION_SELECTION_STEP.config_info.selected_editions[0].misc_config.discount.disName : null,
+                        discount_type: ad_state.FIRST_STEP.PAPER_EDITION_SELECTION_STEP.config_info.selected_editions[0].misc_config.discount !== null ? ad_state.FIRST_STEP.PAPER_EDITION_SELECTION_STEP.config_info.selected_editions[0].misc_config.discount.idsType : null,
+                        discount: ad_state.FIRST_STEP.PAPER_EDITION_SELECTION_STEP.config_info.selected_editions[0].misc_config.discount !== null ? ad_state.FIRST_STEP.PAPER_EDITION_SELECTION_STEP.config_info.selected_editions[0].misc_config.discount.dis : null,
+                    }
                 },
-                price_config: {
-                    editions__prices: editions_prices,
-                    max_sep: ad_state.FIRST_STEP.PAPER_EDITION_SELECTION_STEP.config_info.selected_editions[0].maxSep,
-                    min_sep: ad_state.FIRST_STEP.PAPER_EDITION_SELECTION_STEP.config_info.selected_editions[0].minSep,
-                    sep: ad_state.FIRST_STEP.PAPER_EDITION_SELECTION_STEP.config_info.selected_editions[0].sep
+                secondry_pallet_config: {
+                    isTickActive: ad_state.FIRST_STEP.PAPER_EDITION_SELECTION_STEP.config_info.selected_editions[0].pallet_rules.isTick !== false ? true : false,
+                    TICK_PRICES: ad_state.FIRST_STEP.PAPER_EDITION_SELECTION_STEP.config_info.selected_editions[0].pallet_rules.isTick !== false ? ad_state.FIRST_STEP.PAPER_EDITION_SELECTION_STEP.config_info.selected_editions[0].pallet_rules.isTick : 0,
+                    isBorderActive: ad_state.FIRST_STEP.PAPER_EDITION_SELECTION_STEP.config_info.selected_editions[0].pallet_rules.isBorder !== false ? true : false,
+                    BORDER_PRICES: ad_state.FIRST_STEP.PAPER_EDITION_SELECTION_STEP.config_info.selected_editions[0].pallet_rules.isBorder !== false ? ad_state.FIRST_STEP.PAPER_EDITION_SELECTION_STEP.config_info.selected_editions[0].pallet_rules.isBorder : 0,
                 },
-                from_paper: {
-                    paper_name: ad_state.FIRST_STEP.PAPER_EDITION_SELECTION_STEP.config_info.newspaper_name,
-                    paper_txt: ad_state.FIRST_STEP.PAPER_EDITION_SELECTION_STEP.config_info.from_the_paper
-                }
+
+                colors_config: {
+                    TOTAL_BG_CLR_CHARGE: 0,
+                    colors: [
+                        {
+                            isInUse: false,
+                            isActive: ad_state.FIRST_STEP.PAPER_EDITION_SELECTION_STEP.config_info.selected_editions[0].pallet_rules.colors.isWhite !== false ? true : false,
+                            clr: "White",
+                            value: "#ffffff",
+                            price: 0,
+                            id: "White",
+                        },
+                        {
+                            isInUse: false,
+                            isActive: ad_state.FIRST_STEP.PAPER_EDITION_SELECTION_STEP.config_info.selected_editions[0].pallet_rules.colors.isLightRed !== false ? true : false,
+                            clr: "LightRed",
+                            value: "#F8CBCC",
+                            price: ad_state.FIRST_STEP.PAPER_EDITION_SELECTION_STEP.config_info.selected_editions[0].pallet_rules.colors.isLightRed !== false ? ad_state.FIRST_STEP.PAPER_EDITION_SELECTION_STEP.config_info.selected_editions[0].pallet_rules.colors.isLightRed : 0,
+                            id: "LightRed",
+                        },
+                        {
+                            isInUse: false,
+                            isActive: ad_state.FIRST_STEP.PAPER_EDITION_SELECTION_STEP.config_info.selected_editions[0].pallet_rules.colors.isBlue !== false ? true : false,
+                            clr: "Blue",
+                            value: "#99CCFD",
+                            price: ad_state.FIRST_STEP.PAPER_EDITION_SELECTION_STEP.config_info.selected_editions[0].pallet_rules.colors.isBlue !== false ? ad_state.FIRST_STEP.PAPER_EDITION_SELECTION_STEP.config_info.selected_editions[0].pallet_rules.colors.isBlue : 0,
+                            id: "Blue",
+                        },
+                        {
+                            isInUse: false,
+                            isActive: ad_state.FIRST_STEP.PAPER_EDITION_SELECTION_STEP.config_info.selected_editions[0].pallet_rules.colors.isYellow !== false ? true : false,
+                            clr: "Sunglow",
+                            value: "#FDCC32",
+                            price: ad_state.FIRST_STEP.PAPER_EDITION_SELECTION_STEP.config_info.selected_editions[0].pallet_rules.colors.isYellow !== false ? ad_state.FIRST_STEP.PAPER_EDITION_SELECTION_STEP.config_info.selected_editions[0].pallet_rules.colors.isYellow : 0,
+                            id: "Sunglow",
+                        }
+                    ]
+                },
+                misc_config: {
+                    from_paper: {
+                        paper_name: ad_state.FIRST_STEP.PAPER_EDITION_SELECTION_STEP.config_info.newspaper_name,
+                        paper_text: ad_state.FIRST_STEP.PAPER_EDITION_SELECTION_STEP.config_info.from_the_paper
+                    },
+                    heading_config: {
+                        IS_HEADING_DONE: false,
+                        first_heading: null,
+                        second_heading: null,
+                        third_heading: null,
+                    },
+                    enhansments: {
+                        isTranslationSelected: false,
+                        translationCharge: 100,
+                        isBuiltinPhoto:  ad_state.FIRST_STEP.PAPER_EDITION_SELECTION_STEP.config_info.selected_editions[0].misc_config.isInBuiltPhoto && true,
+                        photo_type: ad_state.FIRST_STEP.CATEGORY_SELECTION_STEP.config_info.category_id === "14009" ? 1 : ad_state.FIRST_STEP.CATEGORY_SELECTION_STEP.config_info.category_id === "14005" ? 0 : ad_state.FIRST_STEP.CATEGORY_SELECTION_STEP.config_info.category_id === "14004" ? 0 : null,
+                    },
+                },
+                isDone: true
             }))
 
+         
+        } else {
+            SET_PRIMERY_CONFIG((prev) => ({
+                ...prev,
+                stats_prices: {
+                    stats: {
+                        words: 0,
+                        chars: 0,
+                        main_sep: ad_state.FIRST_STEP.PAPER_EDITION_SELECTION_STEP?.config_info?.selected_package?.complete_package?.price_config.sep,
+                        max_sep: ad_state.FIRST_STEP.PAPER_EDITION_SELECTION_STEP?.config_info?.selected_package?.complete_package?.price_config.maxSep,
+                        min_sep: ad_state.FIRST_STEP.PAPER_EDITION_SELECTION_STEP.config_info?.selected_package?.complete_package.price_config.minSep,
+                    },
+                    prices: {
+                        card_name: ad_state.FIRST_STEP.PAPER_EDITION_SELECTION_STEP.config_info?.selected_package?.complete_package.packageName,
+                        edition: null,
+                        package: ad_state.FIRST_STEP.PAPER_EDITION_SELECTION_STEP.config_info?.selected_package?.complete_package,
+                        basePrice: ad_state.FIRST_STEP.PAPER_EDITION_SELECTION_STEP.config_info?.selected_package?.complete_package.price_config.minPrice,
+                        extraSepPrice: ad_state.FIRST_STEP.PAPER_EDITION_SELECTION_STEP.config_info?.selected_package?.complete_package?.price_config.perExtraSep,
+                    },
 
+                    discount: {
+                        isDiscount: ad_state.FIRST_STEP.PAPER_EDITION_SELECTION_STEP.config_info?.selected_package?.complete_package.misc_config.discount !== null ? ad_state.FIRST_STEP.PAPER_EDITION_SELECTION_STEP.config_info?.selected_package?.complete_package.misc_config.discount : false,
+                        discount_name: ad_state.FIRST_STEP.PAPER_EDITION_SELECTION_STEP.config_info?.selected_package?.complete_package.misc_config.discount !== null ? ad_state.FIRST_STEP.PAPER_EDITION_SELECTION_STEP.config_info?.selected_package?.complete_package.misc_config.discount.isSpecialDiscount : null,
+                        discount_type: ad_state.FIRST_STEP.PAPER_EDITION_SELECTION_STEP.config_info?.selected_package?.complete_package.misc_config.discount !== null ? ad_state.FIRST_STEP.PAPER_EDITION_SELECTION_STEP.config_info?.selected_package?.complete_package.misc_config.discount.dis_type : null,
+                        discount: ad_state.FIRST_STEP.PAPER_EDITION_SELECTION_STEP.config_info?.selected_package?.complete_package.misc_config.discount !== null ? ad_state.FIRST_STEP.PAPER_EDITION_SELECTION_STEP.config_info?.selected_package?.complete_package.misc_config.discount.discount_price : null,
+                    }
+                },
+                secondry_pallet_config: {
+                    isTickActive: ad_state.FIRST_STEP.PAPER_EDITION_SELECTION_STEP.config_info?.selected_package?.complete_package.paller_config.isTick !== false ? true : false,
+                    TICK_PRICES: ad_state.FIRST_STEP.PAPER_EDITION_SELECTION_STEP.config_info?.selected_package?.complete_package.paller_config.isTick !== false ? ad_state.FIRST_STEP.PAPER_EDITION_SELECTION_STEP.config_info?.selected_package?.complete_package.paller_config.isTick : 0,
+                    isBorderActive: ad_state.FIRST_STEP.PAPER_EDITION_SELECTION_STEP.config_info?.selected_package?.complete_package.paller_config.isBorder !== false ? true : false,
+                    BORDER_PRICES: ad_state.FIRST_STEP.PAPER_EDITION_SELECTION_STEP.config_info?.selected_package?.complete_package.paller_config.isBorder !== false ? ad_state.FIRST_STEP.PAPER_EDITION_SELECTION_STEP.config_info?.selected_package?.complete_package.paller_config.isBorder : 0,
+                },
 
-            SETCOLORCONFIG((prev) => TEMP_COLORS_CONFIG);
+                colors_config: {
+                    TOTAL_BG_CLR_CHARGE: 0,
+                    colors: [
+                        {
+                            isInUse: false,
+                            isActive: ad_state.FIRST_STEP.PAPER_EDITION_SELECTION_STEP.config_info?.selected_package?.complete_package.paller_config.colors.isWhite !== false ? true : false,
+                            clr: "White",
+                            value: "#ffffff",
+                            price: 0,
+                            id: "White",
+                        },
+                        {
+                            isInUse: false,
+                            isActive: ad_state.FIRST_STEP.PAPER_EDITION_SELECTION_STEP.config_info?.selected_package?.complete_package.paller_config.colors.isLightRed !== false ? true : false,
+                            clr: "LightRed",
+                            value: "#F8CBCC",
+                            price: ad_state.FIRST_STEP.PAPER_EDITION_SELECTION_STEP.config_info?.selected_package?.complete_package.paller_config.colors.isLightRed !== false ? ad_state.FIRST_STEP.PAPER_EDITION_SELECTION_STEP.config_info?.selected_package?.complete_package.paller_config.colors.isLightRed : 0,
+                            id: "LightRed",
+                        },
+                        {
+                            isInUse: false,
+                            isActive: ad_state.FIRST_STEP.PAPER_EDITION_SELECTION_STEP.config_info?.selected_package?.complete_package.paller_config.colors.isBlue !== false ? true : false,
+                            clr: "Blue",
+                            value: "#99CCFD",
+                            price: ad_state.FIRST_STEP.PAPER_EDITION_SELECTION_STEP.config_info?.selected_package?.complete_package.paller_config.colors.isBlue !== false ? ad_state.FIRST_STEP.PAPER_EDITION_SELECTION_STEP.config_info?.selected_package?.complete_package.paller_config.colors.isBlue : 0,
+                            id: "Blue",
+                        },
+                        {
+                            isInUse: false,
+                            isActive: ad_state.FIRST_STEP.PAPER_EDITION_SELECTION_STEP.config_info?.selected_package?.complete_package.paller_config.colors.isYellow !== false ? true : false,
+                            clr: "Sunglow",
+                            value: "#FDCC32",
+                            price: ad_state.FIRST_STEP.PAPER_EDITION_SELECTION_STEP.config_info?.selected_package?.complete_package.paller_config.colors.isYellow !== false ? ad_state.FIRST_STEP.PAPER_EDITION_SELECTION_STEP.config_info?.selected_package?.complete_package.paller_config.colors.isYellow : 0,
+                            id: "Sunglow",
+                        }
+                    ]
+                },
+                misc_config: {
+                    from_paper: {
+                        paper_name: ad_state.FIRST_STEP.PAPER_EDITION_SELECTION_STEP.config_info.newspaper_name,
+                        paper_text: ad_state.FIRST_STEP.PAPER_EDITION_SELECTION_STEP.config_info.from_the_paper
+                    },
+                    heading_config: {
+                        IS_HEADING_DONE: false,
+                        first_heading: null,
+                        second_heading: null,
+                        third_heading: null,
+                    },
+                    enhansments: {
+                        isTranslationSelected: false,
+                        translationCharge: 100,
+                        isBuiltinPhoto: ad_state.FIRST_STEP.PAPER_EDITION_SELECTION_STEP.config_info?.selected_package?.complete_package.misc_config.isInBuiltPhoto && true,
+                        photo_type: ad_state.FIRST_STEP.CATEGORY_SELECTION_STEP.config_info.category_id === "14009" ? 1 : ad_state.FIRST_STEP.CATEGORY_SELECTION_STEP.config_info.category_id === "14005" ? 0 : ad_state.FIRST_STEP.CATEGORY_SELECTION_STEP.config_info.category_id === "14004" ? 0 : null,
+                    },
+                },
+                isDone: true
+            }))
+
+      
+
         }
-
-
-
-
-
 
 
 
@@ -288,13 +417,8 @@ const EditorText = () => {
             ...prev,
             isLOADING: false
         }))
+
     }
-
-
-
-    useEffect(() => {
-        loadConfiguration()
-    }, [])
 
 
 
@@ -303,7 +427,10 @@ const EditorText = () => {
         let wordscount = 0;
         let charscount = 0;
         let priceTotal = 0;
-        let extraPrice = 0;
+        let extra_price = 0;
+
+
+
         if (ADTEXT.length > 0) {
             ADTEXT.split(" ").forEach(word => {
                 if (word != "\n") {
@@ -317,81 +444,91 @@ const EditorText = () => {
                 }
             })
 
-            configurations.price_config.editions__prices.forEach((edition) => {
-                priceTotal += edition.basePrice;
-            })
 
-            if (configurations.price_config.sep === "Word" && wordscount > configurations.price_config.min_sep) {
-                let extraWords = wordscount - configurations.price_config.min_sep;
-                configurations.price_config.editions__prices.forEach((edition) => {
-                    priceTotal += (edition.perExtraSep * extraWords);
-                })
+            let extra_words = 0;
+            if (wordscount > PRIMERY_CONFIGBASE.stats_prices.stats.min_sep) {
+                extra_words = wordscount - PRIMERY_CONFIGBASE.stats_prices.stats.min_sep;
 
+                for (let i = 1; i <= extra_words; i++) {
+                    extra_price += PRIMERY_CONFIGBASE.stats_prices.prices.extraSepPrice;
+                }
             }
+
+           
+            console.log(PRIMERY_CONFIGBASE.stats_prices.prices.extraSepPrice);
+            priceTotal = PRIMERY_CONFIGBASE.stats_prices.prices.basePrice + extra_price;
+
         }
-        setWords((count) => count = wordscount);
-        setChars((count) => count = charscount);
-        setPrice((count) => count = priceTotal);
-
-
+        setWords(wordscount);
+        setChars(charscount);
+        setPrice(priceTotal);
     }
+
+
 
 
 
     const check_for_error = () => {
         handleUpdatePrice();
-        return false;
+        if (words < PRIMERY_CONFIGBASE.stats_prices.stats.min_sep || words > PRIMERY_CONFIGBASE.stats_prices.stats.max_sep) {
+            alert(`Min : ${PRIMERY_CONFIGBASE.stats_prices.stats.min_sep} words | Max : ${PRIMERY_CONFIGBASE.stats_prices.stats.max_sep} Words`);
+            return true;
+        } else if (HEADING_SELECTION.isHeadingSet === false) {
+            alert("Please Select Heading");
+            return true;
+        } else {
+            return false;
+        }
     }
 
 
     // dispathc_informaiton_and_step_forward
     const STEP_FOWRAED_HANDLER = () => {
+   
 
-        console.log(ADTEXT);
-        console.log(adBGcolor);
-        console.log(isTickOn);
-        console.log(isBorderOn);
-        console.log(enhansments.istranslationreq);
-        console.log(borderCharge);
-        console.log(tickCharge);
-        console.log(price);
-        console.log(words);
-        console.log(chars);
+        if (check_for_error() === false) {
 
-        // if (check_for_error() === false) {
-        //     dispatch(set_compose_step_config({
-        //         ad_text: ADTEXT,
-        //         isBgClr: adBGcolor,
-        //         bg_color_charge: adBGcolor != "#ffffff" ? configurations.pallet_rules.color.charge : 0,
-        //         isBorder: isBorderOn,
-        //         border_charge: isBorderOn === true ? configurations.pallet_rules.border.charge : 0,
-        //         isMarker: isMarkerOn,
-        //         marker_charge: isMarkerOn === true ? configurations.pallet_rules.marker.charge : 0,
-        //     }))
+            dispatch(set_compose_step_config({
+                ad_text: ADTEXT,
+                isBgClr: isbgclr,
+                bg_color_charge: bgClrCharge,
+                isBorder: iseBorder,
+                border_charge: iseBorder === true ? PRIMERY_CONFIGBASE.secondry_pallet_config.BORDER_PRICES : 0,
+                isMarker: isTick,
+                marker_charge: isTick === true ? PRIMERY_CONFIGBASE.secondry_pallet_config.TICK_PRICES : 0,
 
+            }))
 
-        //     dispatch(set_ad_stats({
-        //         base_price: price,
-        //         price_before_payment_page: price,
-        //         words_count: words,
-        //         chars_count: chars
-        //     }))
+            dispatch(set_discount(PRIMERY_CONFIGBASE.stats_prices.discount));
 
-        //     dispatch(set_special_enhancement({
-        //         isEmail: enhansments.isemailreq === true ? enhansments.email_address : false,
-        //         email_id_charge: enhansments.isemailreq === true ? configurations.special_enhancement.methods[0].charge : 0,
-        //         isPhone: enhansments.ismobilereq === true ? enhansments.mobile_number : false,
-        //         phone_number_charge: enhansments.ismobilereq === true ? configurations.special_enhancement.methods[2].charge : 0,
-        //         isTranslation: enhansments.istranslationreq === true ? true : false,
-        //         translation_charge: enhansments.istranslationreq === true ? configurations.special_enhancement.methods[1].charge : 0
-        //     }))
+            dispatch(set_ad_stats({
+                base_price: adPrice,
+                price_before_payment_page: adPrice,
+                words_count: words,
+                chars_count: chars
+            }))
 
-        //     dispatch(mark_compose_step_status(true));
-        //     NAVIGATE("/ad/publish/payment");
-        // }
+            dispatch(set_special_enhancement({
+                isTranslation: isTranslationSelected === true ? true : false,
+                translation_charge: isTranslationSelected === true ? PRIMERY_CONFIGBASE.misc_config.enhansments.translationCharge : 0,
+                isDiscount: isDisOpIN,
+                isInBuildPhoto: isPhotoOptIn
+            }))
+
+            dispatch(mark_compose_step_status(true));
+            NAVIGATE("/ad/publish/payment");
+        }
 
     }
 
+
+    // local_local_state_on_page_load
+    useEffect(() => {
+        SETUP_LOCAL_STATE();
+        if (PRIMERY_CONFIGBASE.isDone === true) {
+            console.log(PRIMERY_CONFIGBASE);
+        }
+    }, [])
 
 
     return (
@@ -423,10 +560,10 @@ const EditorText = () => {
                                         <h2 className="preview__heading">Preview in Newspaper</h2>
                                         <div
                                             style={{
-                                                backgroundColor: `${adBGcolor}`
+                                                backgroundColor: `${isbgclr}`
                                             }}
-                                            className={`preview__box__inner__outer ${isBorderOn && "screen__border"}`} >
-                                            <div className={`screen__heilight  ${isTickOn && "active__heilight"}`} ></div>
+                                            className={`preview__box__inner__outer ${iseBorder && "screen__border"}`} >
+                                            <div className={`screen__heilight  ${isTick && "active__heilight"}`} ></div>
                                             <p className="preview__Text">{ADTEXT}</p>
                                         </div>
                                     </div>
@@ -435,10 +572,10 @@ const EditorText = () => {
                                     <div className="bg__colors__outer">
 
                                         <div className="colors__palet">
-                                            {COLORS_CONFIG.map(({ isActive, clr_name, value }) => {
+                                            {PRIMERY_CONFIGBASE?.colors_config?.colors.map(({ clr, id, isActive, value }) => {
                                                 return (
                                                     <>
-                                                        <div style={{
+                                                        <div key={id} style={{
                                                             backgroundColor: `${value}`,
                                                             display: "flex",
                                                             alignItems: "center"
@@ -447,11 +584,11 @@ const EditorText = () => {
                                                                 disabled={isActive === true ? false : true}
                                                                 className='radio__Clr'
                                                                 type="radio"
-                                                                data-clr={clr_name}
+                                                                data-clr={clr}
                                                                 value={value}
-                                                                name={clr_name}
+                                                                name={clr}
                                                                 id={value}
-                                                                checked={adBGcolor === value}
+                                                                checked={isbgclr === value}
                                                                 onChange={handleBGclr}
                                                             />
                                                             <p style={{
@@ -461,7 +598,7 @@ const EditorText = () => {
                                                                 fontSize: "clamp(12px,4vw,12px)",
                                                                 width: "100%",
                                                                 textAlign: "center",
-                                                            }} className="bg__cls">{clr_name}</p>
+                                                            }} className="bg__cls">{clr}</p>
                                                         </div>
                                                     </>
                                                 )
@@ -478,27 +615,25 @@ const EditorText = () => {
                                         {/* Marker & Border */}
                                         <div
                                             style={{
-                                                boxShadow: `${isBorderOn === true ? "rgba(214, 35, 3, 0.3) 0px 0px 0px 1px" : "rgba(3, 102, 214, 0.3) 0px 0px 0px 2px"}`
+                                                boxShadow: `${iseBorder === true ? "rgba(214, 35, 3, 0.3) 0px 0px 0px 1px" : "rgba(3, 102, 214, 0.3) 0px 0px 0px 2px"}`
 
                                             }}
                                             className="border__box checkboxouter flex fd-col flex-aic">
                                             <input
-                                                disabled={configurations?.other_pallet_rules.isBorder === false ? true : false}
+                                                disabled={PRIMERY_CONFIGBASE.secondry_pallet_config.isBorderActive === false ? true : false}
                                                 className='border__cb checkbox'
                                                 type="checkbox"
                                                 name="ad__border"
                                                 id="ad__border"
-                                                checked={isBorderOn}
-
-
+                                                checked={iseBorder}
                                                 onChange={(e) => {
-                                                    setBorder(!isBorderOn);
+                                                    setBorder(!iseBorder)
                                                 }}
                                             />
 
                                             Border <span style={{
                                                 fontSize: "8px"
-                                            }} >(25% Extra Charge)</span>
+                                            }} >{`( ${PRIMERY_CONFIGBASE.secondry_pallet_config.BORDER_PRICES} Extra Charge)`}</span>
 
                                         </div>
 
@@ -506,24 +641,24 @@ const EditorText = () => {
                                         {/* Marker & Border */}
                                         <div
                                             style={{
-                                                boxShadow: `${isTickOn === true ? "rgba(214, 35, 3, 0.3) 0px 0px 0px 1px" : "rgba(3, 102, 214, 0.3) 0px 0px 0px 2px"}`,
+                                                boxShadow: `${isTick === true ? "rgba(214, 35, 3, 0.3) 0px 0px 0px 1px" : "rgba(3, 102, 214, 0.3) 0px 0px 0px 2px"}`,
                                             }}
                                             className="marker__box checkboxouter flex fd-col flex-aic">
                                             <input
-                                                disabled={configurations?.other_pallet_rules.isTick === false ? true : false}
+                                                disabled={PRIMERY_CONFIGBASE.secondry_pallet_config.isTickActive === false ? true : false}
                                                 className='marker__cb checkbox'
                                                 type="checkbox"
                                                 name="ad__marker"
                                                 id="ad__marker"
-                                                checked={isTickOn}
+                                                checked={isTick}
                                                 onChange={(e) => {
-                                                    setTick(!isTickOn);
+                                                    setTick(!isTick);
                                                 }}
                                             />
 
                                             Marker <span style={{
                                                 fontSize: "8px"
-                                            }} >(25% Extra Charge)</span>
+                                            }} >{`( ${PRIMERY_CONFIGBASE.secondry_pallet_config.TICK_PRICES} Extra Charge)`}</span>
 
                                         </div>
 
@@ -619,7 +754,7 @@ const EditorText = () => {
                                         <p style={{
 
                                             color: "rgb(9 112 0)",
-                                        }} className="int lines">₹{"   "}{price}</p>
+                                        }} className="int lines">₹{"   "}{adPrice}</p>
                                         <p className="sep_cover">
                                             <div className="sep"></div>
                                             <p className="stat__outer__mobile__stat__name">
@@ -632,15 +767,12 @@ const EditorText = () => {
 
 
                                 <div className="special__enhancement__box">
-                                    <p className="heading">Special Enhancement</p>
+                                    <p className="heading">Special Enhancement & Discounts</p>
                                     <div className={`translation__enhancement enhancement`}>
                                         <input
-                                            checked={enhansments.istranslationreq}
+                                            checked={isTranslationSelected}
                                             onChange={(e) => {
-                                                setEnhansments((prev) => ({
-                                                    ...prev,
-                                                    istranslationreq: (!enhansments.istranslationreq)
-                                                }))
+                                                setTranslation(!isTranslationSelected);
                                             }}
                                             className='enhensmnt__checkbox'
                                             type="checkbox"
@@ -651,6 +783,61 @@ const EditorText = () => {
                                             <span>Let your Ad copy Translate in sevral Different languages for batter rechablity.</span>
                                         </p>
                                     </div>
+                                    { PRIMERY_CONFIGBASE?.stats_prices?.discount.discount &&
+                                        <>
+                                            <div className={`translation__enhancement enhancement`}>
+                                                <input
+                                                    checked={isDisOpIN}
+                                                    onChange={(e) => {
+                                                        setDisOptIn(!isDisOpIN);
+                                                    }}
+                                                    className='enhensmnt__checkbox'
+                                                    type="checkbox"
+                                                    name={PRIMERY_CONFIGBASE.stats_prices.discount.discount_name}
+                                                    id={`translation__checkbox`} />
+                                                <p>
+                                                    <div style={{
+                                                        display: "flex",
+                                                        alignItems: "center",
+                                                        gap: "9px"
+                                                    }}>
+                                                        {PRIMERY_CONFIGBASE.stats_prices.discount.discount_name}
+                                                        <img style={{
+                                                            width: "100%",
+                                                            height: "auto",
+                                                            maxWidth: "31px",
+                                                        }} src={discountGif} alt="discount" />
+                                                    </div>
+                                                    <span>You can OPTin for {PRIMERY_CONFIGBASE.stats_prices.discount.discount_name} Discount. But if your AD is not elegible to {PRIMERY_CONFIGBASE.stats_prices.discount.discount_name} Discount your AD might not Publish.</span>
+                                                </p>
+                                            </div>
+
+                                        </>}
+                                    {PRIMERY_CONFIGBASE?.misc_config.enhansments.isBuiltinPhoto &&
+                                        <>
+                                            <div className={`Inbutild__photo enhancement`}>
+                                                <input
+                                                    checked={isPhotoOptIn}
+                                                    onChange={(e) => {
+                                                        setPhotoOptin(!isPhotoOptIn);
+                                                    }}
+                                                    className='enhensmnt__checkbox'
+                                                    type="checkbox"
+                                                    name={INBUILD_PHOTO_CONFIG[PRIMERY_CONFIGBASE?.misc_config.enhansments.photo_type].photo_name}
+                                                    id={`Inbutild__photo`} />
+                                                <p>
+                                                    <div style={{
+                                                        display: "flex",
+                                                        alignItems: "center",
+                                                        gap: "9px"
+                                                    }}>
+                                                        Primery Icon for {ad_state.FIRST_STEP.CATEGORY_SELECTION_STEP.config_info.category_name} AD
+                                                    </div>
+                                                    <span>OPTin for Primery Icon to increase chances for your ad to be noticed by many customers. it Would cost {INBUILD_PHOTO_CONFIG[PRIMERY_CONFIGBASE?.misc_config.enhansments.photo_type].photo_charge} Daily</span>
+                                                </p>
+                                            </div>
+
+                                        </>}
                                 </div>
                             </div>
 
@@ -672,9 +859,7 @@ const EditorText = () => {
                                                 id="select__category__main"
 
                                                 label="Sub-Category"
-                                                onChange={((e) => {
-                                                    setActiveCategory((prev) => e.target.value);
-                                                })}
+
                                             >
 
                                                 <MenuItem value={null}>
@@ -693,9 +878,7 @@ const EditorText = () => {
                                                 labelId="select__classification"
                                                 id="select__classification"
 
-                                                onChange={((e) => {
-                                                    setActiveSubCategory((prev) => prev = e.target.value);
-                                                })}
+
 
                                                 label="Classification"
                                             >
@@ -737,21 +920,16 @@ const EditorText = () => {
                                 <div className="price__list">
                                     <h2>Basic Rates </h2>
                                     <div className="price__slider">
-                                        {configurations.price_config.editions__prices.map((edition) => {
-                                            return (
-                                                <>
-                                                    <div className="rate__card">
-                                                        <h3 className="newspaper__name">
-                                                            {edition.edition_name}
-                                                        </h3>
-                                                        <div className="prices">
-                                                            <p className="price__primery">Rs. {edition.basePrice} / {configurations.price_config.min_sep} {configurations.price_config.sep}</p>
-                                                            <p className="price__extra">Rs. {edition.perExtraSep} /extra {configurations.price_config.sep}</p>
-                                                        </div>
-                                                    </div>
-                                                </>
-                                            )
-                                        })}
+                                        <div className="rate__card">
+                                            <h3 className="newspaper__name">
+                                                {PRIMERY_CONFIGBASE.stats_prices.prices.card_name}
+                                            </h3>
+                                            <div className="prices">
+                                                <p className="price__primery">Rs. {PRIMERY_CONFIGBASE.stats_prices.prices.basePrice} / {PRIMERY_CONFIGBASE.stats_prices.stats.min_sep} {PRIMERY_CONFIGBASE.stats_prices.stats.main_sep}</p>
+                                                <p className="price__extra">Rs. {PRIMERY_CONFIGBASE.stats_prices.prices.extraSepPrice} /extra {PRIMERY_CONFIGBASE.stats_prices.stats.main_sep}</p>
+                                            </div>
+                                        </div>
+
 
                                     </div>
                                 </div>
@@ -759,8 +937,8 @@ const EditorText = () => {
                                 <div className="from__newspaper">
                                     <h2>From the Newspaper </h2>
                                     <div className="innertext">
-                                        <p className="newspapername">{configurations.from_paper && configurations.from_paper.paper_name} : </p>
-                                        <p className="innertext__inline">{configurations.from_paper && configurations.from_paper.paper_txt}</p>
+                                        <p className="newspapername">{PRIMERY_CONFIGBASE.misc_config.from_paper.paper_name} : </p>
+                                        <p className="innertext__inline">{PRIMERY_CONFIGBASE.misc_config.from_paper.paper_text}</p>
                                     </div>
                                 </div>
                             </div>
@@ -776,8 +954,6 @@ const EditorText = () => {
                         </div>
                     </div>
             }
-
-
         </>
     )
 }

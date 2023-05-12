@@ -41,7 +41,7 @@ const initialState = {
             config_info: {
                 newspaper_name: null,
                 newspaper_id: null,
-                from_the_paper : null,
+                from_the_paper: null,
                 cat_config_id: null,
                 selected_editions: null,
                 selected_package: null,
@@ -72,18 +72,17 @@ const initialState = {
                 base_price: 0,
             },
             special_enhancement: {
-                isEmail: false,
-                email_id_charge: 0,
-                isPhone: false,
-                phone_number_charge: 0,
+                isDiscount: false,
                 isTranslation: false,
-                translation_charge: 0
+                translation_charge: 0,
+                isInBuildPhoto: false
             },
             heading_config: {
                 major_heading: null,
                 minor_heading: null,
                 sub_heading: null,
-            }
+            },
+            discount: null,
         }
 
 
@@ -95,6 +94,16 @@ const initialState = {
         next_step: null,
 
         config_info: {
+            date_config: {
+                currentYear : null,
+                currentMonth : null,
+                fixed_current_month : null,
+                fixed_current_year : null,
+                currentDate_month : null,
+                lock_next_date : null,
+                today : null,
+                lastDayOnMonth : null,
+            },
             selected_dates: [],
             customer_contact_info: {
                 isDone: false,
@@ -112,7 +121,8 @@ const initialState = {
                 special_enhancement_charge: 0,
                 colors_borders_charge: 0,
                 tax_amount: 0,
-                total_price: 0
+                total_price: 0,
+
             },
             payment_config: {
                 isPaymentDone: false,
@@ -179,13 +189,15 @@ export const ad_booking_config = createSlice({
         // 2.1
         set_compose_step_config: (state, action) => {
             state.SECOND_STEP.config_info.ad_text = action.payload.ad_text;
-
             state.SECOND_STEP.config_info.pallet_config.isBgClr = action.payload.isBgClr;
             state.SECOND_STEP.config_info.pallet_config.bg_color_charge = action.payload.bg_color_charge;
             state.SECOND_STEP.config_info.pallet_config.isBorder = action.payload.isBorder;
             state.SECOND_STEP.config_info.pallet_config.border_charge = action.payload.border_charge;
             state.SECOND_STEP.config_info.pallet_config.isMarker = action.payload.isMarker;
             state.SECOND_STEP.config_info.pallet_config.marker_charge = action.payload.marker_charge;
+        },
+        set_discount: (state, action) => {
+            state.SECOND_STEP.config_info.discount = action.payload
         },
 
         // 2.2
@@ -194,13 +206,12 @@ export const ad_booking_config = createSlice({
             state.SECOND_STEP.config_info.stats.price_before_payment_page = action.payload.price_before_payment_page;
             state.SECOND_STEP.config_info.stats.words_count = action.payload.words_count;
             state.SECOND_STEP.config_info.stats.chars_count = action.payload.chars_count;
+
         },
         // 2.3
         set_special_enhancement: (state, action) => {
-            state.SECOND_STEP.config_info.special_enhancement.isEmail = action.payload?.isEmail;
-            state.SECOND_STEP.config_info.special_enhancement.email_id_charge = action.payload.email_id_charge;
-            state.SECOND_STEP.config_info.special_enhancement.isPhone = action.payload?.isPhone;
-            state.SECOND_STEP.config_info.special_enhancement.phone_number_charge = action.payload.phone_number_charge;
+            state.SECOND_STEP.config_info.special_enhancement.isInBuildPhoto = action.payload?.isInBuildPhoto;
+            state.SECOND_STEP.config_info.special_enhancement.isDiscount = action.payload?.isDiscount;
             state.SECOND_STEP.config_info.special_enhancement.isTranslation = action.payload?.isTranslation;
             state.SECOND_STEP.config_info.special_enhancement.translation_charge = action.payload.translation_charge;
         },
@@ -217,7 +228,17 @@ export const ad_booking_config = createSlice({
         },
         // 3.1
         set_selected_dates: (state, action) => {
-            state.THIRD_STEP.config_info.selected_dates = Object.assign({ selected: false }, action.payload);
+            state.THIRD_STEP.config_info.selected_dates = [...action.payload.dates_arr];
+            state.THIRD_STEP.config_info.date_config.date = action.payload.date
+            state.THIRD_STEP.config_info.date_config.currentYear = action.payload.currentYear
+            state.THIRD_STEP.config_info.date_config.currentMonth = action.payload.currentMonth
+            state.THIRD_STEP.config_info.date_config.fixed_current_month = action.payload.fixed_current_month
+            state.THIRD_STEP.config_info.date_config.fixed_current_year = action.payload.fixed_current_year
+            state.THIRD_STEP.config_info.date_config.currentDate_month = action.payload.currentDate_month
+            state.THIRD_STEP.config_info.date_config.lock_next_date = action.payload.lock_next_date
+            state.THIRD_STEP.config_info.date_config.today = action.payload.today
+            state.THIRD_STEP.config_info.date_config.lastDayOnMonth = action.payload.lastDayOnMonth
+
         },
         set_contact_info: (state, action) => {
             state.THIRD_STEP.config_info.customer_contact_info.isDone = action.payload.isdone;
@@ -254,7 +275,7 @@ export const ad_booking_config = createSlice({
 })
 
 
-export const { mark_first_step_status, mark_ad_cat_step_status, set_contact_info, set_ad_cat_step_config, mark_ad_type_step_status, set_ad_type_step_config, mark_paper_info_step_status, set_paper_basic_info, set_paper_editions, set_paper_package, mark_compose_step_status, set_compose_step_config, set_ad_stats, set_special_enhancement, set_heading_config, mark_payment_step_status, set_paymet_page_config, isPaymentDone, isPaymentVerified, set_payment_response, set_bucket_uri, get_bucket_uri, push_bucket_doc, set_selected_dates } = ad_booking_config.actions;
+export const { mark_first_step_status, mark_ad_cat_step_status, set_contact_info, set_discount, set_ad_cat_step_config, mark_ad_type_step_status, set_ad_type_step_config, mark_paper_info_step_status, set_paper_basic_info, set_paper_editions, set_paper_package, mark_compose_step_status, set_compose_step_config, set_ad_stats, set_special_enhancement, set_heading_config, mark_payment_step_status, set_paymet_page_config, isPaymentDone, isPaymentVerified, set_payment_response, set_bucket_uri, get_bucket_uri, push_bucket_doc, set_selected_dates } = ad_booking_config.actions;
 export default ad_booking_config.reducer;
 
 

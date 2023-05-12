@@ -17,12 +17,24 @@
   padding: 9px 15px;
   border-radius: 4px;
   max-width: 50%;
-  transform: all 150ms ease;
+  transition: all 150ms ease;
+  position: relative;
+}
+.offers .offers__list .offer_wrapper:active {
+  transform: scale(0.9);
+}
+.offers .offers__list .offer_wrapper .over__board {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background: transparent;
+}
+.offers .offers__list .offer_wrapper .selected_offer_line {
+  display: none;
 }
 .offers .offers__list .offer_wrapper:hover {
-  background-color: rgba(118, 162, 255, 0.2705882353);
-}
-.offers .offers__list .offer_wrapper.selected {
   background-color: rgba(118, 162, 255, 0.2705882353);
 }
 .offers .offers__list .offer_wrapper .sm__svg {

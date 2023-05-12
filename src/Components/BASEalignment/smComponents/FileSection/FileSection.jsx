@@ -3,7 +3,7 @@ import FileItem from '../FileUpload/FileItem'
 
 
 const FileSection = ({FILEBLOGCONFIG=null}) => {
-    
+    console.log(FILEBLOGCONFIG);
 
     return (
         <>
